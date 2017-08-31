@@ -24,20 +24,10 @@ antigen bundle ruby
 antigen bundle tmux
 antigen apply
 
-source ~/k/k.sh
+source ~/k.sh
 
 # Fantasque Powerline font repo
 # https://github.com/ztomer/fantasque_awesome_powerline
-
-# prompt_zsh_showStatus () {
-#   state=`osascript -e 'tell application "Spotify" to player state as string'`;
-#   if [ $state = "playing" ]; then
-#     artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
-#     track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
-#
-#     echo -n "%F{green}\ue0b2%F{black}%K{green} $artist - $track %f";
-#   fi
-# }
 
 # case insensitive (all), partial-word and substring completion
 if [[ "$CASE_SENSITIVE" = true ]]; then

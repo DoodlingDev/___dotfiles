@@ -112,32 +112,35 @@ set backspace=2
 set noswapfile
 set history=200
 set ruler
-set showcmd
+set showcmd " show command in status line
 set autowrite
 set incsearch
 set foldmethod=marker
 set cursorline
+set lazyredraw " Don't redraw during macros
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
 " Softtabs, 2 spaces
 set tabstop=2
-set shiftwidth=2
+set smarttab
+set shiftwidth=2 " Number of spaces to use in autoindenting
 set shiftround
 set expandtab
-:set wrap
-:set linebreak
-:set nolist  " list disables linebreak
-:set formatoptions-=tc
+set wrap
+set linebreak
+set smartindent " Smart autoindenting on new lines
+" set nolist  " Show hidden characters?
+set formatoptions-=tc
 
 " Make it obvious where 80 chars is
 set textwidth=80
 set numberwidth=5
 
 " Line numbers and relative line numbers
-set relativenumber
 set number
+set relativenumber
 
 " More natural direction when splitting
 set splitbelow
@@ -156,6 +159,8 @@ set undoreload=10000
 set mouse=a
 
 set ignorecase
+
+set previewheight=8 " Completion preview height
 
 set clipboard=unnamed
 
@@ -280,6 +285,23 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+
+" better tab switching
+nnoremap <leader>l gt
+nnoremap <leader>h gT
+nnoremap <leader>t :tabe<cr>
+nnoremap <leader>t. :tabe<cr>
+
+" Opens a tab edit command with the currently open file filled in
+nnoremap <leader>te :tabe<space><C-R>=expand("%:p")<cr>
+
+"stop that stupid window from popping up
+map q: :q
+
+" Jump to the end of text you pasted
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
 inoremap JK <Esc>/-+-<Enter>:noh<Enter>"_3cl
 
