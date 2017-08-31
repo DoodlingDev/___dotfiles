@@ -1,0 +1,115 @@
+#!/bin/sh
+
+# thanks to thoughtbot laptop script
+fancy_echo() {
+  local fmt="$1"; shift
+  printf "\n$fmt\n" "$0"
+}
+
+UNAME="$(uname -s)"
+
+if [ ! $UNAME == "Darwin" ]; then
+  fancy_echo "Please run the setup script that is appropriate for your system"
+  exit
+fi
+
+echo "     e    e                                    ,e,               ,e,                    "
+echo "    d8b  d8b       /~~~8e   e88~~\\       d88~\\  \"  888-~88e-~88e  \"   ~~~d88P  e88~~8e  "
+echo "   d888bdY88b          88b d888    ____ C888   888 888  888  888 888    d88P  d888  88b "
+echo "  / Y88Y Y888b    e88~-888 8888          Y88b  888 888  888  888 888   d88P   8888__888 "
+echo " /   YY   Y888b  C888  888 Y888           888D 888 888  888  888 888  d88P    Y888    , "
+echo "/          Y888b  \"88_-888  \"88__/      \\_88P  888 888  888  888 888 d88P___   \"88___/  "
+
+# If on a Mac, install Homebrew package manager
+# if [ ! -f /usr/local/bin/brew -a "$UNAME" == "Darwin" ]; then
+#   fancy_echo "Homebrew not found.. installing Homebrew"
+#   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# else
+#   fancy_echo "Homebrew detected"
+#   fancy_echo "Updating brew"
+#   brew update
+# fi
+
+# install zsh and set as shell if on a mac
+# only if not found
+# if [ ! $SHELL == "/bin/zsh" ]; then
+#   fancy_echo "downloading zsh"
+#   brew install zsh zsh-completions
+#
+#   fancy_echo "setting zsh as default shell"
+#   chsh -s $(which zsh)
+# else
+#   fancy_echo "zsh already set as system shell"
+# fi
+
+# BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "node" "openssl" "postgresql" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" )
+#
+# # list of installs from brew
+# for cask in ${BREW_INSTALL_LIST[@]}
+# do
+#   if brew list | grep "$cask" > /dev/null; then
+#     fancy_echo "$cask already installed"
+#   else
+#     echo ""
+#     echo "$cask not found, installing via homebrew"
+#     brew install $cask
+#   fi
+# done
+
+# # install mpapis public key used to verify rvm install package
+# if ! gpg --list-keys | grep "409B6B1796C275462A1703113804BB82D39DC0E3" > /dev/null; then
+#   gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+# fi
+#
+# # install rvm for ruby version management
+# if rvm -v > /dev/null; then
+#   \curl -sSL https://get.rvm.io | bash -s stable --ruby
+# else
+#   rvm get head
+#   rvm reload
+# fi
+#
+# # install latest stable ruby
+# rvm install ruby --latest
+#
+# # tell rvm to use latest stable ruby
+# rvm use ruby --latest
+
+# GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" )
+#
+# for gem in ${GEM_INSTALL_LIST[@]}
+# do
+#   if gem list | grep $gem > /dev/null; then
+#     fancy_echo "$gem already installed"
+#   else
+#     echo ""
+#     echo "$gem not found, installing via rubygems"
+#     gem install $gem
+#   fi
+# done
+
+# OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "bear" )
+#
+# for app in ${OSX_APPS_LIST[@]}
+# do
+#   if brew cask list | grep $app; then
+#     fancy_echo "$app already installed"
+#   else
+#     echo ""
+#     echo "$app not found, installing via brew cask"
+#     brew cask install $app
+#   fi
+# done
+
+# Powerline
+# if [ ! -d ${HOME}/.config/powerline/ ]; then
+#   fancy_echo "Installing powerline"
+#   sudo easy_install pip
+#   pip install powerline-status
+# else
+#   fancy_echo "Found powerline"
+# fi
+
+
+
+
