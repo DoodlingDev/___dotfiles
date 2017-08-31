@@ -1,0 +1,238 @@
+snippet container "React Container Component"
+import React from "react";
+import ReactComponent from "components/common/reactComponent";
+import {connect} from "react-redux";
+
+export class $1 extends ReactComponent {
+  constructor(props) {
+	  super(props);
+		this._bind();
+	}
+
+	render() {
+		return(
+		  <div></div>
+	  );
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)($1);
+
+function mapStateToProps(state, ownProps) {
+	return {
+
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+
+  };
+}
+endsnippet
+
+snippet presenter "React Presentation Component"
+import React from "react";
+import PropTypes from "prop-types";
+
+const $1 = (${2:props}) => {
+	return (
+		<div>$3</div>
+	);
+};
+
+export default $1;
+
+$1.propTypes = {
+  $4
+};
+endsnippet
+
+snippet bingo "Debugging Alert"
+alert("bingo!");
+endsnippet
+
+snippet $$ "jQuery Selector Braces"
+$("$1")
+endsnippet
+
+snippet for "Standard For Loop"
+for (i = 0, l = $1.length; i < l; i++) {
+  $2
+}
+endsnippet
+
+snippet con "console.log"
+console.log($1);
+endsnippet
+
+snippet get "getElementById"
+document.getElementById("$1");
+endsnippet
+
+snippet crea "Create HTML node"
+document.createElement("$1");
+endsnippet
+
+snippet => "Arrow Function"
+($1) => {
+  $2
+}
+endsnippet
+
+snippet add "Add Event Listener" i
+addEventListener("$1", $2)
+endsnippet
+
+snippet spec-react "Spec Skeleton for React Component"
+import React from "react";
+import expect from "expect";
+import {shallow, mount} from "enzyme";
+import $1, {$1 as $1Component} from "./${1/(.)(.*)/\l$1$2/}";
+
+function setup(renderFn) {
+  const props = {
+
+	};
+
+	return renderFn(<$1 {...props} />);
+}
+endsnippet
+
+snippet describe "Spec Describe Block"
+describe("$1", () => {
+  $2
+});
+endsnippet
+
+snippet it-spec "Spec It Block"
+it("$1", () => {
+  $2
+});
+endsnippet
+
+snippet eventprev "prevent Default"
+event.preventDefault();
+endsnippet
+
+snippet func "function"
+function($1) {
+  $2
+}
+endsnippet
+
+snippet => "arrow function"
+($1) => {
+  $2
+}
+endsnippet
+
+snippet deb "debugger"
+debugger;
+endsnippet
+
+snippet clog "console.log"
+console.log(${VISUAL});
+endsnippet
+
+snippet jx "js doc comment"
+/**
+ * $1
+ */
+endsnippet
+
+snippet if "if statement"
+if ($1) {
+  $2
+}
+endsnippet
+
+snippet ifelse "if/else statement"
+if ($1) {
+  $2
+} else {
+  $3
+}
+endsnippet
+
+snippet forin "for ... in"
+for ($1 in $2) {
+  $3
+}
+endsnippet
+
+snippet switch "switch statement"
+switch ($1) {
+  case $2:
+	  $3
+		${4:break;}
+}
+endsnippet
+
+snippet case "case statement"
+case $1:
+  $2
+	${3:break;}
+}
+endsnippet
+
+snippet kv: "key: value,"
+$1: $2,
+endsnippet
+
+snippet timeout "setTimeout"
+$1 = setTimeout(() => {
+  $2
+}
+endsnippet
+
+snippet iife "iife"
+(($1) {
+  "use strict";
+	$1
+)(${2});
+endsnippet
+
+snippet class "class"
+class $1 {
+  constructor($2) {
+	  $3
+	}
+}
+endsnippet
+
+snippet classex "class ... extends"
+class $1 extends $2 {
+  constructor($3) {
+	  $4
+	}
+}
+endsnippet
+
+snippet import "import..."
+import $1 from "$2${1/(.)(.*)/\l$1$2/}";
+endsnippet
+
+snippet import{} "{import}"
+import {$1} from "$2";
+endsnippet
+
+snippet import* "import * as ..."
+import * as $1 from "$2${1/(.)(.*)/\l$1$2/}";
+endsnippet
+
+snippet {props} "destructure props"
+{$1} = this.props;
+endsnippet
+
+snippet div-react "react div w/ props"
+<div
+  $1
+/>
+
+</div>
+endsnippet
+
+snippet ={} "react prop"
+$1={ $2 }
+endsnippet

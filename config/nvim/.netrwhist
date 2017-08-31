@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/aji/dev/_ul/compass/react-client/src/components/common/modal'
+let g:netrw_dirhist_2='/Users/aji/dev/_ul/compass/react-client/src/components/common'
+let g:netrw_dirhist_3='/Users/aji/dev/_ul/compass/react-client'
+let g:netrw_dirhist_4='/Users/aji/dev/_ul/compass/react-client/src'
+let g:netrw_dirhist_5='/Users/aji/dev/_ul/compass/react-client/src/components'
+let g:netrw_dirhist_6='/Users/aji/dev/_ul/compass/react-client/src/components/common'
+let g:netrw_dirhist_7='/Users/aji/dev/_ul/compass/react-client/src/components/common/menus'
