@@ -4,15 +4,15 @@ import ReactComponent from "components/common/reactComponent";
 import {connect} from "react-redux";
 
 export class $1 extends ReactComponent {
-  constructor(props) {
-	  super(props);
+	constructor(props) {
+		super(props);
 		this._bind();
 	}
 
 	render() {
 		return(
-		  <div></div>
-	  );
+			<div></div>
+		);
 	}
 }
 
@@ -25,9 +25,9 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
+	return {
 
-  };
+	};
 }
 endsnippet
 
@@ -43,8 +43,7 @@ const $1 = (${2:props}) => {
 
 export default $1;
 
-$1.propTypes = {
-  $4
+$1.propTypes = {$4
 };
 endsnippet
 
@@ -57,7 +56,7 @@ $("$1")
 endsnippet
 
 snippet for "Standard For Loop"
-for (i = 0, l = $1.length; i < l; i++) {
+for (i = 0, l = ${VISUAL}$1.length; i < l; i++) {
   $2
 }
 endsnippet
@@ -155,12 +154,6 @@ if ($1) {
 }
 endsnippet
 
-snippet forin "for ... in"
-for ($1 in $2) {
-  $3
-}
-endsnippet
-
 snippet switch "switch statement"
 switch ($1) {
   case $2:
@@ -174,23 +167,6 @@ case $1:
   $2
 	${3:break;}
 }
-endsnippet
-
-snippet kv: "key: value,"
-$1: $2,
-endsnippet
-
-snippet timeout "setTimeout"
-$1 = setTimeout(() => {
-  $2
-}
-endsnippet
-
-snippet iife "iife"
-(($1) {
-  "use strict";
-	$1
-)(${2});
 endsnippet
 
 snippet class "class"

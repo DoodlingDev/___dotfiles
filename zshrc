@@ -1,35 +1,111 @@
-# # alias reminders plugin6color
-# # alias reminders plugin"
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-if [ -d "$HOME/Library/Python/2.7/bin" ]; then
-  PATH="$HOME/Library/Python/2.7/bin:$PATH"
+
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/aji/.oh-my-zsh
+
+# POWERLEVEL THEME {{{
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE="awesome-patched"
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{white}%F{black} ➪ %f%k%F{white}\uE0B4%f "
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time rvm node_version battery)
+
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\uE0B4'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='\uE0B6'
+
+POWERLEVEL9K_NODE_VERSION_FOREGROUND="black"
+
+POWERLEVEL9K_OS_ICON_BACKGROUND="black"
+POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
+
+POWERLEVEL9K_RVM_FOREGROUND="red"
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="blue"
+
+POWERLEVEL9K_CARRIAGE_RETURN_ICON="\uF149"
+POWERLEVEL9K_ROOT_ICON="\uF120 "
+POWERLEVEL9K_RUBY_ICON="\uE791 "
+POWERLEVEL9K_AWS_ICON="\uF1B2 "
+POWERLEVEL9K_AWS_EB_ICON="\uF1B3 "
+POWERLEVEL9K_BACKGROUND_JOBS_ICON="\uF46C "
+POWERLEVEL9K_TEST_ICON="\uF0C3"
+POWERLEVEL9K_TODO_ICON="\uF046"
+POWERLEVEL9K_BATTERY_ICON="\uF240"
+POWERLEVEL9K_BATTERY_CHARGING_ICON="AA"
+POWERLEVEL9K_DISK_ICON="\uF0A0"
+POWERLEVEL9K_OK_ICON="\uF00C"
+POWERLEVEL9K_FAIL_ICON="F00D"
+POWERLEVEL9K_NODE_ICON="\uE718"
+POWERLEVEL9K_APPLE_ICON="\uE711"
+POWERLEVEL9K_ANDROID_ICON="\uE70E"
+POWERLEVEL9K_LINUX_ICON="\uE712"
+POWERLEVEL9K_HOME_ICON="\uF015"
+POWERLEVEL9K_HOME_SUB_ICON=""
+POWERLEVEL9K_FOLDER_ICON="\uF114"
+POWERLEVEL9K_NETWORK_ICON=""
+POWERLEVEL9K_LOAD_ICON=""
+POWERLEVEL9K_SWAP_ICON=""
+POWERLEVEL9K_RAM_ICON=""
+POWERLEVEL9K_SERVER_ICON=""
+POWERLEVEL9K_VCS_UNTRACKED_ICON=""
+POWERLEVEL9K_VCS_UNSTAGED_ICON=""
+POWERLEVEL9K_VCS_STAGED_ICON="\uF407"
+POWERLEVEL9K_VCS_STASH_ICON=""
+POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON="\uF407"
+POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON="\uF47F"
+POWERLEVEL9K_VCS_TAG_ICON=""
+POWERLEVEL9K_VCS_BOOKMARK_ICON="\uF02B "
+POWERLEVEL9K_VCS_COMMIT_ICON="\uF417 "
+POWERLEVEL9K_VCS_BRANCH_ICON="\uF418 "
+POWERLEVEL9K_VCS_REMOTE_BRANCH_ICON=""
+POWERLEVEL9K_VCS_GIT_ICON="\uF406"
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON="\uF408"
+POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON="\uF171"
+POWERLEVEL9K_VCS_GIT_GITLAB_ICON=""
+POWERLEVEL9K_VCS_HG_ICON=""
+POWERLEVEL9K_VCS_SVN_ICON=""
+POWERLEVEL9K_RUST_ICON=""
+POWERLEVEL9K_PYTHON_ICON=""
+POWERLEVEL9K_SWIFT_ICON=""
+POWERLEVEL9K_GO_ICON=""
+POWERLEVEL9K_PUBLIC_IP_ICON=""
+POWERLEVEL9K_LOCK_ICON="\uF023"
+POWERLEVEL9K_EXECUTION_TIME_ICON=""
+POWERLEVEL9K_SSH_ICON="\uF084"
+POWERLEVEL9K_VPN_ICON=""
+POWERLEVEL9K_KUBERNETES_ICON=""
+
+# }}}
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git rails ruby node tmux)
+
+source $ZSH/oh-my-zsh.sh
+
+if [ "$TMUX"="" ]; then
+  export TERM="xterm-256color"
+  tmux
 fi
-powerline-daemon -q
-. /Users/aji/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
-POWERLINE_CONFIG_PATHS="~/.config/powerline/"
-
-if [ "$TMUX"="" ]; then tmux; fi
-
-source /usr/local/share/antigen/antigen.zsh
-antigen bundle git
-antigen bundle bundler
-antigen bundle colorize
-antigen bundle gem
-antigen bundle jira
-antigen bundle osx
-antigen bundle rails
-antigen bundle rvm
-antigen bundle ruby
-antigen bundle tmux
-antigen apply
-
-source ~/k.sh
 
 # Fantasque Powerline font repo
 # https://github.com/ztomer/fantasque_awesome_powerline
 
-# case insensitive (all), partial-word and substring completion
+source ~/k/k.sh
+
 if [[ "$CASE_SENSITIVE" = true ]]; then
   zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 else
@@ -43,81 +119,17 @@ unset CASE_SENSITIVE HYPHEN_INSENSITIVE
 
 zstyle ':completion:*' list-colors ''
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-if [[ -x "`whence -p dircolors`" ]]; then
-  eval `dircolors`
-  alias ls='ls -F --color=auto'
-else
-  alias ls='ls -F'
-fi
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-export PKG_CONFIG_PATH="/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 export EDITOR="nvim"
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # type .. instead of cd..
 setopt auto_cd
-
 
 # ALIASES {{{
 
 # CONFIG ETC {{{
 
 # alias reminders plugin
-source ~/.oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
 
 alias zshconfig="nvim ~/.zshrc"
 alias vimconfig="nvim ~/.vimrc"
@@ -142,7 +154,7 @@ alias dc="docker-compose"
 alias dcup="docker-compose up -d"
 
 # }}}
-
+#
 # GIT {{{
 #
 alias gs="git status"
@@ -168,6 +180,9 @@ alias autocert="tmuxinator start autocert"
 # Compass Home working directory installed to path
 export COMPASS_HOME=/Users/aji/dev/_ul/compass
 export PATH=$PATH:/Users/aji/dev/_ul/compass/bin
+
+alias cyolo="ruby setup_script.rb"
+
  # }}}
 
 # MISC {{{
@@ -185,6 +200,3 @@ alias jarvis="ssh aji@jarvis.webhop.me"
 export COMPASS_HOME=/Users/aji/dev/_ul/compass
 export PATH=$PATH:/Users/aji/dev/_ul/compass/bin
 
-alias compass-yolo="ruby setup_script.rb"
-
-alias cyolo="ruby setup_script.rb"

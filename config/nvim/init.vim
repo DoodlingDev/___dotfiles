@@ -3,7 +3,6 @@
 runtime! macros/matchit.vim
 
 set nocompatible " use vim, not vi api
-filetype off
 set shell=$SHELL
 set encoding=utf-8
 set fileencoding=utf-8
@@ -11,6 +10,8 @@ let mapleader=","
 nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>
 
 " VUNDLE {{{
+
+filetype off
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.dotfiles/config/nvim/bundle/Vundle.vim
 call vundle#rc("~/.dotfiles/config/nvim/bundle")
@@ -23,7 +24,7 @@ Plugin 'VundleVim/Vundle.vim'
 Bundle 'scrooloose/nerdtree'
 
 " nerdTree and GIT
-Bundle 'Xuyuanp/nerdtree-git-plugin'
+" Bundle 'Xuyuanp/nerdtree-git-plugin'
 
 " fuzzy search
 Bundle 'ctrlpvim/ctrlp.vim'
@@ -32,7 +33,7 @@ Bundle 'ctrlpvim/ctrlp.vim'
 Plugin 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
-" Plugin 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 
 " Asynchronous Linting
 Plugin 'w0rp/ale'
@@ -53,7 +54,7 @@ Bundle 'tpope/vim-surround'
 Plugin 'tpope/vim-markdown'
 
 " checks your ruby code
-" Plugin 'ngmy/vim-rubocop'
+Plugin 'ngmy/vim-rubocop'
 
 " highlight changes in vim
 Plugin 'airblade/vim-gitgutter'
@@ -113,6 +114,7 @@ set noswapfile
 set history=200
 set ruler
 set showcmd " show command in status line
+set autoread
 set autowrite
 set incsearch
 set foldmethod=marker
@@ -195,12 +197,6 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.txt set filetype=markdown
 augroup END
 
-augroup AutoSave
-  autocmd!
-
-  autocmd BufLeave,FocusLost * silent! wall
-augroup END
-
 " }}}
 
 " LINTING {{{
@@ -212,7 +208,7 @@ let g:ale_linters = {'javascript': ['prettier', 'eslint']}
 " PLUGIN CONFIGS {{{
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<leader>x"
+let g:UltiSnipsExpandTrigger = "<S-cr>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
@@ -264,6 +260,12 @@ let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linen
 " airline tab w/ tab number
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 
+let g:ultisnips_javascript = {
+     \ 'keyword-spacing': 'always',
+     \ 'semi': 'always',
+     \ 'space-before-function-paren': 'never',
+     \ }
+
 " }}}
 
 " AUTOCOMMANDS {{{
@@ -280,11 +282,12 @@ autocmd BufWritePre * :%s/\s\+$//e
 " PERSONAL KEYBINDINGS {{{
 
 inoremap jk <esc>
-vnoremap jk <esc>
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+nnoremap J 10j
+nnoremap K 10k
 
 " better tab switching
 nnoremap <leader>l gt
@@ -398,7 +401,7 @@ nnoremap <leader>p :CtrlP<cr>
 
 " splits
 nnoremap <leader>vs :vsplit<cr>
-nnoremap <leader>hs :split<cr>
+nnoremap <leader>s :split<cr>
 
 " TEXT EXPANSION SHORTCUTS {{{
 
