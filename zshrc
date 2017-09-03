@@ -4,7 +4,7 @@ export TERM="xterm-256color"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/aji/.oh-my-zsh
+export ZSH=$HOME/aji/.oh-my-zsh
 
 # POWERLEVEL THEME {{{
 
@@ -199,6 +199,4 @@ alias jarvis="ssh aji@jarvis.webhop.me"
 # }}}
 
 # }}}
-export COMPASS_HOME=/Users/aji/dev/_ul/compass
-export PATH=$PATH:/Users/aji/dev/_ul/compass/bin
 
