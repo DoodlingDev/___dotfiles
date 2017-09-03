@@ -54,7 +54,7 @@ Bundle 'tpope/vim-surround'
 Plugin 'tpope/vim-markdown'
 
 " checks your ruby code
-Plugin 'ngmy/vim-rubocop'
+" Plugin 'ngmy/vim-rubocop'
 
 " highlight changes in vim
 Plugin 'airblade/vim-gitgutter'
@@ -107,7 +107,7 @@ call vundle#end()
 
 set termguicolors
 syntax enable
-colorscheme jellybeans
+colorscheme earthsong
 
 set backspace=2
 set noswapfile
