@@ -6,7 +6,7 @@ set nocompatible " use vim, not vi api
 set shell=$SHELL
 set encoding=utf-8
 set fileencoding=utf-8
-let mapleader=","
+let mapleader=" "
 nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>
 
 " VUNDLE {{{

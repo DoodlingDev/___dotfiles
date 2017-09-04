@@ -42,7 +42,8 @@ echo "/          Y888b  \"88_-888  \"88__/      \\_88P  888 888  888  888 888 d8
 #   fancy_echo "zsh already set as system shell"
 # fi
 
-# BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "node" "openssl" "postgresql" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" )
+# brew tap thoughtbot/formulae
+# BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "node" "openssl" "postgresql" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" )
 #
 # # list of installs from brew
 # for cask in ${BREW_INSTALL_LIST[@]}
@@ -75,6 +76,10 @@ echo "/          Y888b  \"88_-888  \"88__/      \\_88P  888 888  888  888 888 d8
 # # tell rvm to use latest stable ruby
 # rvm use ruby --latest
 
+# if brew list | grep "rcm" > /dev/null; then
+#   rcup -v -v -v -v
+# fi
+
 # GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" )
 #
 # for gem in ${GEM_INSTALL_LIST[@]}
@@ -88,6 +93,11 @@ echo "/          Y888b  \"88_-888  \"88__/      \\_88P  888 888  888  888 888 d8
 #   fi
 # done
 
+# if [ -d ${HOME}/ranger/ ]; then
+#   fancy_echo "Installing Ranger File Browser"
+#   git clone git://git.savannah.nongnu.org/ranger.git ~/ranger
+# fi
+
 # OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "bear" )
 #
 # for app in ${OSX_APPS_LIST[@]}
@@ -100,16 +110,5 @@ echo "/          Y888b  \"88_-888  \"88__/      \\_88P  888 888  888  888 888 d8
 #     brew cask install $app
 #   fi
 # done
-
-# Powerline
-# if [ ! -d ${HOME}/.config/powerline/ ]; then
-#   fancy_echo "Installing powerline"
-#   sudo easy_install pip
-#   pip install powerline-status
-# else
-#   fancy_echo "Found powerline"
-# fi
-
-
 
 

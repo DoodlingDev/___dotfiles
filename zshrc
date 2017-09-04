@@ -155,6 +155,8 @@ alias wp="webpack"
 alias dc="docker-compose"
 alias dcup="docker-compose up -d"
 
+alias rr="~/ranger/ranger.py"
+
 # }}}
 #
 # GIT {{{
