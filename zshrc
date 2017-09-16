@@ -99,7 +99,7 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/jira
 #
 #
-plugins=(git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn zsh-navigation-tools taskwarrior)
+plugins=(git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn zsh-navigation-tools taskwarrior alias-tips)
 
 source $ZSH/oh-my-zsh.sh
 
