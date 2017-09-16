@@ -94,7 +94,12 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby node tmux)
+#
+# JIRA
+# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/jira
+#
+#
+plugins=(git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn zsh-navigation-tools taskwarrior)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -181,11 +186,20 @@ alias ulgo="tmuxinator start ulgo"
 alias compass="tmuxinator start compass"
 alias autocert="tmuxinator start autocert"
 
+alias tc="NODE_PATH=./src mocha --compilers js:babel-core/register --require tools/testSetup.js --reporter spec"
+
+# alarmHUB {{{
+
+alias da:b="docker container attach compass_backend_wrapper_1"
+alias da:ac="docker container attach compass_alarm_company_service_1"
+
 # Compass Home working directory installed to path
 export COMPASS_HOME=/Users/aji/dev/_ul/compass
 export PATH=$PATH:/Users/aji/dev/_ul/compass/bin
 
 alias cyolo="ruby setup_script.rb"
+
+#}}}
 
  # }}}
 
@@ -202,3 +216,5 @@ alias jarvis="ssh aji@jarvis.webhop.me"
 
 # }}}
 
+export COMPASS_HOME=/Users/aji/dev/_ul/compass
+export PATH=$PATH:/Users/aji/dev/_ul/compass/bin

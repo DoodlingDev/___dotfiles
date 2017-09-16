@@ -6,7 +6,7 @@ set nocompatible " use vim, not vi api
 set shell=$SHELL
 set encoding=utf-8
 set fileencoding=utf-8
-let mapleader=" "
+let mapleader=","
 nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>
 
 " VUNDLE {{{
@@ -107,7 +107,7 @@ call vundle#end()
 
 set termguicolors
 syntax enable
-colorscheme earthsong
+colorscheme jellybeans
 
 set backspace=2
 set noswapfile
@@ -175,7 +175,7 @@ set clipboard=unnamed
 
 call deoplete#enable()
 " deoplete tab-complete
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " }}}
 
@@ -208,7 +208,7 @@ let g:ale_linters = {'javascript': ['prettier', 'eslint']}
 " PLUGIN CONFIGS {{{
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<S-cr>"
+let g:UltiSnipsExpandTrigger = "<leader>x"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
@@ -271,8 +271,8 @@ let g:ultisnips_javascript = {
 " AUTOCOMMANDS {{{
 
 " turn on line highlight in insert mode
-:autocmd InsertEnter * set cul
-:autocmd InsertLeave * set nocul
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
 
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -308,9 +308,6 @@ nnoremap <silent> p p`]
 
 inoremap JK <Esc>/-+-<Enter>:noh<Enter>"_3cl
 
-" convert underscore to camel
-nnoremap _ f_x~
-
 " indent selection and stay selected
 vnoremap > >gv
 vnoremap < <gv
@@ -328,6 +325,9 @@ nnoremap <leader>src :source<space>$MYVIMRC<cr>
 vnoremap <S-k> :move'<--".1<cr>gv
 " move selection down
 vnoremap <S-j> :move'>+".1<cr>gv
+
+" reload all buffers from disk
+nnoremap <leader>co :checkt<cr>
 
 " vim remap <space>
 inoremap &<space>. <lt>space>
