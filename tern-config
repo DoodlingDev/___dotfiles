@@ -1,12 +1,14 @@
 {
-  "plugins": {
-    "node": {},
-    "webpack": {},
-    "es_modules": {}
-  },
   "libs": [
-    "ecma5",
-    "ecma6"
+    "browser",
+    "underscore",
+    "jquery",
+    "react"
   ],
-  "ecmaVersion": 6
+  "plugins": {
+    "es_modules": {},
+    "webpack": {},
+    "node": {}
+  },
+  "ecmaVersion": "6"
 }

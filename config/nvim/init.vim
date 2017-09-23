@@ -53,23 +53,14 @@ Bundle 'tpope/vim-surround'
 " work more easily with markdown files
 Plugin 'tpope/vim-markdown'
 
-" checks your ruby code
-" Plugin 'ngmy/vim-rubocop'
-
 " highlight changes in vim
 Plugin 'airblade/vim-gitgutter'
 
 " slim syhtax highlighting
 Plugin 'slim-template/vim-slim'
 
-" multi-language support
-" Bundle 'vim-polyglot'
-
 " Language Server support
 Plugin 'autozimu/LanguageClient-neovim'
-
-" css support
-" Bundle 'vim-css3-syntax'
 
 " Javascript highlighting etc
 Plugin 'othree/yajs.vim'
@@ -85,6 +76,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Shougo/deoplete.nvim'
 " Tern and deoplete
 Plugin 'carlitux/deoplete-ternjs'
+" Tern for vim
+Plugin 'ternjs/tern_for_vim'
 
 " Airline statusline
 Plugin 'vim-airline/vim-airline'
@@ -100,6 +93,9 @@ Plugin 'ervandew/supertab'
 
 " easily navigate VIM and TMUX panes
 Bundle 'christoomey/vim-tmux-navigator'
+
+" typescript support
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 
@@ -230,6 +226,12 @@ if executable("ag")
     nnoremap <leader>/ :Ag<SPACE>
   endif
 endif
+
+" tern_for_vim
+" enable keyboard shortcuts
+let g:tern_map_keys=1
+" show argument hints
+let g:tern_show_argument_hints='on_hold'
 
 " Language Server Config
 set hidden
@@ -362,6 +364,10 @@ nnoremap <leader>dw "_dw
 nnoremap <leader>dd "_dd
 vnoremap <leader>d "_d
 
+" move line from normal mode
+nnoremap > v><esc>
+nnoremap < v<<esc>
+
 " sort
 vnoremap <leader>su :sort<space>u<cr>
 
@@ -376,6 +382,9 @@ nnoremap <leader>a; mpA;<Esc>`p
 
 " semicolon to colon
 nnoremap ; :
+
+" easy exit visual mode
+vnoremap a <esc>
 
 " unhilight search term
 nnoremap <leader>n :noh<CR>

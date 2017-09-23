@@ -162,6 +162,8 @@ alias dcup="docker-compose up -d"
 
 alias rr="~/ranger/ranger.py"
 
+alias td="tmux detach"
+
 # }}}
 #
 # GIT {{{

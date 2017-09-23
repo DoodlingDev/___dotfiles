@@ -102,7 +102,7 @@ if [ ! -f $HOME/.dotfiles/config/nvim/bundle/Vundle.vim ]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.dotfiles/config/nvim/bundle/Vundle.vim
 fi
 
-GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" )
+GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "guard" )
 
 for gem in ${GEM_INSTALL_LIST[@]}
 do
