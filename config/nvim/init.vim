@@ -97,6 +97,12 @@ Bundle 'christoomey/vim-tmux-navigator'
 " typescript support
 Plugin 'leafgarland/typescript-vim'
 
+" flow plugin
+Plugin 'flowtype/vim-flow'
+
+" prettier
+Plugin 'prettier/vim-prettier'
+
 call vundle#end()
 
 " }}}
@@ -115,6 +121,7 @@ set autowrite
 set incsearch
 set foldmethod=marker
 set cursorline
+set nohlsearch
 set lazyredraw " Don't redraw during macros
 
 " Use one space, not two, after punctuation.
@@ -197,7 +204,7 @@ augroup END
 
 " LINTING {{{
 
-let g:ale_linters = {'javascript': ['prettier', 'eslint']}
+let g:ale_linters = {'javascript': ['flow', 'prettier', 'eslint']}
 
 " }}}
 
@@ -211,6 +218,19 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Prettier uses double quotes
+let g:prettier#config#single_quote="false"
+
+" run Prettier on current buffer
+nnoremap <leader>js :Prettier<cr>
+
+" Flow config
+" Autoclose quickfix window when no errors
+let g:flow#autoclose=1
+
+" Enable Flow on :w
+let g:flow#enable=1
 
 if executable("ag")
   " Use ag over grep

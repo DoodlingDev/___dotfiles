@@ -163,6 +163,7 @@ alias dcup="docker-compose up -d"
 alias rr="~/ranger/ranger.py"
 
 alias td="tmux detach"
+alias tas="tmux attach-session -t"
 
 # }}}
 #
