@@ -1,0 +1,21 @@
+# ~/.tmuxinator/YAMLtastic.yml
+
+name: YAMLtastic
+root: ~/dev/YAMLtastic
+
+windows:
+  - cli:
+      layout: e51d,178x51,0,0{70x51,0,0,1,107x51,71,0,3}
+      panes:
+        - tests:
+          - yarn test
+        - shell:
+          - l
+  - editor:
+      panes:
+        - vim:
+          - nvim .
+  - sass:
+      panes:
+        - sass:
+          - sass --watch styles/main.scss:styles/bundle.css

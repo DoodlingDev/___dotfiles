@@ -103,6 +103,9 @@ Plugin 'flowtype/vim-flow'
 " prettier
 Plugin 'prettier/vim-prettier'
 
+" better tmux and vim communication
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+
 call vundle#end()
 
 " }}}
