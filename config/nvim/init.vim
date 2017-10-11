@@ -23,9 +23,6 @@ Plugin 'VundleVim/Vundle.vim'
 " file management
 Bundle 'scrooloose/nerdtree'
 
-" nerdTree and GIT
-" Bundle 'Xuyuanp/nerdtree-git-plugin'
-
 " fuzzy search
 Bundle 'ctrlpvim/ctrlp.vim'
 
@@ -59,9 +56,6 @@ Plugin 'airblade/vim-gitgutter'
 " slim syhtax highlighting
 Plugin 'slim-template/vim-slim'
 
-" Language Server support
-Plugin 'autozimu/LanguageClient-neovim'
-
 " Javascript highlighting etc
 Plugin 'othree/yajs.vim'
 
@@ -74,16 +68,15 @@ Plugin 'tpope/vim-fugitive'
 
 " Async completion
 Plugin 'Shougo/deoplete.nvim'
+
 " Tern and deoplete
 Plugin 'carlitux/deoplete-ternjs'
-" Tern for vim
-Plugin 'ternjs/tern_for_vim'
 
 " Airline statusline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-Plugin 'godlygeek/csapprox'
+" Plugin 'godlygeek/csapprox'
 
 " vertical alignment
 Plugin 'godlygeek/tabular'
@@ -103,8 +96,8 @@ Plugin 'flowtype/vim-flow'
 " prettier
 Plugin 'prettier/vim-prettier'
 
-" better tmux and vim communication
-Plugin 'tmux-plugins/vim-tmux-focus-events'
+" better javascript parameter suggestions
+Plugin 'othree/jspc.vim'
 
 call vundle#end()
 
@@ -224,9 +217,12 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Prettier uses double quotes
 let g:prettier#config#single_quote="false"
+let g:prettier#config#jsx_bracket_same_line="false"
+let g:prettier#config#bracket_spacing="true"
+let g:prettier#config#trailing_comma = 'all'
 
 " run Prettier on current buffer
-nnoremap <leader>js :Prettier<cr>
+nnoremap <leader>js :PrettierAsync<cr>
 
 " Flow config
 " Autoclose quickfix window when no errors
@@ -250,20 +246,9 @@ if executable("ag")
   endif
 endif
 
-" tern_for_vim
-" enable keyboard shortcuts
-let g:tern_map_keys=1
-" show argument hints
-let g:tern_show_argument_hints='on_hold'
-
-" Language Server Config
-set hidden
-
-let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
-  \ }
-
-let g:LanguageClient_autostart = 1
+" tern_for_vim & deoplete
+let g:tern#command = ["tern"]
+let g:tern#argument = ["--persistent"]
 
 let g:airline_powerline_fonts=1
 

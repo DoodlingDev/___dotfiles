@@ -11,8 +11,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="awesome-patched"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
@@ -99,7 +99,7 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/jira
 #
 #
-plugins=(git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn zsh-navigation-tools taskwarrior alias-tips)
+plugins=(zsh-autosuggestions git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn zsh-navigation-tools taskwarrior alias-tips)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -159,6 +159,7 @@ alias wp="webpack"
 
 alias dc="docker-compose"
 alias dcup="docker-compose up -d"
+alias dcr="docker-compose run --rm"
 
 alias rr="~/ranger/ranger.py"
 
