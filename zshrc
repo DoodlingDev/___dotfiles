@@ -161,7 +161,7 @@ alias dc="docker-compose"
 alias dcup="docker-compose up -d"
 alias dcr="docker-compose run --rm"
 
-alias rr="~/ranger/ranger.py"
+alias rr="~/.ranger/ranger.py ."
 
 alias td="tmux detach"
 alias tas="tmux attach-session -t"
