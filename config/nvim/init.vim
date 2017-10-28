@@ -108,13 +108,16 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 " JSDoc auto-snippets
 Plugin 'heavenshell/vim-jsdoc'
 
+" turtles colorscheme
+Bundle 'beigebrucewayne/turtles'
+
 call vundle#end()
 
 " }}}
 
 set termguicolors
 syntax enable
-colorscheme jellybeans
+colorscheme turtles
 
 " TERMINAL {{{
 
@@ -142,43 +145,42 @@ let g:terminal_color_15 = '#fdf6e3'
 highlight Normal guibg=none
 highlight NonText guibg=none
 
+" {{{ GLOBALS
+
 set backspace=2
 set noswapfile
 set history=200
 set ruler
-set showcmd " show command in status line
+set showcmd                 " show command in status line
 set autoread
 set autowrite
 set incsearch
 set foldmethod=marker
 set cursorline
 set nohlsearch
-set lazyredraw " Don't redraw during macros
+set lazyredraw              " Don't redraw during macros
+set nojoinspaces            " Use one space, not two, after punctuation.
 
-" Use one space, not two, after punctuation.
-set nojoinspaces
-
-" Softtabs, 2 spaces
-set tabstop=2
-set smarttab
-set shiftwidth=2 " Number of spaces to use in autoindenting
+set tabstop=2               " tab = 2spaces
+set smarttab                " soft tabs
+set shiftwidth=2            " Number of spaces to use in autoindenting
 set shiftround
 set expandtab
-set wrap
-" set linebreak
-set smartindent " Smart autoindenting on new lines
-" set nolist  " Show hidden characters?
+set wrap                    " set linebreak
+set linebreak               " Only break line at non-word character
+set nolist                  " Only linebreak when I press enter
+set smartindent             " Smart autoindenting on new lines
 set formatoptions-=tc
 
-" Make it obvious where 80 chars is
+                            " Make it obvious where 80 chars is
 set textwidth=0
 set numberwidth=5
 
-" Line numbers and relative line numbers
+                            " Line numbers and relative line numbers
 set number
 set relativenumber
 
-" More natural direction when splitting
+                            " More natural direction when splitting
 set splitbelow
 set splitright
 
@@ -196,12 +198,14 @@ set mouse=a
 
 set ignorecase
 
-set previewheight=8 " Completion preview height
+set previewheight=8         " Completion preview height
 
 set clipboard=unnamed
 
 " set cursor offset
 :set so=10
+
+" }}}
 
 " }}}
 
