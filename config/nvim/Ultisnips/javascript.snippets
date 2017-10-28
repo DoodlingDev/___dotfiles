@@ -1,5 +1,6 @@
 snippet container "React Container Component"
 import React from "react";
+import PropTypes from "prop-types";
 import ReactComponent from "components/common/reactComponent";
 import {connect} from "react-redux";
 
@@ -7,6 +8,10 @@ export class $1 extends ReactComponent {
 	constructor(props) {
 		super(props);
 		this._bind();
+	}
+
+	static propTypes = {
+
 	}
 
 	render() {
@@ -29,6 +34,19 @@ function mapDispatchToProps(dispatch) {
 
 	};
 }
+endsnippet
+
+snippet import-React "React import"
+import React from "react";
+endsnippet
+
+snippet import-PropTypes "PropTypes import"
+import PropTypes from "prop-types";
+endsnippet
+
+snippet import-ReduxConnect "Redux connect & bindActionCreators"
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 endsnippet
 
 snippet presenter "React Presentation Component"
@@ -89,22 +107,36 @@ import expect from "expect";
 import {shallow, mount} from "enzyme";
 import $1, {$1 as $1Component} from "./${1/(.)(.*)/\l$1$2/}";
 
-function setup(renderFn) {
-  const props = {
+const props = {
 
-	};
+};
 
-	return renderFn(<$1 {...props} />);
+function setup(renderFn, theseProps = props) {
+	return renderFn(<$1 {...theseProps} />);
 }
 endsnippet
 
-snippet describe "Spec Describe Block"
+snippet des "Spec Describe Block"
 describe("$1", () => {
   $2
 });
 endsnippet
 
-snippet it-spec "Spec It Block"
+snippet ddesc "Double Spec Describe Block"
+describe("$1", () => {
+	describe("$2", () => {
+		it("$3", () => {
+      $4
+		});
+	});
+});
+endsnippet
+
+snippet wrapper "spec wrapper"
+const wrapper = setup($1, ${2:theseProps});
+endsnippet
+
+snippet it "Spec It Block"
 it("$1", () => {
   $2
 });
@@ -205,7 +237,7 @@ snippet div-react "react div w/ props"
 <div
   $1
 />
-
+  $2
 </div>
 endsnippet
 

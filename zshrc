@@ -1,10 +1,24 @@
+# Fantasque Powerline font repo
+# https://github.com/ztomer/fantasque_awesome_powerline
+
 export TERM="xterm-256color"
+
+# PATH {{{
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+# }}}
+
+# {{{ SETOPS
+
+# type .. instead of cd..
+setopt auto_cd
+
+# }}}
 
 # POWERLEVEL THEME {{{
 
@@ -33,7 +47,7 @@ POWERLEVEL9K_RVM_FOREGROUND="red"
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="blue"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="$FG[153]"
 
 POWERLEVEL9K_CARRIAGE_RETURN_ICON="\uF149"
 POWERLEVEL9K_ROOT_ICON="\uF120 "
@@ -90,6 +104,14 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 
 # }}}
 
+# {{{ ZSH
+
+source $ZSH/oh-my-zsh.sh
+
+# }}}
+
+# PLUGINS {{{
+#
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -99,19 +121,13 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/jira
 #
 #
-plugins=(zsh-autosuggestions git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn zsh-navigation-tools taskwarrior alias-tips)
-
-source $ZSH/oh-my-zsh.sh
-
-if [ "$TMUX"="" ]; then
-  export TERM="xterm-256color"
-  tmux
-fi
-
-# Fantasque Powerline font repo
-# https://github.com/ztomer/fantasque_awesome_powerline
+plugins=(git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn zsh-navigation-tools taskwarrior alias-tips)
 
 source ~/k/k.sh
+
+# }}}
+
+# {{{ COMPLETION
 
 if [[ "$CASE_SENSITIVE" = true ]]; then
   zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
@@ -126,11 +142,16 @@ unset CASE_SENSITIVE HYPHEN_INSENSITIVE
 
 zstyle ':completion:*' list-colors ''
 
+# }}}
+
+# EXPORTS {{{
+
 export EDITOR="nvim"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+export COMPASS_HOME=/Users/aji/dev/_ul/compass
+export PATH=$PATH:/Users/aji/dev/_ul/compass/bin
 
-# type .. instead of cd..
-setopt auto_cd
+# }}}
 
 # ALIASES {{{
 
@@ -163,11 +184,18 @@ alias dcr="docker-compose run --rm"
 
 alias rr="~/.ranger/ranger.py ."
 
+
+# }}}
+
+# TMUX {{{
+
 alias td="tmux detach"
 alias tas="tmux attach-session -t"
 
+alias tns="tmux new-session"
+
 # }}}
-#
+
 # GIT {{{
 #
 alias gs="git status"
@@ -209,6 +237,8 @@ alias cyolo="ruby setup_script.rb"
 
 # MISC {{{
 
+alias s="rails s"
+
 bindkey '^i' expand-or-complete-prefix
 alias keys="ssh-add -K ~/.ssh/id_rsa && ssh-add -K ~/.ssh/rsa_ul"
 
@@ -220,5 +250,3 @@ alias jarvis="ssh aji@jarvis.webhop.me"
 
 # }}}
 
-export COMPASS_HOME=/Users/aji/dev/_ul/compass
-export PATH=$PATH:/Users/aji/dev/_ul/compass/bin

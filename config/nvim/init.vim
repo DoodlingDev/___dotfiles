@@ -32,6 +32,9 @@ Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
+" Language Server Protocal
+" Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+
 " Asynchronous Linting
 Plugin 'w0rp/ale'
 
@@ -72,6 +75,9 @@ Plugin 'Shougo/deoplete.nvim'
 " Tern and deoplete
 Plugin 'carlitux/deoplete-ternjs'
 
+" Tern for Vim
+Plugin 'ternjs/tern_for_vim'
+
 " Airline statusline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -96,8 +102,11 @@ Plugin 'flowtype/vim-flow'
 " prettier
 Plugin 'prettier/vim-prettier'
 
-" better javascript parameter suggestions
-Plugin 'othree/jspc.vim'
+" javascript libraries support
+Plugin 'othree/javascript-libraries-syntax.vim'
+
+" JSDoc auto-snippets
+Plugin 'heavenshell/vim-jsdoc'
 
 call vundle#end()
 
@@ -106,6 +115,32 @@ call vundle#end()
 set termguicolors
 syntax enable
 colorscheme jellybeans
+
+" TERMINAL {{{
+
+tnoremap jk <C-\><C-n>
+
+let g:terminal_color_0 = '#003541'
+let g:terminal_color_1 = '#dc322f'
+let g:terminal_color_2 = '#859901'
+let g:terminal_color_3 = '#b58901'
+let g:terminal_color_4 = '#2C8DD6'
+let g:terminal_color_5 = '#d33682'
+let g:terminal_color_6 = '#2aa198'
+let g:terminal_color_7 = '#eee8d5'
+let g:terminal_color_8 = '#002833'
+let g:terminal_color_9 = '#cb4b16'
+let g:terminal_color_10 = '#586e75'
+let g:terminal_color_11 = '#657b83'
+let g:terminal_color_12 = '#839496'
+let g:terminal_color_13 = '#6c6ec6'
+let g:terminal_color_14 = '#93a1a1'
+let g:terminal_color_15 = '#fdf6e3'
+
+" }}}
+
+highlight Normal guibg=none
+highlight NonText guibg=none
 
 set backspace=2
 set noswapfile
@@ -130,13 +165,13 @@ set shiftwidth=2 " Number of spaces to use in autoindenting
 set shiftround
 set expandtab
 set wrap
-set linebreak
+" set linebreak
 set smartindent " Smart autoindenting on new lines
 " set nolist  " Show hidden characters?
 set formatoptions-=tc
 
 " Make it obvious where 80 chars is
-set textwidth=80
+set textwidth=0
 set numberwidth=5
 
 " Line numbers and relative line numbers
@@ -200,7 +235,7 @@ augroup END
 
 " LINTING {{{
 
-let g:ale_linters = {'javascript': ['flow', 'prettier', 'eslint']}
+let g:ale_linters = {'javascript': ['prettier', 'eslint']}
 
 " }}}
 
@@ -214,12 +249,13 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
-
+let g:ale_javascript_eslint_suppress_eslintignore = 1
 " Prettier uses double quotes
 let g:prettier#config#single_quote="false"
 let g:prettier#config#jsx_bracket_same_line="false"
 let g:prettier#config#bracket_spacing="true"
 let g:prettier#config#trailing_comma = 'all'
+
 
 " run Prettier on current buffer
 nnoremap <leader>js :PrettierAsync<cr>
@@ -247,8 +283,12 @@ if executable("ag")
 endif
 
 " tern_for_vim & deoplete
+let g:deoplete#enable_at_startup=1
+
 let g:tern#command = ["tern"]
 let g:tern#argument = ["--persistent"]
+let g:tern_show_signature_in_pum=1
+let g:tern_show_argument_hints="on_hold"
 
 let g:airline_powerline_fonts=1
 
@@ -289,6 +329,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " }}}
 
+" {{{ PERSONAL COMMANDS
+
+
+" }}}
+
 " PERSONAL KEYBINDINGS {{{
 
 inoremap jk <esc>
@@ -299,9 +344,15 @@ nnoremap gk k
 nnoremap J 10j
 nnoremap K 10k
 
+" buffer management
+nnoremap <leader>l :ls<cr>
+nnoremap <leader>b :b
+
+" git
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
+
 " better tab switching
-nnoremap <leader>l gt
-nnoremap <leader>h gT
 nnoremap <leader>t :tabe<cr>
 nnoremap <leader>t. :tabe<cr>
 
@@ -340,13 +391,16 @@ vnoremap <S-j> :move'>+".1<cr>gv
 nnoremap <leader>co :checkt<cr>
 
 " vim remap <space>
-inoremap &<space>. <lt>space>
+inoremap <C-space>. <lt>space>
 
 " snippet ++++ remover
-inoremap &++ <lt>esc>?++++<lt>cr>:noh<lt>cr>c4l
+inoremap <C-space>++ <lt>esc>?++++<lt>cr>:noh<lt>cr>c4l
 
 " sort and then Tabularize on :
 vnoremap <leader>s: :sort<space>u<cr>;Tabularize/:/<cr>
+
+" sort
+vnoremap <leader>s. :sort<space>u<cr>
 
 " change next inside ({["''"]})
 nnoremap <leader>cn( f(ci(
@@ -383,7 +437,7 @@ vnoremap <leader>su :sort<space>u<cr>
 vnoremap <leader>: :Tabularize/:/<Enter>
 
 " Sort and tabularize on :
-vnoremap <leader>s: :sort<space>u<Enter>gv:Tabularize/:/<Enter>
+vnoremap <leader>S :sort<space>u<Enter>gv:Tabularize/:/<Enter>
 
 " Semicolon at the end of the current line
 nnoremap <leader>a; mpA;<Esc>`p
@@ -418,7 +472,7 @@ nnoremap <leader>p :CtrlP<cr>
 
 " splits
 nnoremap <leader>vs :vsplit<cr>
-nnoremap <leader>s :split<cr>
+nnoremap <leader>hs :split<cr>
 
 " TEXT EXPANSION SHORTCUTS {{{
 
