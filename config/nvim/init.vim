@@ -33,7 +33,10 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 " Language Server Protocal
-" Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+
+" Show function signatures and inline docs
+Plugin 'shougo/echodoc.vim'
 
 " Asynchronous Linting
 Plugin 'w0rp/ale'
@@ -117,7 +120,7 @@ call vundle#end()
 
 set termguicolors
 syntax enable
-colorscheme turtles
+colorscheme jellybeans
 
 " TERMINAL {{{
 
@@ -160,6 +163,7 @@ set cursorline
 set nohlsearch
 set lazyredraw              " Don't redraw during macros
 set nojoinspaces            " Use one space, not two, after punctuation.
+set hidden                  " Hides buffers instead of closing them
 
 set tabstop=2               " tab = 2spaces
 set smarttab                " soft tabs
@@ -239,7 +243,14 @@ augroup END
 
 " LINTING {{{
 
-let g:ale_linters = {'javascript': ['prettier', 'eslint']}
+" let g:ale_completion_enabled=1
+let g:ale_linters = {'javascript': ['prettier', 'eslint'],
+                    \ 'javascript.jsx': ['prettier', 'eslint']
+                    \ }
+
+let g:ale_fixers = {
+\   'javascript': ['eslint']
+\ }
 
 " }}}
 
@@ -260,9 +271,11 @@ let g:prettier#config#jsx_bracket_same_line="false"
 let g:prettier#config#bracket_spacing="true"
 let g:prettier#config#trailing_comma = 'all'
 
-
 " run Prettier on current buffer
 nnoremap <leader>js :PrettierAsync<cr>
+
+" JSDoc
+let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'returns'
 
 " Flow config
 " Autoclose quickfix window when no errors
@@ -295,6 +308,14 @@ let g:tern_show_signature_in_pum=1
 let g:tern_show_argument_hints="on_hold"
 
 let g:airline_powerline_fonts=1
+
+" LanguageClient
+let g:LanguageClient_serverCommands = {
+  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'javascript.jsx': ['javascript-typescript-stdio'],
+  \ }
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_diagnosticsList = ''
 
 " unicode symbols
 let g:airline_left_sep = '»'
@@ -353,8 +374,8 @@ nnoremap <leader>l :ls<cr>
 nnoremap <leader>b :b
 
 " git
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gs :Gstatus<cr>:res<space>+10<cr>
+nnoremap <leader>gc :Gcommit<space>-v<cr>
 
 " better tab switching
 nnoremap <leader>t :tabe<cr>
