@@ -152,12 +152,6 @@ function($1) {
 }
 endsnippet
 
-snippet => "arrow function"
-($1) => {
-  $2
-}
-endsnippet
-
 snippet deb "debugger"
 debugger;
 endsnippet
@@ -247,4 +241,12 @@ endsnippet
 
 snippet cName "Compass specific classname helper function"
 className={cn("$1", "$2", "$3")}
+endsnippet
+
+snippet "labeled review field" "Compass specific review json item"
+{
+  style: "labeled",
+	dataField: "$1",
+	label: "$2",
+},
 endsnippet

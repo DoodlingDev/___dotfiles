@@ -114,6 +114,12 @@ Plugin 'heavenshell/vim-jsdoc'
 " turtles colorscheme
 Bundle 'beigebrucewayne/turtles'
 
+" ctrl-p extension - command palette
+Bundle 'fisadev/vim-ctrlp-cmdpalette'
+
+" DevDocs
+Plugin 'rhysd/devdocs.vim'
+
 call vundle#end()
 
 " }}}
@@ -201,6 +207,7 @@ set undoreload=10000
 set mouse=a
 
 set ignorecase
+set smartcase
 
 set previewheight=8         " Completion preview height
 
@@ -392,6 +399,12 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+" Search DevDocs for the thing under cursor
+nnoremap <leader>dx :DevDocsUnderCursor<cr>
+
+" Start devdocs command for a search TBNL
+nnoremap <leader>ds :DevDocs<space>
+
 inoremap JK <Esc>/-+-<Enter>:noh<Enter>"_3cl
 
 " indent selection and stay selected
@@ -417,6 +430,12 @@ nnoremap <leader>co :checkt<cr>
 
 " vim remap <space>
 inoremap <C-space>. <lt>space>
+
+" edit search history
+nnoremap <leader>e/ q/
+
+" bring up command palette
+nnoremap <leader>c :CtrlPCmdPalette<cr>
 
 " snippet ++++ remover
 inoremap <C-space>++ <lt>esc>?++++<lt>cr>:noh<lt>cr>c4l

@@ -104,12 +104,6 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 
 # }}}
 
-# {{{ ZSH
-
-source $ZSH/oh-my-zsh.sh
-
-# }}}
-
 # PLUGINS {{{
 #
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -124,6 +118,12 @@ source $ZSH/oh-my-zsh.sh
 plugins=(git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn zsh-navigation-tools taskwarrior alias-tips)
 
 source ~/k/k.sh
+
+# }}}
+
+# {{{ ZSH
+
+source $ZSH/oh-my-zsh.sh
 
 # }}}
 
@@ -206,6 +206,7 @@ alias gcm="git commit -m"
 alias gpo="git push origin"
 alias glo="git pull origin"
 alias gfo="git fetch origin"
+alias m!="git checkout master"
 
 # }}}
 
