@@ -120,6 +120,9 @@ Bundle 'fisadev/vim-ctrlp-cmdpalette'
 " DevDocs
 Plugin 'rhysd/devdocs.vim'
 
+" keybinding-guide
+Plugin 'DoodlingDev/vim-leader-guide'
+
 call vundle#end()
 
 " }}}
@@ -264,7 +267,7 @@ let g:ale_fixers = {
 " PLUGIN CONFIGS {{{
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<leader>x"
+let g:UltiSnipsExpandTrigger = "X"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
@@ -277,9 +280,6 @@ let g:prettier#config#single_quote="false"
 let g:prettier#config#jsx_bracket_same_line="false"
 let g:prettier#config#bracket_spacing="true"
 let g:prettier#config#trailing_comma = 'all'
-
-" run Prettier on current buffer
-nnoremap <leader>js :PrettierAsync<cr>
 
 " JSDoc
 let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'returns'
@@ -302,7 +302,6 @@ if executable("ag")
 
   if !exists(":Ag")
     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap <leader>/ :Ag<SPACE>
   endif
 endif
 
@@ -376,21 +375,6 @@ nnoremap gk k
 nnoremap J 10j
 nnoremap K 10k
 
-" buffer management
-nnoremap <leader>l :ls<cr>
-nnoremap <leader>b :b
-
-" git
-nnoremap <leader>gs :Gstatus<cr>:res<space>+10<cr>
-nnoremap <leader>gc :Gcommit<space>-v<cr>
-
-" better tab switching
-nnoremap <leader>t :tabe<cr>
-nnoremap <leader>t. :tabe<cr>
-
-" Opens a tab edit command with the currently open file filled in
-nnoremap <leader>te :tabe<space><C-R>=expand("%:p")<cr>
-
 "stop that stupid window from popping up
 map q: :q
 
@@ -398,12 +382,6 @@ map q: :q
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-
-" Search DevDocs for the thing under cursor
-nnoremap <leader>dx :DevDocsUnderCursor<cr>
-
-" Start devdocs command for a search TBNL
-nnoremap <leader>ds :DevDocs<space>
 
 inoremap JK <Esc>/-+-<Enter>:noh<Enter>"_3cl
 
@@ -417,71 +395,38 @@ nnoremap [<space> mwO<esc>`w
 " add blank line below
 nnoremap ]<space> mwo<esc>`w
 
-" source vimrc
-nnoremap <leader>src :source<space>$MYVIMRC<cr>
-
 " move selection up
 vnoremap <S-k> :move'<--".1<cr>gv
 " move selection down
 vnoremap <S-j> :move'>+".1<cr>gv
 
-" reload all buffers from disk
-nnoremap <leader>co :checkt<cr>
-
 " vim remap <space>
 inoremap <C-space>. <lt>space>
-
-" edit search history
-nnoremap <leader>e/ q/
-
-" bring up command palette
-nnoremap <leader>c :CtrlPCmdPalette<cr>
 
 " snippet ++++ remover
 inoremap <C-space>++ <lt>esc>?++++<lt>cr>:noh<lt>cr>c4l
 
-" sort and then Tabularize on :
-vnoremap <leader>s: :sort<space>u<cr>;Tabularize/:/<cr>
-
-" sort
-vnoremap <leader>s. :sort<space>u<cr>
-
 " change next inside ({["''"]})
-nnoremap <leader>cn( f(ci(
-nnoremap <leader>cN( F(ci(
-nnoremap <leader>cn) f)ci)
-nnoremap <leader>cN) F)ci)
-nnoremap <leader>cn{ f{ci{
-nnoremap <leader>cN{ F{ci{
-nnoremap <leader>cn} f}ci}
-nnoremap <leader>cN} F}ci}
-nnoremap <leader>cn[ f[ci[
-nnoremap <leader>cN[ F[ci[
-nnoremap <leader>cn] f]ci]
-nnoremap <leader>cN] F]ci]
-nnoremap <leader>cn" f"ci"
-nnoremap <leader>cN" F"ci"
-nnoremap <leader>cn' f'ci'
-nnoremap <leader>cN' F'ci'
-
-" bufferless delete
-nnoremap <leader>x "_x
-nnoremap <leader>dw "_dw
-nnoremap <leader>dd "_dd
-vnoremap <leader>d "_d
+nnoremap cn( f(ci(
+nnoremap cN( F(ci(
+nnoremap cn) f)ci)
+nnoremap cN) F)ci)
+nnoremap cn{ f{ci{
+nnoremap cN{ F{ci{
+nnoremap cn} f}ci}
+nnoremap cN} F}ci}
+nnoremap cn[ f[ci[
+nnoremap cN[ F[ci[
+nnoremap cn] f]ci]
+nnoremap cN] F]ci]
+nnoremap cn" f"ci"
+nnoremap cN" F"ci"
+nnoremap cn' f'ci'
+nnoremap cN' F'ci'
 
 " move line from normal mode
 nnoremap > v><esc>
 nnoremap < v<<esc>
-
-" sort
-vnoremap <leader>su :sort<space>u<cr>
-
-" Tabularize on :
-vnoremap <leader>: :Tabularize/:/<Enter>
-
-" Sort and tabularize on :
-vnoremap <leader>S :sort<space>u<Enter>gv:Tabularize/:/<Enter>
 
 " Semicolon at the end of the current line
 nnoremap <leader>a; mpA;<Esc>`p
@@ -492,33 +437,15 @@ nnoremap ; :
 " easy exit visual mode
 vnoremap a <esc>
 
-" unhilight search term
-nnoremap <leader>n :noh<CR>
-
-" Save and quit shortcuts
-noremap <leader>w :w<cr>
-noremap <leader>q :q!<cr>
-
-" Call NERDTree like in Atom
-nnoremap <leader>\ :NERDTree<cr>
-
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" move to site of last insert
-nnoremap <leader>^ `^
-
-" Open ctrl-p
-nnoremap <leader>p :CtrlP<cr>
-
-" splits
-nnoremap <leader>vs :vsplit<cr>
-nnoremap <leader>hs :split<cr>
-
 " TEXT EXPANSION SHORTCUTS {{{
+
+inoremap {<cr> {<cr>}<esc>O
 
 " PROJECT SPECIFIC SHORTCUTS {{{
 
@@ -531,3 +458,5 @@ inoremap <leader>cn className={<space>cn()<space>}<Esc>F(a
 " }}}
 
 " }}}
+" }}}
+
