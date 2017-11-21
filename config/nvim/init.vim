@@ -121,7 +121,7 @@ Bundle 'fisadev/vim-ctrlp-cmdpalette'
 Plugin 'rhysd/devdocs.vim'
 
 " keybinding-guide
-Plugin 'DoodlingDev/vim-leader-guide'
+Plugin 'DoodlingDev/vim-mission-control'
 
 call vundle#end()
 
@@ -255,7 +255,8 @@ augroup END
 
 " let g:ale_completion_enabled=1
 let g:ale_linters = {'javascript': ['prettier', 'eslint'],
-                    \ 'javascript.jsx': ['prettier', 'eslint']
+                    \ 'javascript.jsx': ['prettier', 'eslint'],
+                    \ 'ruby': ['rubocop']
                     \ }
 
 let g:ale_fixers = {
@@ -280,6 +281,9 @@ let g:prettier#config#single_quote="false"
 let g:prettier#config#jsx_bracket_same_line="false"
 let g:prettier#config#bracket_spacing="true"
 let g:prettier#config#trailing_comma = 'all'
+
+" Path variable for plugins directory
+let g:PLUGIN_PATH="~/.dotfiles/config/nvim/bundle"
 
 " JSDoc
 let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'returns'
