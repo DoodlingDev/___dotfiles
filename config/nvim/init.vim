@@ -366,6 +366,21 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " {{{ PERSONAL COMMANDS
 
+function FocusModeToggle()
+  if !exists("w:focusMode")
+    let w:focusMode = 0
+  endif
+
+  if w:focusMode ==? 0
+    call feedkeys("\<C-w>_\<C-w>|")
+    let w:focusMode = 1
+  else
+    call feedkeys("\<C-w>=")
+    let w:focusMode = 0
+  endif
+endfunction
+
+nnoremap <leader>f :call<space>FocusModeToggle()<cr>
 
 " }}}
 
@@ -382,6 +397,20 @@ nnoremap K 10k
 "stop that stupid window from popping up
 map q: :q
 
+" Fugitive shortcuts
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<space>-v<cr>
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gb :Gblame<cr>
+
+" splits
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>s :split<cr>
+
+" quick writes, quick quits
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q!<CR>
+
 " Jump to the end of text you pasted
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
@@ -393,6 +422,12 @@ inoremap JK <Esc>/-+-<Enter>:noh<Enter>"_3cl
 vnoremap > >gv
 vnoremap < <gv
 vnoremap <space> I<space><esc>gv
+
+" Open NERDTree like file browser in Atom
+nnoremap <leader>\ :NERDTree<cr>
+
+" Easy open CtrlP
+nnoremap <leader>p :CtrlP<cr>
 
 " add blank line above
 nnoremap [<space> mwO<esc>`w
@@ -409,6 +444,10 @@ inoremap <C-space>. <lt>space>
 
 " snippet ++++ remover
 inoremap <C-space>++ <lt>esc>?++++<lt>cr>:noh<lt>cr>c4l
+
+" easy navigate tabs
+nnoremap gh gT
+nnoremap gl gt
 
 " change next inside ({["''"]})
 nnoremap cn( f(ci(

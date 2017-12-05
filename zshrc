@@ -251,3 +251,9 @@ alias jarvis="ssh aji@jarvis.webhop.me"
 
 # }}}
 
+# Applications {{{
+
+. /usr/local/etc/profile.d/z.sh
+
+# }
+
