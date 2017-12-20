@@ -154,8 +154,8 @@ let g:terminal_color_15 = '#fdf6e3'
 
 " }}}
 
-highlight Normal guibg=none
-highlight NonText guibg=none
+highlight Normal guibg=dark
+highlight NonText guibg=dark
 
 " {{{ GLOBALS
 
@@ -311,6 +311,7 @@ endif
 
 " tern_for_vim & deoplete
 let g:deoplete#enable_at_startup=1
+let g:deoplete#sources#ternjs#tern_bin="/usr/local/bin/tern"
 
 let g:tern#command = ["tern"]
 let g:tern#argument = ["--persistent"]
@@ -323,6 +324,7 @@ let g:airline_powerline_fonts=1
 let g:LanguageClient_serverCommands = {
   \ 'javascript': ['javascript-typescript-stdio'],
   \ 'javascript.jsx': ['javascript-typescript-stdio'],
+  \ 'ruby': ['language_server-ruby'],
   \ }
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_diagnosticsList = ''
