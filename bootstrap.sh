@@ -47,7 +47,7 @@ else
 fi
 
 brew tap thoughtbot/formulae
-BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "node" "openssl" "postgresql" "puma/puma/puma-dev" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" )
+BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "node" "openssl" "postgresql" "puma/puma/puma-dev" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" "fzf")
 
 # list of installs from brew
 for cask in ${BREW_INSTALL_LIST[@]}

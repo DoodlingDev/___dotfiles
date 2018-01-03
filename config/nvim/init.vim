@@ -20,11 +20,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" material based colorscheme
+Plugin 'hzchirs/vim-material'
+
 " file management
 Bundle 'scrooloose/nerdtree'
 
-" fuzzy search
-Bundle 'ctrlpvim/ctrlp.vim'
+" Autocomplete brackets
+Plugin 'jiangmiao/auto-pairs'
 
 " Snippets
 Plugin 'SirVer/ultisnips'
@@ -44,8 +47,14 @@ Plugin 'w0rp/ale'
 " Rails
 Plugin 'tpope/vim-rails'
 
+" auto places ends in ruby
+Plugin 'tpope/vim-endwise'
+
 " Ruby
 Plugin 'vim-ruby/vim-ruby'
+
+" Easymotion
+Plugin 'easymotion/vim-easymotion'
 
 " comment and uncomment
 Bundle 'tomtom/tcomment_vim'
@@ -85,8 +94,6 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" Plugin 'godlygeek/csapprox'
-
 " vertical alignment
 Plugin 'godlygeek/tabular'
 
@@ -111,14 +118,16 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 " JSDoc auto-snippets
 Plugin 'heavenshell/vim-jsdoc'
 
-" turtles colorscheme
-Bundle 'beigebrucewayne/turtles'
-
 " ctrl-p extension - command palette
-Bundle 'fisadev/vim-ctrlp-cmdpalette'
+" Bundle 'fisadev/vim-ctrlp-cmdpalette'
 
 " DevDocs
 Plugin 'rhysd/devdocs.vim'
+
+" Use fzf for fuzzy finding
+" Plugin '/usr/local/opt/fzf'
+set rtp+=/usr/local/opt/fzf
+Plugin 'junegunn/fzf.vim'
 
 " keybinding-guide
 Plugin 'DoodlingDev/vim-mission-control'
@@ -129,7 +138,7 @@ call vundle#end()
 
 set termguicolors
 syntax enable
-colorscheme jellybeans
+colorscheme vim-material
 
 " TERMINAL {{{
 
@@ -191,7 +200,7 @@ set numberwidth=5
 
                             " Line numbers and relative line numbers
 set number
-set relativenumber
+" set relativenumber        " turned off because of <leader>j/k easymotion
 
                             " More natural direction when splitting
 set splitbelow
@@ -383,6 +392,7 @@ function FocusModeToggle()
 endfunction
 
 nnoremap <leader>f :call<space>FocusModeToggle()<cr>
+nnoremap <leader>p :FZF<cr>
 
 " }}}
 
@@ -429,7 +439,7 @@ vnoremap <space> I<space><esc>gv
 nnoremap <leader>\ :NERDTree<cr>
 
 " Easy open CtrlP
-nnoremap <leader>p :CtrlP<cr>
+"nnoremap <leader>p :CtrlP<cr>
 
 " add blank line above
 nnoremap [<space> mwO<esc>`w
@@ -476,6 +486,10 @@ nnoremap < v<<esc>
 " Semicolon at the end of the current line
 nnoremap <leader>a; mpA;<Esc>`p
 
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>e :Files<cr>
+
 " semicolon to colon
 nnoremap ; :
 
@@ -488,9 +502,17 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+" easymotion pair of chars search
+nmap s <Plug>(easymotion-s2)
+
 " TEXT EXPANSION SHORTCUTS {{{
 
-inoremap {<cr> {<cr>}<esc>O
+" inoremap {<cr> {<cr>}<esc>O
 
 " PROJECT SPECIFIC SHORTCUTS {{{
 
