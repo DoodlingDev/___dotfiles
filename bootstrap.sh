@@ -47,7 +47,7 @@ else
 fi
 
 brew tap thoughtbot/formulae
-BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "node" "openssl" "postgresql" "puma/puma/puma-dev" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" "fzf")
+BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "node" "openssl" "postgresql" "puma/puma/puma-dev" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" "fzf" )
 
 # list of installs from brew
 for cask in ${BREW_INSTALL_LIST[@]}
@@ -67,7 +67,8 @@ if ! gpg --list-keys | grep "409B6B1796C275462A1703113804BB82D39DC0E3" > /dev/nu
 fi
 
 # install rvm for ruby version management
-if rvm -v > /dev/null; then
+rvm -v > /dev/null
+if [[ $? != 0 ]]; then
   \curl -sSL https://get.rvm.io | bash -s stable --ruby
 else
   rvm get head
@@ -88,6 +89,13 @@ else
 
 fi
 
+# check for rvm usability
+rvm -v > /dev/null
+if [[ $? != 0 ]]; then
+  fancy_echo "rvm requires a new shell session to work.\nPlease close all shell windows and begin this script again."
+  exit
+fi
+
 # install latest stable ruby
 rvm install ruby --latest
 
@@ -98,11 +106,8 @@ if brew list | grep "rcm" > /dev/null; then
   rcup -v -v -v -v
 fi
 
-if [ ! -f $HOME/.dotfiles/config/nvim/bundle/Vundle.vim ]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.dotfiles/config/nvim/bundle/Vundle.vim
-fi
 
-GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "guard" )
+GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "guard" "language_server")
 
 for gem in ${GEM_INSTALL_LIST[@]}
 do
@@ -115,12 +120,34 @@ do
   fi
 done
 
+# javascript typescript language server
+if [ ! -d /usr/local/bin/javascript-typescript-langserver ]; then
+  fancy_echo "installing javascript language server"
+  npm install javascript-typescript-langserver -g
+else
+  fancy_echo "Javascript Langserver already installed"
+fi
+
+if [ ! -f $HOME/.dotfiles/config/nvim/bundle/Vundle.vim ]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.dotfiles/config/nvim/bundle/Vundle.vim
+fi
+
+pip2 install neovim
+pip3 install neovim
+
+nvim -u "NONE" -c ":silent source ~/.dotfiles/config/nvim/init.vim" -c ":silent PluginInstall" -c ":silent UpdateRemotePlugins" +qa!
+
+if [ -d ~/.dotfiles/config/nvim/bundle/LanguageClient-neovim/install.sh ]; then
+  fancy_echo "downloading language client neovim plugin binary"
+  ~/.dotfiles/config/nvim/bundle/LanguageClient-neovim/install.sh
+fi
+
 if [ -d ${HOME}/ranger/ ]; then
   fancy_echo "Installing Ranger File Browser"
   git clone git://git.savannah.nongnu.org/ranger.git ~/ranger
 fi
 
-OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "vlc" )
+OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "vlc" "alfred" "iterm2", "spectacle", "spotify" )
 
 for app in ${OSX_APPS_LIST[@]}
 do

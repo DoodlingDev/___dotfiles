@@ -114,10 +114,9 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 # JIRA
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/jira
 #
-#
-plugins=(git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn zsh-navigation-tools taskwarrior alias-tips)
+plugins=(git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn taskwarrior alias-tips)
 
-source ~/k/k.sh
+source ~/.k/k.sh
 
 # }}}
 
@@ -257,3 +256,6 @@ alias jarvis="ssh aji@jarvis.webhop.me"
 
 # }
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

@@ -7,138 +7,17 @@ set shell=$SHELL
 set encoding=utf-8
 set fileencoding=utf-8
 let mapleader=","
+" open vimrc in new tab
 nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>
+" source vimrc
+nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 
-" VUNDLE {{{
-
-filetype off
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.dotfiles/config/nvim/bundle/Vundle.vim
-call vundle#rc("~/.dotfiles/config/nvim/bundle")
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" material based colorscheme
-Plugin 'hzchirs/vim-material'
-
-" file management
-Bundle 'scrooloose/nerdtree'
-
-" Autocomplete brackets
-Plugin 'jiangmiao/auto-pairs'
-
-" Snippets
-Plugin 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
-" Language Server Protocal
-Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-
-" Show function signatures and inline docs
-Plugin 'shougo/echodoc.vim'
-
-" Asynchronous Linting
-Plugin 'w0rp/ale'
-
-" Rails
-Plugin 'tpope/vim-rails'
-
-" auto places ends in ruby
-Plugin 'tpope/vim-endwise'
-
-" Ruby
-Plugin 'vim-ruby/vim-ruby'
-
-" Easymotion
-Plugin 'easymotion/vim-easymotion'
-
-" comment and uncomment
-Bundle 'tomtom/tcomment_vim'
-
-" surround block with quetes etc
-Bundle 'tpope/vim-surround'
-
-" work more easily with markdown files
-Plugin 'tpope/vim-markdown'
-
-" highlight changes in vim
-Plugin 'airblade/vim-gitgutter'
-
-" slim syhtax highlighting
-Plugin 'slim-template/vim-slim'
-
-" Javascript highlighting etc
-Plugin 'othree/yajs.vim'
-
-" JSX highlighting
-Plugin 'mxw/vim-jsx'
-let g:jsx_ext_required = 0
-
-" Git plugin and functionality
-Plugin 'tpope/vim-fugitive'
-
-" Async completion
-Plugin 'Shougo/deoplete.nvim'
-
-" Tern and deoplete
-Plugin 'carlitux/deoplete-ternjs'
-
-" Tern for Vim
-Plugin 'ternjs/tern_for_vim'
-
-" Airline statusline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-" vertical alignment
-Plugin 'godlygeek/tabular'
-
-" supertab <TAB> addon
-Plugin 'ervandew/supertab'
-
-" easily navigate VIM and TMUX panes
-Bundle 'christoomey/vim-tmux-navigator'
-
-" typescript support
-Plugin 'leafgarland/typescript-vim'
-
-" flow plugin
-Plugin 'flowtype/vim-flow'
-
-" prettier
-Plugin 'prettier/vim-prettier'
-
-" javascript libraries support
-Plugin 'othree/javascript-libraries-syntax.vim'
-
-" JSDoc auto-snippets
-Plugin 'heavenshell/vim-jsdoc'
-
-" ctrl-p extension - command palette
-" Bundle 'fisadev/vim-ctrlp-cmdpalette'
-
-" DevDocs
-Plugin 'rhysd/devdocs.vim'
-
-" Use fzf for fuzzy finding
-" Plugin '/usr/local/opt/fzf'
-set rtp+=/usr/local/opt/fzf
-Plugin 'junegunn/fzf.vim'
-
-" keybinding-guide
-Plugin 'DoodlingDev/vim-mission-control'
-
-call vundle#end()
-
-" }}}
+" VUNDLE
+exec "source ~/.config/nvim/vundle.vim"
 
 set termguicolors
 syntax enable
-colorscheme vim-material
+colorscheme quantum
 
 " TERMINAL {{{
 
@@ -331,8 +210,8 @@ let g:airline_powerline_fonts=1
 
 " LanguageClient
 let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['javascript-typescript-stdio'],
-  \ 'javascript.jsx': ['javascript-typescript-stdio'],
+  \ 'javascript': ['javascript-typescript-langserver'],
+  \ 'javascript.jsx': ['javascript-typescript-langserver'],
   \ 'ruby': ['language_server-ruby'],
   \ }
 let g:LanguageClient_autoStart = 1
@@ -361,6 +240,11 @@ let g:ultisnips_javascript = {
      \ 'semi': 'always',
      \ 'space-before-function-paren': 'never',
      \ }
+
+" arpeggio key chords
+call arpeggio#load()
+let g:arpeggio_timeoutlen = 200
+Arpeggio inoremap jk <esc>
 
 " }}}
 
@@ -398,7 +282,8 @@ nnoremap <leader>p :FZF<cr>
 
 " PERSONAL KEYBINDINGS {{{
 
-inoremap jk <esc>
+
+" inoremap jk <esc> removed because of arpeggio
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
@@ -515,12 +400,6 @@ nmap s <Plug>(easymotion-s2)
 " inoremap {<cr> {<cr>}<esc>O
 
 " PROJECT SPECIFIC SHORTCUTS {{{
-
-" COMPASS {{{
-
-inoremap <leader>cn className={<space>cn()<space>}<Esc>F(a
-
-" }}}
 
 " }}}
 
