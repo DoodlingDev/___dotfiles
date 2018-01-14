@@ -1,4 +1,3 @@
-
 filetype off
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.dotfiles/config/nvim/bundle/Vundle.vim
@@ -8,7 +7,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'tyrannicaltoucan/vim-quantum'
+" Plugin 'tyrannicaltoucan/vim-quantum'
+" Plugin 'skielbasa/vim-material-monokai'
+Plugin 'hzchirs/vim-material'
 
 " file management
 Bundle 'scrooloose/nerdtree'
@@ -18,6 +19,9 @@ Plugin 'jiangmiao/auto-pairs'
 
 " GraphQL support
 Plugin 'jparise/vim-graphql'
+
+" interactive command execution
+Plugin 'Shougo/vimproc.vim'
 
 " Snippets
 Plugin 'SirVer/ultisnips'
@@ -30,6 +34,7 @@ Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 
 
 " Show function signatures and inline docs
 Plugin 'shougo/echodoc.vim'
+Plugin 'shougo/unite.vim'
 
 " Asynchronous Linting
 Plugin 'w0rp/ale'
@@ -60,9 +65,6 @@ Bundle 'tpope/vim-surround'
 
 " work more easily with markdown files
 Plugin 'tpope/vim-markdown'
-
-" highlight changes in vim
-Plugin 'airblade/vim-gitgutter'
 
 " slim syhtax highlighting
 Plugin 'slim-template/vim-slim'
@@ -114,19 +116,18 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 " JSDoc auto-snippets
 Plugin 'heavenshell/vim-jsdoc'
 
-" ctrl-p extension - command palette
-Bundle 'fisadev/vim-ctrlp-cmdpalette'
-
 " DevDocs
 Plugin 'rhysd/devdocs.vim'
 
 " Use fzf for fuzzy finding
-" Plugin '/usr/local/opt/fzf'
 set rtp+=/usr/local/opt/fzf
 Plugin 'junegunn/fzf.vim'
 
 " keybinding-guide
 Plugin 'DoodlingDev/vim-mission-control'
+
+" vim personal wiki
+Plugin 'vimwiki/vimwiki'
 
 call vundle#end()
 

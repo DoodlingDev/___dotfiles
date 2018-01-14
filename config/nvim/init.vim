@@ -7,8 +7,8 @@ set shell=$SHELL
 set encoding=utf-8
 set fileencoding=utf-8
 let mapleader=","
-" open vimrc in new tab
-nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>
+" open config in new tab
+nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-h>
 " source vimrc
 nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 
@@ -17,7 +17,7 @@ exec "source ~/.config/nvim/vundle.vim"
 
 set termguicolors
 syntax enable
-colorscheme quantum
+colorscheme vim-material
 
 " TERMINAL {{{
 
@@ -208,6 +208,8 @@ let g:tern_show_argument_hints="on_hold"
 
 let g:airline_powerline_fonts=1
 
+"nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+
 " LanguageClient
 let g:LanguageClient_serverCommands = {
   \ 'javascript': ['javascript-typescript-langserver'],
@@ -241,10 +243,17 @@ let g:ultisnips_javascript = {
      \ 'space-before-function-paren': 'never',
      \ }
 
+nnoremap <leader>e :FZF<cr>
+
 " arpeggio key chords
 call arpeggio#load()
 let g:arpeggio_timeoutlen = 200
 Arpeggio inoremap jk <esc>
+
+" vimwiki
+let g:vimwiki_list = [{'path': '~/Dropbox/my_wiki', 'path_html': '~/Dropbox/my_wiki/html/', 'syntax': 'markdown', 'ext': '.md', 'nested_syntaxes': {'ruby': 'ruby', 'python': 'python', 'javascript': 'javascript', 'vimscript': 'vimscript', 'html': 'html', 'css': 'css', 'bash': 'sh'}}]
+let g:vimwiki_hl_headers=1
+let g:vimwiki_hl_cb_checked=2
 
 " }}}
 
@@ -373,7 +382,7 @@ nnoremap <leader>a; mpA;<Esc>`p
 
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>t :Tags<cr>
-nnoremap <leader>e :Files<cr>
+" nnoremap <leader>e :Files<cr>
 
 " semicolon to colon
 nnoremap ; :

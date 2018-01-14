@@ -1,7 +1,7 @@
 # Fantasque Powerline font repo
 # https://github.com/ztomer/fantasque_awesome_powerline
 
-export TERM="xterm-256color"
+export TERM="xterm-256color-italic"
 
 # PATH {{{
 
