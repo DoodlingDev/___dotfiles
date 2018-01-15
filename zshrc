@@ -120,6 +120,9 @@ source ~/.k/k.sh
 source ~/.dotfiles/oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
 source ~/.dotfiles/oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# zsh autosuggestions color
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=3
+
 # }}}
 
 # {{{ ZSH

@@ -147,7 +147,7 @@ if [ -d ${HOME}/ranger/ ]; then
   git clone git://git.savannah.nongnu.org/ranger.git ~/ranger
 fi
 
-OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "vlc" "alfred" "iterm2", "spectacle", "spotify", "sip", "graphiql" )
+OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "vlc" "alfred" "iterm2", "spectacle", "spotify", "sip", "graphiql", "docker", "dropbox", "vanilla" )
 
 for app in ${OSX_APPS_LIST[@]}
 do
@@ -161,3 +161,8 @@ do
 done
 
 cp -r ./ranger ~/ranger
+
+# hide all icons from the desktop
+defaults write com.apple.finder CreateDesktop false
+killall Finder
+
