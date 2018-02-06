@@ -262,3 +262,9 @@ endsnippet
 snippet proptype-dec "PropTypes single declaration"
 $1: PropTypes.$2,
 endsnippet
+
+snippet process.dev "Check first if the env is production or test"
+  if (process.env.NODE_ENV != "production" && process.env.NODE_ENV != "test") {
+	$1
+  }
+endsnippet

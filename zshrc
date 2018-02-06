@@ -1,15 +1,12 @@
 # Fantasque Powerline font repo
 # https://github.com/ztomer/fantasque_awesome_powerline
-
+#
 export TERM="xterm-256color-italic"
 
 # PATH {{{
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export PATH=/usr/local/bin:$HOME/bin:$PATH
 
 # }}}
 
@@ -21,12 +18,13 @@ setopt auto_cd
 # }}}
 
 # POWERLEVEL THEME {{{
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 POWERLEVEL9K_MODE="awesome-patched"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
@@ -114,7 +112,17 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 # JIRA
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/jira
 #
-plugins=(git rails ruby tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn taskwarrior alias-tips zsh-autosuggestions)
+# Antigen for plugin management
+# https://github.com/zsh-users/antigen
+#
+source /usr/local/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
+antigen use oh-my-zsh
+#antigen bundle lukechilds/zsh-nvm
+antigen theme bhilburn/powerlevel9k powerlevel9k
+antigen apply
+
+#
+# plugins=(git rails ruby tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn taskwarrior alias-tips zsh-autosuggestions)
 
 source ~/.k/k.sh
 source ~/.dotfiles/oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
@@ -127,7 +135,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=3
 
 # {{{ ZSH
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # }}}
 
@@ -257,13 +265,13 @@ alias jarvis="ssh aji@jarvis.webhop.me"
 # }}}
 
 # Applications {{{
-
 . /usr/local/etc/profile.d/z.sh
 
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 
 export NVM_DIR="$HOME/.nvm"
-source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # }}}
 
