@@ -114,7 +114,7 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 # JIRA
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/jira
 #
-plugins=(git rails ruby node tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn taskwarrior alias-tips zsh-autosuggestions)
+plugins=(git rails ruby tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn taskwarrior alias-tips zsh-autosuggestions)
 
 source ~/.k/k.sh
 source ~/.dotfiles/oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
@@ -189,7 +189,6 @@ alias dcx="docker-compose stop && docker-compose rm --force"
 
 alias rr="~/.ranger/ranger.py ."
 
-
 # }}}
 
 # TMUX {{{
@@ -263,8 +262,10 @@ alias jarvis="ssh aji@jarvis.webhop.me"
 
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 
-# }
+export NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"
 
+# }}}
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
