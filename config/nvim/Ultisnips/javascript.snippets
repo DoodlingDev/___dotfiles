@@ -250,3 +250,15 @@ snippet "labeled review field" "Compass specific review json item"
 	label: "$2",
 },
 endsnippet
+
+snippet proptypes-env "PropTypes definition block with env check"
+if (process.env.NODE_ENV != JSON.stringify("production")) {
+	$1.propTypes = {
+	  $2: PropTypes.$3,
+	}
+}
+endsnippet
+
+snippet proptype-dec "PropTypes single declaration"
+$1: PropTypes.$2,
+endsnippet

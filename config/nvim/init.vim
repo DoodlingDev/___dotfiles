@@ -8,7 +8,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 let mapleader=","
 " open config in new tab
-nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-h>
+nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
 " source vimrc
 nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 
@@ -44,6 +44,7 @@ let g:terminal_color_15 = '#fdf6e3'
 
 highlight Normal guibg=dark
 highlight NonText guibg=dark
+highlight Pmenu guibg=lightblue guifg=black
 
 " {{{ GLOBALS
 
@@ -142,7 +143,7 @@ augroup END
 " LINTING {{{
 
 " let g:ale_completion_enabled=1
-let g:ale_linters = {'javascript': ['prettier', 'eslint'],
+let g:ale_linters = {'javascript': ['prettier', 'eslint', 'flow'],
                     \ 'javascript.jsx': ['prettier', 'eslint'],
                     \ 'ruby': ['rubocop']
                     \ }
@@ -156,7 +157,7 @@ let g:ale_fixers = {
 " PLUGIN CONFIGS {{{
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "X"
+let g:UltiSnipsExpandTrigger = "<c-space>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
@@ -172,6 +173,10 @@ let g:prettier#config#trailing_comma = 'all'
 
 " Path variable for plugins directory
 let g:PLUGIN_PATH="~/.dotfiles/config/nvim/bundle"
+
+" Change file_rec command.
+call denite#custom#var('file_rec', 'command',
+\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
 " JSDoc
 let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'returns'
@@ -200,15 +205,19 @@ endif
 " tern_for_vim & deoplete
 let g:deoplete#enable_at_startup=1
 let g:deoplete#sources#ternjs#tern_bin="/usr/local/bin/tern"
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+\]
 
 let g:tern#command = ["tern"]
 let g:tern#argument = ["--persistent"]
 let g:tern_show_signature_in_pum=1
 let g:tern_show_argument_hints="on_hold"
+nnoremap <leader>td :TernDefPreview<cr>
 
 let g:airline_powerline_fonts=1
-
-"nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
 
 " LanguageClient
 let g:LanguageClient_serverCommands = {
@@ -243,7 +252,7 @@ let g:ultisnips_javascript = {
      \ 'space-before-function-paren': 'never',
      \ }
 
-nnoremap <leader>e :FZF<cr>
+nnoremap <leader>e :GFiles<cr>
 
 " arpeggio key chords
 call arpeggio#load()
@@ -270,19 +279,21 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " {{{ PERSONAL COMMANDS
 
-function FocusModeToggle()
-  if !exists("w:focusMode")
-    let w:focusMode = 0
-  endif
+if !exists("*FocusModeToggle")
+  function FocusModeToggle()
+    if !exists("w:focusMode")
+      let w:focusMode = 0
+    endif
 
-  if w:focusMode ==? 0
-    call feedkeys("\<C-w>_\<C-w>|")
-    let w:focusMode = 1
-  else
-    call feedkeys("\<C-w>=")
-    let w:focusMode = 0
-  endif
-endfunction
+    if w:focusMode ==? 0
+      call feedkeys("\<C-w>_\<C-w>|")
+      let w:focusMode = 1
+    else
+      call feedkeys("\<C-w>=")
+      let w:focusMode = 0
+    endif
+  endfunction
+endif
 
 nnoremap <leader>f :call<space>FocusModeToggle()<cr>
 nnoremap <leader>p :FZF<cr>
@@ -346,10 +357,10 @@ vnoremap <S-k> :move'<--".1<cr>gv
 vnoremap <S-j> :move'>+".1<cr>gv
 
 " vim remap <space>
-inoremap <C-space>. <lt>space>
+" inoremap <C-space>. <lt>space>
 
 " snippet ++++ remover
-inoremap <C-space>++ <lt>esc>?++++<lt>cr>:noh<lt>cr>c4l
+" inoremap <C-space>++ <lt>esc>?++++<lt>cr>:noh<lt>cr>c4l
 
 " easy navigate tabs
 nnoremap gh gT
@@ -382,7 +393,6 @@ nnoremap <leader>a; mpA;<Esc>`p
 
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>t :Tags<cr>
-" nnoremap <leader>e :Files<cr>
 
 " semicolon to colon
 nnoremap ; :
@@ -403,6 +413,13 @@ map <Leader>h <Plug>(easymotion-linebackward)
 
 " easymotion pair of chars search
 nmap s <Plug>(easymotion-s2)
+
+" launch Denite for UltiSnips
+nnoremap <leader>u :Denite<space>ultisnips<cr>
+
+" Separate into a scratch buffer with Pug syntax highlighting
+vnoremap <leader>p :NR<cr>:set<space>syntax=Pug<cr>:set<space>filetype=Pug<cr>:res<space>+5<cr>
+
 
 " TEXT EXPANSION SHORTCUTS {{{
 

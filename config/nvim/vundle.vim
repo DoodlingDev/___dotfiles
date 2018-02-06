@@ -7,9 +7,19 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" pug templating syntax highlighting
+Plugin 'digitaltoad/vim-pug'
+" pug template autocompletion
+Plugin 'dNitro/vim-pug-complete'
+
 " Plugin 'tyrannicaltoucan/vim-quantum'
 " Plugin 'skielbasa/vim-material-monokai'
 Plugin 'hzchirs/vim-material'
+
+" indentation level as text object
+Plugin 'michaeljsmith/vim-indent-object'
+
+Plugin 'chrisbra/NrrwRgn'
 
 " file management
 Bundle 'scrooloose/nerdtree'
@@ -24,17 +34,24 @@ Plugin 'jparise/vim-graphql'
 Plugin 'Shougo/vimproc.vim'
 
 " Snippets
-Plugin 'SirVer/ultisnips'
+Plugin 'neoclide/ultisnips'
+
+Plugin 'roman/golden-ratio'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+
+" Function parameter completion
+Plugin 'othree/jspc.vim'
 
 " Language Server Protocal
 Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 'binary-*-x86_64-apple-darwin'}
 
 " Show function signatures and inline docs
 Plugin 'shougo/echodoc.vim'
-Plugin 'shougo/unite.vim'
+
+" neovim's unite
+Plugin 'shougo/denite.nvim'
 
 " Asynchronous Linting
 Plugin 'w0rp/ale'
@@ -125,9 +142,6 @@ Plugin 'junegunn/fzf.vim'
 
 " keybinding-guide
 Plugin 'DoodlingDev/vim-mission-control'
-
-" vim personal wiki
-Plugin 'vimwiki/vimwiki'
 
 call vundle#end()
 

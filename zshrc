@@ -163,11 +163,11 @@ export PATH=$PATH:/Users/aji/dev/_ul/compass/bin
 
 # alias reminders plugin
 
-alias zshconfig="nvim ~/.zshrc"
-alias vimconfig="nvim ~/.vimrc"
+alias zshconfig="nvim ~/.dotfiles/zshrc"
+alias vimconfig="nvim ~/.dotfiles/config/nvim/init.vim"
 
-alias v.="nvim ."
-alias v="nvim"
+alias v="nvim ."
+alias nv="nvim"
 
 alias l="k -a"
 alias c="cd"
@@ -185,6 +185,7 @@ alias wp="webpack"
 alias dc="docker-compose"
 alias dcup="docker-compose up -d"
 alias dcr="docker-compose run --rm"
+alias dcx="docker-compose stop && docker-compose rm --force"
 
 alias rr="~/.ranger/ranger.py ."
 
@@ -211,6 +212,7 @@ alias gpo="git push origin"
 alias glo="git pull origin"
 alias gfo="git fetch origin"
 alias m!="git checkout master"
+alias gsquash="git fetch; git reset --mixed origin/master; git merger --squash HEAD@{1}"
 
 # }}}
 
@@ -259,8 +261,11 @@ alias jarvis="ssh aji@jarvis.webhop.me"
 
 . /usr/local/etc/profile.d/z.sh
 
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
 # }
 
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+

@@ -47,7 +47,7 @@ else
 fi
 
 brew tap thoughtbot/formulae
-BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "node" "openssl" "postgresql" "puma/puma/puma-dev" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" "fzf" )
+BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "node" "openssl" "postgresql" "puma/puma/puma-dev" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" "fzf" "keith/formulae/reminders-cli" "cheat" )
 
 # list of installs from brew
 for cask in ${BREW_INSTALL_LIST[@]}
@@ -147,7 +147,7 @@ if [ -d ${HOME}/ranger/ ]; then
   git clone git://git.savannah.nongnu.org/ranger.git ~/ranger
 fi
 
-OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "vlc" "alfred" "iterm2", "spectacle", "spotify", "sip", "graphiql", "docker", "dropbox", "vanilla" )
+OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "vlc" "alfred" "iterm2", "spectacle", "spotify", "sip", "graphiql", "docker", "dropbox" )
 
 for app in ${OSX_APPS_LIST[@]}
 do
@@ -161,6 +161,9 @@ do
 done
 
 cp -r ./ranger ~/ranger
+
+# marker command line command palette
+~/.dotfiles/marker ./install.py
 
 # hide all icons from the desktop
 defaults write com.apple.finder CreateDesktop false
