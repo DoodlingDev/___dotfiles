@@ -1,4 +1,4 @@
-snippet container "React Container Component"
+snippet containerRedux "React Container Component"
 import React from "react";
 import PropTypes from "prop-types";
 import ReactComponent from "components/common/reactComponent";
@@ -10,18 +10,14 @@ export class $1 extends ReactComponent {
 		this._bind();
 	}
 
-	static propTypes = {
-
-	}
-
 	render() {
 		return(
-			<div></div>
+			${2:<div></div>}
 		);
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)($1);
+${3:export default connect(mapStateToProps, mapDispatchToProps)($1);
 
 function mapStateToProps(state, ownProps) {
 	return {
@@ -33,7 +29,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 
 	};
-}
+}}
 endsnippet
 
 snippet import-React "React import"
@@ -83,8 +79,10 @@ snippet con "console.log"
 console.log($1);
 endsnippet
 
-snippet get "getElementById"
-document.getElementById("$1");
+snippet objectMethodstr "object method string"
+${1:methodName}: function(${4:param}) {
+	${VISUAL}$0
+},
 endsnippet
 
 snippet crea "Create HTML node"
@@ -133,7 +131,7 @@ describe("$1", () => {
 endsnippet
 
 snippet wrapper "spec wrapper"
-const wrapper = setup($1, ${2:theseProps});
+const wrapper = setup($1, ${2:testProps});
 endsnippet
 
 snippet it "Spec It Block"
@@ -160,24 +158,12 @@ snippet clog "console.log"
 console.log(${VISUAL});
 endsnippet
 
-snippet jx "js doc comment"
-/**
- * $1
- */
-endsnippet
-
-snippet if "if statement"
-if ($1) {
-  $2
-}
-endsnippet
-
 snippet ifelse "if/else statement"
 if ($1) {
   $2
-} else {
-  $3
-}
+} ${3:else {
+  $4
+}}
 endsnippet
 
 snippet switch "switch statement"
@@ -185,6 +171,9 @@ switch ($1) {
   case $2:
 	  $3
 		${4:break;}
+
+		default:
+		$5
 }
 endsnippet
 
@@ -195,18 +184,10 @@ case $1:
 }
 endsnippet
 
-snippet class "class"
-class $1 {
-  constructor($2) {
-	  $3
-	}
-}
-endsnippet
-
-snippet classex "class ... extends"
-class $1 extends $2 {
-  constructor($3) {
-	  $4
+snippet clas "class"
+class $1 ${3:extends $2} {
+  constructor($4) {
+	  $5
 	}
 }
 endsnippet
@@ -215,7 +196,7 @@ snippet import "import..."
 import $1 from "$2${1/(.)(.*)/\l$1$2/}";
 endsnippet
 
-snippet import{} "{import}"
+snippet namedImport "{import}"
 import {$1} from "$2";
 endsnippet
 
@@ -227,12 +208,12 @@ snippet {props} "destructure props"
 {$1} = this.props;
 endsnippet
 
-snippet div-react "react div w/ props"
-<div
-  $1
-/>
+snippet jsx-el "react div w/ props"
+<${1:div}
   $2
-</div>
+/>
+  $3
+</${1:div}>
 endsnippet
 
 snippet ={} "react prop"

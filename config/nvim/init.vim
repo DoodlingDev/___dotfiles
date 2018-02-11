@@ -157,7 +157,7 @@ let g:ale_fixers = {
 " PLUGIN CONFIGS {{{
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<c-space>"
+let g:UltiSnipsExpandTrigger = "<C-e>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
@@ -192,27 +192,24 @@ if executable("ag")
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files.
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-  let g:ctrlp_use_caching = 0
-
   if !exists(":Ag")
     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
   endif
 endif
 
 " tern_for_vim & deoplete
+let g:deoplete#sources#ternjs#docs=1
 let g:deoplete#enable_at_startup=1
-let g:deoplete#sources#ternjs#tern_bin="/usr/local/bin/tern"
+let g:deoplete#sources#ternjs#tern_bin="/Users/aji/.nvm/versions/node/v9.5.0/bin/tern"
 let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.javascript = [
   \ 'tern#Complete',
   \ 'jspc#omni'
 \]
 
-let g:tern#command = ["tern"]
+let g:tern#command = ["/Users/aji/.nvm/versions/node/v9.5.0/bin/tern"]
 let g:tern#argument = ["--persistent"]
+let g:tern_map_keys = 1
 let g:tern_show_signature_in_pum=1
 let g:tern_show_argument_hints="on_hold"
 nnoremap <leader>td :TernDefPreview<cr>
@@ -258,6 +255,7 @@ nnoremap <leader>e :GFiles<cr>
 call arpeggio#load()
 let g:arpeggio_timeoutlen = 200
 Arpeggio inoremap jk <esc>
+Arpeggio inoremap s<space> <C-o>:call<space>leaderGuide#start('0',<space>g:snipguide,<space>"Snippets Guide")<cr>
 
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/my_wiki', 'path_html': '~/Dropbox/my_wiki/html/', 'syntax': 'markdown', 'ext': '.md', 'nested_syntaxes': {'ruby': 'ruby', 'python': 'python', 'javascript': 'javascript', 'vimscript': 'vimscript', 'html': 'html', 'css': 'css', 'bash': 'sh'}}]
@@ -332,8 +330,6 @@ nnoremap <leader>q :q!<CR>
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-
-inoremap JK <Esc>/-+-<Enter>:noh<Enter>"_3cl
 
 " indent selection and stay selected
 vnoremap > >gv
@@ -431,4 +427,3 @@ vnoremap <leader>p :NR<cr>:set<space>syntax=Pug<cr>:set<space>filetype=Pug<cr>:r
 
 " }}}
 " }}}
-

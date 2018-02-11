@@ -117,12 +117,24 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 #
 source /usr/local/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
 antigen use oh-my-zsh
-#antigen bundle lukechilds/zsh-nvm
+antigen bundle lukechilds/zsh-nvm
+antigen bundle git
+antigen bundle rails
+antigen bundle ruby
+antigen bundle tmux
+antigen bundle vi-mode
+antigen bundle colored-man-pages
+antigen bundle jira
+antigen bundle osx
+antigen bundle tmuxinator
+antigen bundle yarn
+antigen bundle alias-tips
+antigen bundle zsh-autosuggestions
 antigen theme bhilburn/powerlevel9k powerlevel9k
 antigen apply
 
-#
-# plugins=(git rails ruby tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn taskwarrior alias-tips zsh-autosuggestions)
+
+plugins=(git rails ruby tmux vi-mode colored-man-pages jira osx tmux tmuxinator yarn taskwarrior alias-tips zsh-autosuggestions)
 
 source ~/.k/k.sh
 source ~/.dotfiles/oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
@@ -259,6 +271,8 @@ alias keys="ssh-add -K ~/.ssh/id_rsa && ssh-add -K ~/.ssh/rsa_ul"
 alias rs="RUBYOPT='-W0' rails spec"
 alias docker-cleanup="docker rmi $(docker images | grep "<none>" | awk {'print $3'})"
 alias jarvis="ssh aji@jarvis.webhop.me"
+
+alias mg="marker get" # terminal command palette
 
 # }}}
 
