@@ -117,7 +117,6 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 #
 source /usr/local/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
 antigen use oh-my-zsh
-antigen bundle lukechilds/zsh-nvm
 antigen bundle git
 antigen bundle rails
 antigen bundle ruby
@@ -282,13 +281,10 @@ alias mg="marker get" # terminal command palette
 . /usr/local/etc/profile.d/z.sh
 
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # }}}
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="$PATH:$HOME/Dropbox/notes"
 
