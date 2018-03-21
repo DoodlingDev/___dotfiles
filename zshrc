@@ -118,7 +118,7 @@ POWERLEVEL9K_KUBERNETES_ICON=""
 source /usr/local/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
-antigen bundle rails
+# antigen bundle rails
 antigen bundle ruby
 antigen bundle tmux
 antigen bundle vi-mode
@@ -228,6 +228,7 @@ alias co="git checkout"
 alias gcm="git commit -m"
 alias gpo="git push origin"
 alias glo="git pull origin"
+alias glom="git pull origin master"
 alias gfo="git fetch origin"
 alias m!="git checkout master"
 alias gsquash="git fetch; git reset --mixed origin/master; git merger --squash HEAD@{1}"
@@ -288,3 +289,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="$PATH:$HOME/Dropbox/notes"
 
+# Python and pyenv
+export PATH="/Users/aji/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

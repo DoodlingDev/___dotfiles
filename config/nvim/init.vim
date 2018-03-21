@@ -1,5 +1,4 @@
 " INIT {{{
-
 runtime! macros/matchit.vim " better % matching
 
 set nocompatible " use vim, not vi api
@@ -8,14 +7,19 @@ set encoding=utf-8
 set fileencoding=utf-8
 let mapleader="," " map leader to comma
 
+let g:python_host_prog='/Users/aji/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog='/Users/aji/.pyenv/versions/neovim3/bin/python'
+
 " VIMRC {{{
 " open config in new tab
 nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
 " source vimrc
 nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 " }}}
+
 " VUNDLE {{{
 exec "source ~/.config/nvim/vundle.vim"
+"
 " }}}
 " COLORS {{{
 set termguicolors
@@ -57,6 +61,7 @@ set showcmd                 " show command in status line
 set autoread
 set autowrite
 set incsearch
+set foldlevelstart=99
 set foldmethod=marker
 set cursorline
 set nohlsearch
@@ -106,9 +111,19 @@ if executable("ag")
 endif
 " }}}
 " AUTOCOMMANDS {{{
-autocmd InsertEnter * set cul         " turn on line highlight in insert mode
-autocmd InsertLeave * set nocul       " turn off line highlight on insert exit
+autocmd InsertEnter * hi CursorLine guibg=#000000
+autocmd InsertEnter * hi CursorColumn guibg=#000000
+autocmd InsertLeave * hi CursorLine guibg=DarkSlateGray
+autocmd InsertLeave * hi CursorColumn guibg=DarkSlateGray
 autocmd BufWritePre * :%s/\s\+$//e    " remove trailing whitespace
+
+autocmd WinLeave * setlocal nocursorline
+autocmd WinLeave * setlocal nocursorcolumn
+autocmd WinEnter * setlocal cursorline
+autocmd WinEnter * setlocal cursorcolumn
+
+autocmd FileType css,scss setlocal foldmethod=marker foldmarker={,}
+
 " Filetype {{{
 filetype on
 augroup vimrcEx
@@ -116,15 +131,26 @@ augroup vimrcEx
   filetype plugin indent on
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.{jscs,jshint,eslint} set filetype=json
-  autocmd BufRead,BufNewFile *.{jsx,es6,js} set filetype=javascript
-  autocmd BufRead,BufNewFile *.spec.js set filetype=javascript
+  autocmd BufRead,BufNewFile *.{jsx,es6,js} set filetype=javascript.jsx
+  autocmd BufRead,BufNewFile *.spec.js set filetype=javascript.jsx
   autocmd BufRead,BufNewFile *.slim set filetype=slim
   autocmd BufRead,BufNewFile *.rb set filetype=ruby
   autocmd BufRead,BufNewFile *.scss set filetype=scss.css
   autocmd BufRead,BufNewFile *.txt set filetype=markdown
 augroup END
+
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+augroup END
 " }}}
 " }}}
+
+"exec "source ~/dev/vim-mission-control/plugin/vim-mission-control.vim"
+
 " PERSONAL KEYBINDINGS {{{
 
 " Fuzzy file finder respecting .gitignore
@@ -143,7 +169,10 @@ nnoremap K 10k
 "stop that stupid window from popping up
 map q: :q
 
-tnoremap jk <C-\><C-n>
+" make y work like c & d
+nnoremap Y y$
+
+tnoremap <esc> <C-\><C-n>
 
 " Fugitive shortcuts
 nnoremap <leader>gs :Gstatus<cr>
@@ -175,6 +204,8 @@ nnoremap <leader>\ :NERDTree<cr>
 " Common ruby-like regex for search using 'very magic mode'
 nnoremap / /\v
 nnoremap ? ?\v
+vnoremap / /\v
+vnoremap ? ?\v
 
 " Easy open CtrlP
 "nnoremap <leader>p :CtrlP<cr>
@@ -226,6 +257,10 @@ nnoremap ; :
 
 " easy exit visual mode
 vnoremap a <esc>
+
+" arrow keys navigate buffers
+nnoremap <Left> :bprev<CR>
+nnoremap <Right> :bnext<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j

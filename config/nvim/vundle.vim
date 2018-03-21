@@ -11,322 +11,195 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " }}}
 " PLUGINS {{{
-" Vim-Pug {{{
+" pug templating syntax highlighting
+Plugin 'digitaltoad/vim-pug'
 
-  " pug templating syntax highlighting
-  Plugin 'digitaltoad/vim-pug'
+" pug template autocompletion
+Plugin 'dNitro/vim-pug-complete'
 
-  " }}}
-" Vim-Pug-Complete {{{
+" material colorscheme
+Plugin 'hzchirs/vim-material'
 
-  " pug template autocompletion
-  Plugin 'dNitro/vim-pug-complete'
-
-  " }}}
-" Vim-Material {{{
-
-  " material colorscheme
-  Plugin 'hzchirs/vim-material'
-
-  " }}}
-" Solarized {{{
 " Solarized colorscheme
-  Plugin 'frankier/vim-colors-solarized'
-  " }}}
-" Vim-Indent-Object {{{
+Plugin 'frankier/vim-colors-solarized'
 
-  " indentation level as text object
-  Plugin 'michaeljsmith/vim-indent-object'
+" Separate a selection of text into a small
+" scratch buffer
+Plugin 'chrisbra/NrrwRgn'
 
-  " }}}
-" NrrwRgn {{{
+" Autocomplete brackets
+Plugin 'jiangmiao/auto-pairs'
 
-  " Separate a selection of text into a small
-  " scratch buffer
-  Plugin 'chrisbra/NrrwRgn'
+" GraphQL support
+Plugin 'jparise/vim-graphql'
 
-  " }}}
-" NerdTree {{{
+" interactive command execution
+Plugin 'Shougo/vimproc.vim'
 
-  " file management
-  Bundle 'scrooloose/nerdtree'
+" snippet manager
+Plugin 'neoclide/ultisnips'
 
-  " }}}
-" Auto-Pairs {{{
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 
-  " Autocomplete brackets
-  Plugin 'jiangmiao/auto-pairs'
+" Sizes window splits to the golden ratio
+Plugin 'roman/golden-ratio'
 
-  " }}}
-" Vim-Graphql {{{
+" Function parameter completion
+Plugin 'othree/jspc.vim'
 
-  " GraphQL support
-  Plugin 'jparise/vim-graphql'
+" Ranger filebrowser
+Plugin 'airodactyl/neovim-ranger'
 
-  " }}}
-" Vimproc {{{
+" Language Server Protocal
+Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 'binary-*-x86_64-apple-darwin'}
 
-  " interactive command execution
-  Plugin 'Shougo/vimproc.vim'
+" Show function signatures and inline docs
+Plugin 'shougo/echodoc.vim'
 
-  " }}}
-" UltiSnips {{{
+" neovim's unite
+Plugin 'shougo/denite.nvim'
 
-  " snippet manager
-  Plugin 'neoclide/ultisnips'
+" Asynchronous Linting
+Plugin 'w0rp/ale'
 
-  " Snippets are separated from the engine. Add this if you want them:
-  Plugin 'honza/vim-snippets'
+" Rails
+Plugin 'tpope/vim-rails'
 
-  " }}}
-" Golden Ratio {{{
+" auto places ends in ruby
+Plugin 'tpope/vim-endwise'
 
-  " Sizes window splits to the golden ratio
-  Plugin 'roman/golden-ratio'
+" ruby refactoring tools
+Plugin 'ecomba/vim-ruby-refactoring'
 
-  " }}}
-" JSPC {{{
+" Key chording
+Plugin 'kana/vim-arpeggio'
 
-  " Function parameter completion
-  Plugin 'othree/jspc.vim'
+" Ruby
+Plugin 'vim-ruby/vim-ruby'
 
-  " }}}
-" LanguageClient-neovim {{{
+" Easymotion
+Plugin 'easymotion/vim-easymotion'
 
-  " Language Server Protocal
-  Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 'binary-*-x86_64-apple-darwin'}
+" comment and uncomment
+Bundle 'tomtom/tcomment_vim'
 
-  " }}}
-" EchoDoc {{{
+" surround block with quetes etc
+Bundle 'tpope/vim-surround'
 
-  " Show function signatures and inline docs
-  Plugin 'shougo/echodoc.vim'
+" work more easily with markdown files
+Plugin 'tpope/vim-markdown'
 
-  " }}}
-" Denite {{{
+" slim syntax highlighting
+Plugin 'slim-template/vim-slim'
 
-  " neovim's unite
-  Plugin 'shougo/denite.nvim'
+" Javascript highlighting etc
+Plugin 'othree/yajs.vim'
 
-  " }}}
-" Ale {{{
+" JSX highlighting
+Plugin 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
 
-  " Asynchronous Linting
-  Plugin 'w0rp/ale'
+" Git plugin and functionality
+Plugin 'tpope/vim-fugitive'
 
-  " }}}
-" Tpope's Vim-Rails {{{
+" Tern server client for vim
+Plugin 'ternjs/tern_for_vim'
 
-  " Rails
-  Plugin 'tpope/vim-rails'
+" Supercharged statusline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
-  " }}}
-" Tpope's Vim-endwise {{{
+" indentation & columnar alignment
+Plugin 'godlygeek/tabular'
 
-  " auto places ends in ruby
-  Plugin 'tpope/vim-endwise'
+" <TAB> addon
+Plugin 'ervandew/supertab'
 
-  " }}}
-" Vim-Ruby-Refactoring {{{
+" easily navigate VIM and TMUX panes
+Bundle 'christoomey/vim-tmux-navigator'
 
-  " ruby refactoring tools
-  Plugin 'ecomba/vim-ruby-refactoring'
+" typescript support
+Plugin 'leafgarland/typescript-vim'
 
-  " }}}
-" Arpeggio {{{
+" flow plugin
+Plugin 'flowtype/vim-flow'
 
-  " Key chording
-  Plugin 'kana/vim-arpeggio'
+" Javascript auto-formatting
+Plugin 'prettier/vim-prettier'
 
-  " }}}
-" Vim-Ruby {{{
+" javascript libraries support
+Plugin 'othree/javascript-libraries-syntax.vim'
 
-  " Ruby
-  Plugin 'vim-ruby/vim-ruby'
+" JSDoc auto-snippets
+Plugin 'heavenshell/vim-jsdoc'
+let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'returns'
 
-  " }}}
-" Vim-Easymotion {{{
+" DevDocs integration
+Plugin 'rhysd/devdocs.vim'
 
-  " Easymotion
-  Plugin 'easymotion/vim-easymotion'
+" Use fzf for fuzzy finding
+set rtp+=/usr/local/opt/fzf
+Plugin 'junegunn/fzf.vim'
 
-  " }}}
-" TComment_vim {{{
+" Quick open terminals
+Plugin 'kassio/neoterm'
 
-  " comment and uncomment
-  Bundle 'tomtom/tcomment_vim'
+" Better syntax highlighting for JSON
+Plugin 'elzr/vim-json'
 
-  " }}}
-" Vim-Surround {{{
+" Navigate easily around commonjs modules
+Plugin 'moll/vim-node'
 
-  " surround block with quetes etc
-  Bundle 'tpope/vim-surround'
-
-  " }}}
-" Tpope's Vim-Markdown {{{
-
-  " work more easily with markdown files
-  Plugin 'tpope/vim-markdown'
-
-  " }}}
-" Vim-Slim {{{
-
-  " slim syntax highlighting
-  Plugin 'slim-template/vim-slim'
-
-  " }}}
-" YAJS {{{
-
-  " Javascript highlighting etc
-  Plugin 'othree/yajs.vim'
-
-  " }}}
-" Vim-Jsx {{{
-
-  " JSX highlighting
-  Plugin 'mxw/vim-jsx'
-  let g:jsx_ext_required = 0
-
-  " }}}
-" Tpope's Fugitive {{{
-
-  " Git plugin and functionality
-  Plugin 'tpope/vim-fugitive'
-
-  " }}}
-" Deoplete {{{
-
-  " Async completion
-  Plugin 'Shougo/deoplete.nvim'
-
-  " }}}
-" Deoplete-ternJS {{{
-
-  " Tern and deoplete
-  Plugin 'carlitux/deoplete-ternjs'
-
-  " }}}
-" Tern for Vim {{{
-
-  " Tern server client for vim
-  Plugin 'ternjs/tern_for_vim'
-
-  " }}}
-" Airline {{{
-
-  " Supercharged statusline
-  Plugin 'vim-airline/vim-airline'
-  Plugin 'vim-airline/vim-airline-themes'
-
-  " }}}
-" Tabular {{{
-
-  " indentation & columnar alignment
-  Plugin 'godlygeek/tabular'
-
-  " }}}
-" Supertab {{{
-
-  " <TAB> addon
-  Plugin 'ervandew/supertab'
-
-  " }}}
-" Vim-Tmux-Navigator {{{
-
-  " easily navigate VIM and TMUX panes
-  Bundle 'christoomey/vim-tmux-navigator'
-
-  " }}}
-" Typescript-vim {{{
-
-  " typescript support
-  Plugin 'leafgarland/typescript-vim'
-
-  " }}}
-" Vim-Flow {{{
-
-  " flow plugin
-  Plugin 'flowtype/vim-flow'
-
-  " }}}
-" Prettier {{{
-
-  " Javascript auto-formatting
-  Plugin 'prettier/vim-prettier'
-
-  " }}}
-" Javascript-libraries-syntax.vim {{{
-
-  " javascript libraries support
-  Plugin 'othree/javascript-libraries-syntax.vim'
-
-  " }}}
-" Vim-JsDoc {{{
-
-  " JSDoc auto-snippets
-  Plugin 'heavenshell/vim-jsdoc'
-  let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'returns'
-
-  " }}}
-" DevDocs {{{
-
-  " DevDocs integration
-  Plugin 'rhysd/devdocs.vim'
-
-  " }}}
-" FZF {{{
-
-  " Use fzf for fuzzy finding
-  set rtp+=/usr/local/opt/fzf
-  Plugin 'junegunn/fzf.vim'
-
-  " }}}
-" Vim Mission Control {{{
-
-  " keybinding-guide
-  Plugin 'DoodlingDev/vim-mission-control'
-
-  " }}}
-" Neo Term {{{
-" Open multiple terminals at once
-
-  " Quick open terminals
-  Plugin 'kassio/neoterm'
-
-  " }}}
-" Vim L9 {{{
-" Required for AutoComplPop
-
-  Plugin 'eparreno/vim-l9'
-
-  " }}}
-" Vim-AutoComplPop {{{
-" Required for AutoComplPop
-  " Plugin 'othree/vim-autocomplpop'
-  " }}}
-" vim-json {{{
-  " Better syntax highlighting for JSON
-  Plugin 'elzr/vim-json'
-  " }}}
-" vim-node {{{
-  " Navigate easily around commonjs modules
-  Plugin 'moll/vim-node'
-  " }}}
-" vim-wiki {{{
 " Personal Wiki in Vim
 Plugin 'vimwiki/vimwiki'
-" }}}
+
+" Quick access to UNIX commands
+Plugin 'tpope/vim-eunuch'
+
+" completion framework
+Plugin 'roxma/nvim-completion-manager'
+Plugin 'roxma/nvim-cm-tern', {'do': 'npm install'}
+Plugin 'roxma/ncm-flow'
+Plugin 'roxma/ncm-rct-complete'
+Plugin 'mhartington/nvim-typescript'
+Plugin 'fgrsnau/ncm-otherbuf'
+Plugin 'Shougo/neco-syntax'
+Plugin 'Shougo/neco-vim'
+
+Plugin 'doodlingdev/vim-mission-control'
+
+"Plugin 'Shougo/deoplete.nvim'
+"Plugin 'Shougo/neco-syntax'
+"Plugin 'slashmili/alchemist.vim'
+"Plugin 'wokalski/autocomplete-flow'
+"Plugin 'carlitux/deoplete-ternjs'
+"Plugin 'mhartington/nvim-typescript'
+"Plugin 'Shougo/neco-vim'
+"Plugin 'wellle/tmux-complete.vim'
+"Plugin 'thalesmello/webcomplete.vim'
+
 " }}}
 
 call vundle#end()
 filetype on
+
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+
+
+
 
 " PLUGIN CONFIGS {{{
 " arpeggio {{{
 call arpeggio#load()
 let g:arpeggio_timeoutlen = 100
 Arpeggio inoremap jk <esc>
-Arpeggio inoremap hl <C-o>:call<space>leaderGuide#start('0',<space>g:snipguide,<space>"Snippets Guide")<cr>
+" Arpeggio inoremap hl <C-o>:call<space>leaderGuide#start('0',<space>g:snipguide,<space>"Snippets Guide")<cr>
 " }}}
 " ultisnips {{{
 " better key bindings for UltiSnipsExpandTrigger
@@ -337,50 +210,40 @@ let g:UltiSnipsEditSplit="vertical"
 " }}}
 " language server {{{
 let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['javascript-typescript-langserver'],
-  \ 'javascript.jsx': ['javascript-typescript-langserver'],
-  \ 'ruby': ['language_server-ruby'],
-  \ }
+      \ 'javascript': ['javascript-typescript-langserver'],
+      \ 'javascript.jsx': ['javascript-typescript-langserver'],
+      \ 'ruby': ['language_server-ruby'],
+      \ }
 let g:LanguageClient_diagnosticsList = ''
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 set runtimepath+=~/.dotfiles/config/nvim/bundle/LanguageClient-neovim
-
 " Use LanguageServer for omnifunc completion
-autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+autocmd FileType javascript,javascript.jsx setlocal omnifunc=LanguageClient#complete
 " }}}
 " denite {{{
-" Change file_rec command.
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+    \ ['-i', '--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('file_rec', 'command',
-\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+      \[ 'rg', '--files', '--glob', '!.git' ])
 " }}}
 " ale {{{
 let g:ale_javascript_eslint_suppress_eslintignore = 1
 " let g:ale_completion_enabled=1
 let g:ale_linters = {'javascript': ['prettier', 'eslint', 'flow'],
-                    \ 'javascript.jsx': ['prettier', 'eslint'],
-                    \ 'ruby': ['rubocop']
-                    \ }
+      \ 'javascript.jsx': ['prettier', 'eslint', 'flow'],
+      \ 'ruby': ['rubocop']
+      \ }
 
 let g:ale_fixers = {
-\   'javascript': ['eslint']
-\ }
-" }}}
-" deoplete {{{
-call deoplete#enable()
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" }}}
-" tern_for_vim & deoplete {{{
-let g:deoplete#sources#ternjs#docs=0
-let g:deoplete#enable_at_startup=1
-let g:deoplete#sources#ternjs#tern_bin="/usr/local/bin/tern"
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni',
-  \ 'LanguageClient#complete',
-\]
+      \   'javascript': ['eslint'],
+      \   'javascript.jsx': ['eslint']
+      \ }
 " }}}
 " tern_for_vim {{{
 let g:tern#command = ["/usr/local/bin/tern"]
@@ -433,7 +296,7 @@ nnoremap <silent> ,tc :call neoterm#clear()<cr>
 nnoremap <silent> ,tk :call neoterm#kill()<cr>
 " }}}
 " NVfzf {{{
-let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntaxes': {'js': 'javascript', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntaxes': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
 nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
 " }}}
 " }}}

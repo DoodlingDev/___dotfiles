@@ -169,3 +169,5 @@ cp -r ./ranger ~/ranger
 defaults write com.apple.finder CreateDesktop false
 killall Finder
 
+# python environment manager
+curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
