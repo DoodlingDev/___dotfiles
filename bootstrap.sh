@@ -171,3 +171,14 @@ killall Finder
 
 # python environment manager
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+
+# install pythons and create virtual envs for neovim {{{
+pyenv install 2.7.11
+pyenv install 3.4.4
+pyenv virtualenv 2.7.11 neovim2
+pyenv virtualenv 3.4.4 neovim3
+pyenv activate neovim2
+pip install neovim
+pyenv activate neovim3
+pip install neovim
+# }}}
