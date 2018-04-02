@@ -1,18 +1,18 @@
 " INIT {{{
 runtime! macros/matchit.vim " better % matching
 
-set nocompatible " use vim, not vi api
 set shell=$SHELL " set shell to system $SHELL
 set encoding=utf-8
 set fileencoding=utf-8
 let mapleader="," " map leader to comma
+set background=dark
 
 let g:python_host_prog='/Users/aji/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog='/Users/aji/.pyenv/versions/neovim3/bin/python'
 
 " VIMRC {{{
 " open config in new tab
-nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
+" nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
 " source vimrc
 nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 " }}}
@@ -32,26 +32,7 @@ highlight NonText guibg=dark
 highlight Pmenu guibg=lightblue guifg=black
 let g:solarized_termcolors=256
 " }}}
-" TERMINAL {{{
 
-" let g:terminal_color_0 = '#003541'
-" let g:terminal_color_1 = '#dc322f'
-" let g:terminal_color_2 = '#859901'
-" let g:terminal_color_3 = '#b58901'
-" let g:terminal_color_4 = '#2C8DD6'
-" let g:terminal_color_5 = '#d33682'
-" let g:terminal_color_6 = '#2aa198'
-" let g:terminal_color_7 = '#eee8d5'
-" let g:terminal_color_8 = '#002833'
-" let g:terminal_color_9 = '#cb4b16'
-" let g:terminal_color_10 = '#586e75'
-" let g:terminal_color_11 = '#657b83'
-" let g:terminal_color_12 = '#839496'
-" let g:terminal_color_13 = '#6c6ec6'
-" let g:terminal_color_14 = '#93a1a1'
-" let g:terminal_color_15 = '#fdf6e3'
-"
-" }}}
 " {{{ GLOBALS
 set backspace=2
 set noswapfile
@@ -76,7 +57,7 @@ set expandtab
 set wrap                    " set linebreak
 set linebreak               " Only break line at non-word character
 set nolist                  " Only linebreak when I press enter
-set smartindent             " Smart autoindenting on new lines
+" set smartindent             " Smart autoindenting on new lines
 set formatoptions-=tc
 set textwidth=0
 set numberwidth=5

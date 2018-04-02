@@ -285,3 +285,45 @@ endsnippet
 snippet qall
 document.querySelectorAll("$1");
 endsnippet
+
+snippet j_mock_fn
+jest.fn()
+endsnippet
+
+snippet j_after_all "after all tests are complete"
+afterAll(() => {
+	$1
+}${2:, timeout});
+endsnippet
+
+snippet j_after_each "after each test is complete"
+afterEach(() => {
+  $1
+}${2:, timeout})
+endsnippet
+
+snippet j_before_all
+beforeAll(() => {
+  $1
+}${2:, timeout});
+endsnippet
+
+snippet j_before_each
+beforeEach(() => {
+  $1
+}${2:, timeout});
+endsnippet
+
+snippet requireActual
+require.requireActual(${1:moduleName});
+endsnippet
+
+snippet requireMock
+require.requireActual(${1:moduleName})
+endsnippet
+
+snippet enzyme_setup
+function setup(renderFn, testProps = defultProps) {
+  return renderFn(<${1:Component} {...testProps} />);
+}
+endsnippet

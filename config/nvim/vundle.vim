@@ -14,11 +14,20 @@ Plugin 'VundleVim/Vundle.vim'
 " pug templating syntax highlighting
 Plugin 'digitaltoad/vim-pug'
 
+Plugin 'majutsushi/tagbar'
+
+Plugin 'eugen0329/vim-esearch'
+Plugin 'janko-m/vim-test'
+"Plugin 'ipod825/vim-netranger'
+
 " pug template autocompletion
 Plugin 'dNitro/vim-pug-complete'
 
 " material colorscheme
 Plugin 'hzchirs/vim-material'
+
+" challenger deep colorscheme
+Plugin 'challenger-deep-theme/vim'
 
 " Solarized colorscheme
 Plugin 'frankier/vim-colors-solarized'
@@ -169,6 +178,8 @@ Plugin 'Shougo/neco-vim'
 
 Plugin 'doodlingdev/vim-mission-control'
 
+Plugin 'universal-ctags/ctags'
+
 "Plugin 'Shougo/deoplete.nvim'
 "Plugin 'Shougo/neco-syntax'
 "Plugin 'slashmili/alchemist.vim'
@@ -299,4 +310,7 @@ nnoremap <silent> ,tk :call neoterm#kill()<cr>
 let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntaxes': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
 nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
 " }}}
+let g:cm_sources_override = {
+      \'cm-ultisnips': {'enable': 0}
+      \}
 " }}}
