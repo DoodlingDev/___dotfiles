@@ -106,7 +106,7 @@ if brew list | grep "rcm" > /dev/null; then
   rcup -v -v -v -v
 fi
 
-
+# Install Gems
 GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "guard" "language_server")
 
 for gem in ${GEM_INSTALL_LIST[@]}
@@ -160,6 +160,7 @@ do
   fi
 done
 
+# move ranger to usable position
 cp -r ./ranger ~/ranger
 
 # marker command line command palette
