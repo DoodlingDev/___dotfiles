@@ -1,7 +1,7 @@
 # Fantasque Powerline font repo
 # https://github.com/ztomer/fantasque_awesome_powerline
 #
-export TERM="xterm-256color-italic"
+export TERM="xterm-256color"
 
 # PATH {{{
 
@@ -137,7 +137,7 @@ plugins=(git rails ruby tmux vi-mode colored-man-pages jira osx tmux tmuxinator 
 
 source ~/.k/k.sh
 source ~/.dotfiles/oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
-source ~/.dotfiles/oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh autosuggestions color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=3
@@ -279,7 +279,7 @@ alias mg="marker get" # terminal command palette
 # }}}
 
 # Applications {{{
-. /usr/local/etc/profile.d/z.sh
+. ~/.dotfiles/z.sh
 
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 # }}}
@@ -288,9 +288,3 @@ alias mg="marker get" # terminal command palette
 export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="$PATH:$HOME/Dropbox/notes"
-
-# Python and pyenv
-export PATH="/Users/aji/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYENV_ROOT="$HOME/.pyenv"
