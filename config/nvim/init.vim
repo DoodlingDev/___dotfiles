@@ -7,9 +7,6 @@ set fileencoding=utf-8
 let mapleader="," " map leader to comma
 set background=dark
 
-let g:python_host_prog='/Users/aji/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog='/Users/aji/.pyenv/versions/neovim3/bin/python'
-
 " VIMRC {{{
 " open config in new tab
 " nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
@@ -19,7 +16,7 @@ nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 
 " VUNDLE {{{
 exec "source ~/.config/nvim/vundle.vim"
-"
+
 " }}}
 " COLORS {{{
 set termguicolors
@@ -57,13 +54,10 @@ set expandtab
 set wrap                    " set linebreak
 set linebreak               " Only break line at non-word character
 set nolist                  " Only linebreak when I press enter
-" set smartindent             " Smart autoindenting on new lines
 set formatoptions-=tc
 set textwidth=0
 set numberwidth=5
 set number
-" set relativenumber        " turned off because of <leader>j/k easymotion
-" More natural direction when splitting
 set splitbelow
 set splitright
 set diffopt+=vertical
@@ -129,8 +123,6 @@ augroup omnifuncs
 augroup END
 " }}}
 " }}}
-
-"exec "source ~/dev/vim-mission-control/plugin/vim-mission-control.vim"
 
 " PERSONAL KEYBINDINGS {{{
 

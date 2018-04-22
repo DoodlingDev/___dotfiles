@@ -11,17 +11,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " }}}
 " PLUGINS {{{
-" pug templating syntax highlighting
-Plugin 'digitaltoad/vim-pug'
+" notational velocity
+" Plugin 'Alok/notational-fzf-vim'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
 
-Plugin 'majutsushi/tagbar'
+"Plugin 'majutsushi/tagbar'
 
 Plugin 'eugen0329/vim-esearch'
 Plugin 'janko-m/vim-test'
-"Plugin 'ipod825/vim-netranger'
+Plugin 'ipod825/vim-netranger'
 
 " pug template autocompletion
-Plugin 'dNitro/vim-pug-complete'
+" Plugin 'dNitro/vim-pug-complete'
 
 " material colorscheme
 Plugin 'hzchirs/vim-material'
@@ -58,7 +60,7 @@ Plugin 'roman/golden-ratio'
 Plugin 'othree/jspc.vim'
 
 " Ranger filebrowser
-Plugin 'airodactyl/neovim-ranger'
+" Plugin 'airodactyl/neovim-ranger'
 
 " Language Server Protocal
 Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 'binary-*-x86_64-apple-darwin'}
@@ -197,10 +199,10 @@ filetype on
 
 
 " deoplete
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
+" let g:deoplete#enable_at_startup = 1
+" if !exists('g:deoplete#omni#input_patterns')
+"   let g:deoplete#omni#input_patterns = {}
+" endif
 
 
 
@@ -307,10 +309,15 @@ nnoremap <silent> ,tc :call neoterm#clear()<cr>
 nnoremap <silent> ,tk :call neoterm#kill()<cr>
 " }}}
 " NVfzf {{{
-let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntaxes': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntax': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
 nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
 " }}}
 let g:cm_sources_override = {
       \'cm-ultisnips': {'enable': 0}
       \}
 " }}}
+let g:nv_search_paths = ["~/Dropbox/notes"]
+
+call denite#custom#source('notes', 'matchers', ['matcher/fuzzy'])
+call denite#custom#var('notes', 'command', 'ls ~/Dropbox/notes')
+let g:notes_directories = ['~/Dropbox/notes']
