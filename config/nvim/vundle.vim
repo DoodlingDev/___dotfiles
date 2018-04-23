@@ -18,6 +18,7 @@ Plugin 'majutsushi/tagbar'
 
 Plugin 'eugen0329/vim-esearch'
 Plugin 'janko-m/vim-test'
+Plugin 'jeetsukumaran/vim-filebeagle'
 "Plugin 'ipod825/vim-netranger'
 
 " pug template autocompletion
@@ -58,7 +59,7 @@ Plugin 'roman/golden-ratio'
 Plugin 'othree/jspc.vim'
 
 " Ranger filebrowser
-Plugin 'airodactyl/neovim-ranger'
+" Plugin 'airodactyl/neovim-ranger'
 
 " Language Server Protocal
 Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 'binary-*-x86_64-apple-darwin'}
