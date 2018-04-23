@@ -47,7 +47,7 @@ else
 fi
 
 brew tap thoughtbot/formulae
-BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "openssl" "postgresql" "puma/puma/puma-dev" "python" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" "fzf" "keith/formulae/reminders-cli" "cheat" )
+BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "openssl" "postgresql" "puma/puma/puma-dev" "python@2" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" "fzf" "keith/formulae/reminders-cli" "antigen" "cheat" "ripgrep" )
 
 # list of installs from brew
 for cask in ${BREW_INSTALL_LIST[@]}
@@ -107,7 +107,7 @@ if brew list | grep "rcm" > /dev/null; then
 fi
 
 # Install Gems
-GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "guard" "language_server")
+GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "neovim" "guard" "language_server")
 
 for gem in ${GEM_INSTALL_LIST[@]}
 do
@@ -137,10 +137,8 @@ pip3 install neovim
 
 nvim -u "NONE" -c ":silent source ~/.dotfiles/config/nvim/init.vim" -c ":silent PluginInstall" -c ":silent UpdateRemotePlugins" +qa!
 
-if [ -d ~/.dotfiles/config/nvim/bundle/LanguageClient-neovim/install.sh ]; then
-  fancy_echo "downloading language client neovim plugin binary"
-  ~/.dotfiles/config/nvim/bundle/LanguageClient-neovim/install.sh
-fi
+fancy_echo "Installing Language Client Neovim Binary"
+~/.dotfiles/config/nvim/bundle/LanguageClient-neovim/install.sh
 
 if [ -d ${HOME}/ranger/ ]; then
   fancy_echo "Installing Ranger File Browser"
@@ -170,16 +168,3 @@ cp -r ./ranger ~/ranger
 defaults write com.apple.finder CreateDesktop false
 killall Finder
 
-# python environment manager
-curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-
-# install pythons and create virtual envs for neovim {{{
-pyenv install 2.7.11
-pyenv install 3.4.4
-pyenv virtualenv 2.7.11 neovim2
-pyenv virtualenv 3.4.4 neovim3
-pyenv activate neovim2
-pip install neovim
-pyenv activate neovim3
-pip install neovim
-# }}}
