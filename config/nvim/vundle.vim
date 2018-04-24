@@ -20,7 +20,8 @@ Plugin 'xolox/vim-misc'
 
 Plugin 'eugen0329/vim-esearch'
 Plugin 'janko-m/vim-test'
-Plugin 'ipod825/vim-netranger'
+Plugin 'jeetsukumaran/vim-filebeagle'
+"Plugin 'ipod825/vim-netranger'
 
 " pug template autocompletion
 " Plugin 'dNitro/vim-pug-complete'

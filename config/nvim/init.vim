@@ -5,7 +5,6 @@ set shell=$SHELL " set shell to system $SHELL
 set encoding=utf-8
 set fileencoding=utf-8
 let mapleader="," " map leader to comma
-set background=dark
 
 " VIMRC {{{
 " open config in new tab
@@ -21,13 +20,12 @@ exec "source ~/.config/nvim/vundle.vim"
 " COLORS {{{
 set termguicolors
 syntax enable
-set background=dark
 colorscheme vim-material
 highlight Normal guibg=dark
 highlight NonText guibg=dark
 " makes completion menu visible
 highlight Pmenu guibg=lightblue guifg=black
-let g:solarized_termcolors=256
+set background=dark
 " }}}
 
 " {{{ GLOBALS
