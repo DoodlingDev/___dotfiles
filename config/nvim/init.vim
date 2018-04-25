@@ -8,7 +8,7 @@ let mapleader="," " map leader to comma
 
 " VIMRC {{{
 " open config in new tab
-" nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
+cnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
 " source vimrc
 nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 " }}}
@@ -172,14 +172,13 @@ vnoremap <space> I<space><esc>gv
 " Open NERDTree like file browser in Atom
 nnoremap <leader>\ :NERDTree<cr>
 
+
+
 " Common ruby-like regex for search using 'very magic mode'
 nnoremap / /\v
 nnoremap ? ?\v
 vnoremap / /\v
 vnoremap ? ?\v
-
-" Easy open CtrlP
-"nnoremap <leader>p :CtrlP<cr>
 
 " add blank line above
 nnoremap [<space> mwO<esc>`w
@@ -258,3 +257,16 @@ tnoremap ,gt <C-\><C-n>gt
 " }}}
 
 " }}}
+
+set runtimepath+=$HOME/.dotfiles/config/nvim/bundle/denite.nvim
+let s:menus = {}
+
+let s:menus.my_commands = {
+      \ 'description': 'Example Commands'
+      \}
+
+let s:menus.my_commands.command_candidates = [
+      \ ['split the window', 'vnew'],
+      \ ]
+
+call denite#custom#var('menu', 'menus', s:menus)
