@@ -2,7 +2,7 @@
 
 # Don't check these files
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.5
   Exclude:
     - 'config/environments/*'
     - '**/templates/**/*'
@@ -20,7 +20,7 @@ Metrics/LineLength:
   Max: 100
 
 # A little extra space here is OK
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
 # It shouldn't be necessary to document all classes
