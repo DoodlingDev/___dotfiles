@@ -16,15 +16,9 @@ Plugin 'xolox/vim-misc'
 
 Plugin 'hecal3/vim-leader-guide'
 
-"Plugin 'majutsushi/tagbar'
-
 Plugin 'eugen0329/vim-esearch'
 Plugin 'janko-m/vim-test'
-"Plugin 'jeetsukumaran/vim-filebeagle'
-Plugin 'ipod825/vim-netranger'
-
-" pug template autocompletion
-" Plugin 'dNitro/vim-pug-complete'
+Plugin 'jeetsukumaran/vim-filebeagle'
 
 " material colorscheme
 Plugin 'hzchirs/vim-material'
@@ -54,9 +48,6 @@ Plugin 'roman/golden-ratio'
 
 " Function parameter completion
 Plugin 'othree/jspc.vim'
-
-" Ranger filebrowser
-" Plugin 'airodactyl/neovim-ranger'
 
 " Language Server Protocal
 Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 'binary-*-x86_64-apple-darwin'}
@@ -149,9 +140,6 @@ Plugin 'rhysd/devdocs.vim'
 set rtp+=/usr/local/opt/fzf
 Plugin 'junegunn/fzf.vim'
 
-" Quick open terminals
-Plugin 'kassio/neoterm'
-
 " Better syntax highlighting for JSON
 Plugin 'elzr/vim-json'
 
@@ -177,39 +165,20 @@ Plugin 'Shougo/neco-vim'
 "Plugin 'doodlingdev/vim-mission-control'
 
 Plugin 'universal-ctags/ctags'
-
-"Plugin 'Shougo/deoplete.nvim'
-"Plugin 'Shougo/neco-syntax'
-"Plugin 'slashmili/alchemist.vim'
-"Plugin 'wokalski/autocomplete-flow'
-"Plugin 'carlitux/deoplete-ternjs'
-"Plugin 'mhartington/nvim-typescript'
-"Plugin 'Shougo/neco-vim'
-"Plugin 'wellle/tmux-complete.vim'
-"Plugin 'thalesmello/webcomplete.vim'
-
 " }}}
 
 call vundle#end()
 filetype on
 
-
-" deoplete
-" let g:deoplete#enable_at_startup = 1
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
-" endif
-
-
-
-
 " PLUGIN CONFIGS {{{
+
 " arpeggio {{{
 call arpeggio#load()
 let g:arpeggio_timeoutlen = 100
 Arpeggio inoremap jk <esc>
 " Arpeggio inoremap hl <C-o>:call<space>leaderGuide#start('0',<space>g:snipguide,<space>"Snippets Guide")<cr>
 " }}}
+
 " ultisnips {{{
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<C-e>"
@@ -217,6 +186,7 @@ let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 " }}}
+
 " language server {{{
 let g:LanguageClient_serverCommands = {
       \ 'javascript': ['javascript-typescript-langserver'],
@@ -242,8 +212,9 @@ call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('file_rec', 'command',
-      \[ 'rg', '--files', '--glob', '!.git' ])
+      \[ 'ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 " }}}
+
 " ale {{{
 let g:ale_javascript_eslint_suppress_eslintignore = 1
 " let g:ale_completion_enabled=1
@@ -257,6 +228,7 @@ let g:ale_fixers = {
       \   'javascript.jsx': ['eslint']
       \ }
 " }}}
+
 " tern_for_vim {{{
 let g:tern#command = ["/usr/local/bin/tern"]
 let g:tern#argument = ["--persistent"]
@@ -265,6 +237,7 @@ let g:tern_show_signature_in_pum=1
 let g:tern_show_argument_hints="on_hold"
 nnoremap <leader>td :TernDefPreview<cr>
 " }}}
+
 " airline {{{
 let g:airline_powerline_fonts=1
 " unicode symbols
@@ -285,13 +258,16 @@ let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linen
 " airline tab w/ tab number
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 " }}}
+
 " supertab {{{
 let g:SuperTabDefaultCompletionType = "<c-n>"
 " }}}
+
 " flow {{{
 let g:flow#autoclose=1 " Autoclose quickfix window when no errors
 let g:flow#enable=1 " Enable Flow on :w
 " }}}
+
 " prettier {{{
 " Prettier uses double quotes
 let g:prettier#config#single_quote="false"
@@ -299,24 +275,22 @@ let g:prettier#config#jsx_bracket_same_line="false"
 let g:prettier#config#bracket_spacing="true"
 let g:prettier#config#trailing_comma = 'all'
 " }}}
+
 " Golden Ratio {{{
-" let g:golden_ratio_exclude_nonmodifiable = 1
+let g:golden_ratio_exclude_nonmodifiable = 1
 " }}}
-" NeoTerm {{{
-nnoremap <silent> ,th :call neoterm#close()<cr>
-nnoremap <silent> ,tc :call neoterm#clear()<cr>
-nnoremap <silent> ,tk :call neoterm#kill()<cr>
-" }}}
+
 " NVfzf {{{
-let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntax': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
-nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
+" let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntax': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
+" nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
 " }}}
+
 let g:cm_sources_override = {
       \'cm-ultisnips': {'enable': 0}
       \}
-" }}}
-let g:nv_search_paths = ["~/Dropbox/notes"]
 
 call denite#custom#source('notes', 'matchers', ['matcher/fuzzy'])
 call denite#custom#var('notes', 'command', 'ls ~/Dropbox/notes')
 let g:notes_directories = ['~/Dropbox/notes']
+" }}}
+
