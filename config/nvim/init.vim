@@ -8,13 +8,14 @@ let mapleader="," " map leader to comma
 
 " VIMRC {{{
 " open config in new tab
-cnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
+nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
 " source vimrc
 nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 " }}}
 
 " VUNDLE {{{
-exec "source ~/.config/nvim/vundle.vim"
+exec "source ~/.dotfiles/config/nvim/vundle.vim"
+exec "source ~/.dotfiles/config/nvim/leader_maps.vim"
 
 " }}}
 " COLORS {{{

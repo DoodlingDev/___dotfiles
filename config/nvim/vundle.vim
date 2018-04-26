@@ -11,10 +11,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " }}}
 " PLUGINS {{{
-" notational velocity
-" Plugin 'Alok/notational-fzf-vim'
 Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
+
+Plugin 'hecal3/vim-leader-guide'
 
 "Plugin 'majutsushi/tagbar'
 
@@ -29,13 +29,8 @@ Plugin 'ipod825/vim-netranger'
 " material colorscheme
 Plugin 'hzchirs/vim-material'
 
-" challenger deep colorscheme
-Plugin 'challenger-deep-theme/vim'
+Plugin 'rhysd/vim-crystal'
 
-" Solarized colorscheme
-Plugin 'frankier/vim-colors-solarized'
-
-" Separate a selection of text into a small
 " scratch buffer
 Plugin 'chrisbra/NrrwRgn'
 
@@ -44,7 +39,7 @@ Plugin 'jiangmiao/auto-pairs'
 
 " GraphQL support
 Plugin 'jparise/vim-graphql'
-
+"
 " interactive command execution
 Plugin 'Shougo/vimproc.vim'
 
@@ -179,7 +174,7 @@ Plugin 'fgrsnau/ncm-otherbuf'
 Plugin 'Shougo/neco-syntax'
 Plugin 'Shougo/neco-vim'
 
-Plugin 'doodlingdev/vim-mission-control'
+"Plugin 'doodlingdev/vim-mission-control'
 
 Plugin 'universal-ctags/ctags'
 
@@ -229,12 +224,15 @@ let g:LanguageClient_serverCommands = {
       \ 'ruby': ['language_server-ruby'],
       \ }
 let g:LanguageClient_diagnosticsList = ''
+
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 set runtimepath+=~/.dotfiles/config/nvim/bundle/LanguageClient-neovim
+
 " Use LanguageServer for omnifunc completion
 autocmd FileType javascript,javascript.jsx setlocal omnifunc=LanguageClient#complete
 " }}}
+
 " denite {{{
 call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'default_opts',
