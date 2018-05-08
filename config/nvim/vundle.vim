@@ -99,12 +99,14 @@ filetype on
 let g:jsx_ext_required = 0
 let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'returns'
 set rtp+=/usr/local/opt/fzf
+"
 " arpeggio {{{
 call arpeggio#load()
 let g:arpeggio_timeoutlen = 100
 Arpeggio inoremap jk <esc>
 " Arpeggio inoremap hl <C-o>:call<space>leaderGuide#start('0',<space>g:snipguide,<space>"Snippets Guide")<cr>
 " }}}
+
 " ultisnips {{{
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<C-e>"
@@ -112,6 +114,7 @@ let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 " }}}
+
 " language server {{{
 let g:LanguageClient_serverCommands = {
       \ 'javascript': ['javascript-typescript-langserver'],
@@ -137,8 +140,9 @@ call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('file_rec', 'command',
-      \[ 'rg', '--files', '--glob', '!.git' ])
+      \[ 'ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 " }}}
+
 " ale {{{
 let g:ale_javascript_eslint_suppress_eslintignore = 1
 " let g:ale_completion_enabled=1
@@ -152,6 +156,7 @@ let g:ale_fixers = {
       \   'javascript.jsx': ['eslint']
       \ }
 " }}}
+
 " tern_for_vim {{{
 let g:tern#command = ["/usr/local/bin/tern"]
 let g:tern#argument = ["--persistent"]
@@ -160,6 +165,7 @@ let g:tern_show_signature_in_pum=1
 let g:tern_show_argument_hints="on_hold"
 nnoremap <leader>td :TernDefPreview<cr>
 " }}}
+
 " airline {{{
 let g:airline_powerline_fonts=1
 " unicode symbols
@@ -180,13 +186,16 @@ let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linen
 " airline tab w/ tab number
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 " }}}
+
 " supertab {{{
 let g:SuperTabDefaultCompletionType = "<c-n>"
 " }}}
+
 " flow {{{
 let g:flow#autoclose=1 " Autoclose quickfix window when no errors
 let g:flow#enable=1 " Enable Flow on :w
 " }}}
+
 " prettier {{{
 " Prettier uses double quotes
 let g:prettier#config#single_quote="false"
@@ -194,24 +203,22 @@ let g:prettier#config#jsx_bracket_same_line="false"
 let g:prettier#config#bracket_spacing="true"
 let g:prettier#config#trailing_comma = 'all'
 " }}}
+
 " Golden Ratio {{{
-" let g:golden_ratio_exclude_nonmodifiable = 1
+let g:golden_ratio_exclude_nonmodifiable = 1
 " }}}
-" NeoTerm {{{
-nnoremap <silent> ,th :call neoterm#close()<cr>
-nnoremap <silent> ,tc :call neoterm#clear()<cr>
-nnoremap <silent> ,tk :call neoterm#kill()<cr>
-" }}}
+
 " NVfzf {{{
-let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntax': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
-nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
+" let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntax': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
+" nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
 " }}}
+
 let g:cm_sources_override = {
       \'cm-ultisnips': {'enable': 0}
       \}
-" }}}
-let g:nv_search_paths = ["~/Dropbox/notes"]
 
 call denite#custom#source('notes', 'matchers', ['matcher/fuzzy'])
 call denite#custom#var('notes', 'command', 'ls ~/Dropbox/notes')
 let g:notes_directories = ['~/Dropbox/notes']
+" }}}
+
