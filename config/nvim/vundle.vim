@@ -11,160 +11,74 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " }}}
 " PLUGINS {{{
+" Productivity {{{
+Bundle 'christoomey/vim-tmux-navigator'
 Plugin 'xolox/vim-notes'
+Plugin 'vimwiki/vimwiki'
 Plugin 'xolox/vim-misc'
-
 Plugin 'hecal3/vim-leader-guide'
-
-"Plugin 'majutsushi/tagbar'
-
-Plugin 'eugen0329/vim-esearch'
-Plugin 'janko-m/vim-test'
-"Plugin 'jeetsukumaran/vim-filebeagle'
-Plugin 'ipod825/vim-netranger'
-
-" pug template autocompletion
-" Plugin 'dNitro/vim-pug-complete'
-
-" material colorscheme
-Plugin 'hzchirs/vim-material'
-
-Plugin 'rhysd/vim-crystal'
-
-" scratch buffer
-Plugin 'chrisbra/NrrwRgn'
-
-" Autocomplete brackets
-Plugin 'jiangmiao/auto-pairs'
-
-" GraphQL support
-Plugin 'jparise/vim-graphql'
-"
-" interactive command execution
+Plugin 'rhysd/devdocs.vim'
 Plugin 'Shougo/vimproc.vim'
-
-" snippet manager
-Plugin 'neoclide/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
-" Sizes window splits to the golden ratio
-Plugin 'roman/golden-ratio'
-
-" Function parameter completion
-Plugin 'othree/jspc.vim'
-
-" Ranger filebrowser
-" Plugin 'airodactyl/neovim-ranger'
-
-" Language Server Protocal
-Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 'binary-*-x86_64-apple-darwin'}
-
-" Show function signatures and inline docs
-Plugin 'shougo/echodoc.vim'
-
-" neovim's unite
 Plugin 'shougo/denite.nvim'
-
-" Asynchronous Linting
-Plugin 'w0rp/ale'
-
-" Rails
-Plugin 'tpope/vim-rails'
-
-" auto places ends in ruby
-Plugin 'tpope/vim-endwise'
-
-" ruby refactoring tools
-Plugin 'ecomba/vim-ruby-refactoring'
-
-" Key chording
 Plugin 'kana/vim-arpeggio'
-
-" Ruby
-Plugin 'vim-ruby/vim-ruby'
-
-" Easymotion
-Plugin 'easymotion/vim-easymotion'
-
-" comment and uncomment
-Bundle 'tomtom/tcomment_vim'
-
-" surround block with quetes etc
-Bundle 'tpope/vim-surround'
-
-" work more easily with markdown files
-Plugin 'tpope/vim-markdown'
-
-" slim syntax highlighting
-Plugin 'slim-template/vim-slim'
-
-" Javascript highlighting etc
-Plugin 'othree/yajs.vim'
-
-" JSX highlighting
-Plugin 'mxw/vim-jsx'
-let g:jsx_ext_required = 0
-
-" Git plugin and functionality
 Plugin 'tpope/vim-fugitive'
-
-" Tern server client for vim
-Plugin 'ternjs/tern_for_vim'
-
-" Supercharged statusline
+Plugin 'ervandew/supertab'
+" }}}
+" Language Support {{{
+Plugin 'shougo/echodoc.vim' " function signatures in command line
+Plugin 'rhysd/vim-crystal'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'jparise/vim-graphql'
+Plugin 'tpope/vim-rails'
+Plugin 'elzr/vim-json'
+Plugin 'moll/vim-node'
+Plugin 'tpope/vim-markdown'
+Plugin 'slim-template/vim-slim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'othree/yajs.vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'heavenshell/vim-jsdoc'
+Plugin 'leafgarland/typescript-vim'
+" }}}
+" Code Analysis {{{
+Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 'binary-*-x86_64-apple-darwin'}
+Plugin 'w0rp/ale'
+Plugin 'ecomba/vim-ruby-refactoring'
+Plugin 'flowtype/vim-flow'
+" Plugin 'ternjs/tern_for_vim'
+" }}}
+" Text Manipulation {{{
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'prettier/vim-prettier'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'neoclide/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-endwise'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
+" }}}
+" File System {{{
+Plugin 'jeetsukumaran/vim-filebeagle'
+Plugin 'universal-ctags/ctags'
+Plugin 'tpope/vim-eunuch'
+" }}}
+" Search {{{
+Plugin 'eugen0329/vim-esearch'
+Plugin 'junegunn/fzf.vim'
+Plugin 'easymotion/vim-easymotion'
+" }}}
+" Test Running {{{
+Plugin 'janko-m/vim-test'
+" }}}
+" Visual {{{
+Plugin 'hzchirs/vim-material'
+Plugin 'roman/golden-ratio'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
-" indentation & columnar alignment
-Plugin 'godlygeek/tabular'
-
-" <TAB> addon
-Plugin 'ervandew/supertab'
-
-" easily navigate VIM and TMUX panes
-Bundle 'christoomey/vim-tmux-navigator'
-
-" typescript support
-Plugin 'leafgarland/typescript-vim'
-
-" flow plugin
-Plugin 'flowtype/vim-flow'
-
-" Javascript auto-formatting
-Plugin 'prettier/vim-prettier'
-
-" javascript libraries support
-Plugin 'othree/javascript-libraries-syntax.vim'
-
-" JSDoc auto-snippets
-Plugin 'heavenshell/vim-jsdoc'
-let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'returns'
-
-" DevDocs integration
-Plugin 'rhysd/devdocs.vim'
-
-" Use fzf for fuzzy finding
-set rtp+=/usr/local/opt/fzf
-Plugin 'junegunn/fzf.vim'
-
-" Quick open terminals
-Plugin 'kassio/neoterm'
-
-" Better syntax highlighting for JSON
-Plugin 'elzr/vim-json'
-
-" Navigate easily around commonjs modules
-Plugin 'moll/vim-node'
-
-" Personal Wiki in Vim
-Plugin 'vimwiki/vimwiki'
-
-" Quick access to UNIX commands
-Plugin 'tpope/vim-eunuch'
-
-" completion framework
+" }}}
+" Completion Framework {{{
 Plugin 'roxma/nvim-completion-manager'
 Plugin 'roxma/nvim-cm-tern', {'do': 'npm install'}
 Plugin 'roxma/ncm-flow'
@@ -173,37 +87,18 @@ Plugin 'mhartington/nvim-typescript'
 Plugin 'fgrsnau/ncm-otherbuf'
 Plugin 'Shougo/neco-syntax'
 Plugin 'Shougo/neco-vim'
-
-"Plugin 'doodlingdev/vim-mission-control'
-
-Plugin 'universal-ctags/ctags'
-
-"Plugin 'Shougo/deoplete.nvim'
-"Plugin 'Shougo/neco-syntax'
-"Plugin 'slashmili/alchemist.vim'
-"Plugin 'wokalski/autocomplete-flow'
-"Plugin 'carlitux/deoplete-ternjs'
-"Plugin 'mhartington/nvim-typescript'
-"Plugin 'Shougo/neco-vim'
-"Plugin 'wellle/tmux-complete.vim'
-"Plugin 'thalesmello/webcomplete.vim'
-
+Plugin 'thalesmello/webcomplete.vim'
 " }}}
+" }}}
+
 
 call vundle#end()
 filetype on
 
-
-" deoplete
-" let g:deoplete#enable_at_startup = 1
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
-" endif
-
-
-
-
 " PLUGIN CONFIGS {{{
+let g:jsx_ext_required = 0
+let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'returns'
+set rtp+=/usr/local/opt/fzf
 " arpeggio {{{
 call arpeggio#load()
 let g:arpeggio_timeoutlen = 100

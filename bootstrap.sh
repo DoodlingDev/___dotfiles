@@ -24,6 +24,14 @@ if [ ! -d $HOME/.dotfiles ]; then
   mv $HOME/dotfiles $HOME/.dotfiles
 fi
 
+xcode-select -p
+if [ $? == 0 ]; then
+  fancy_echo "XCode Command Line Tools found. Continuing.."
+else
+  fancy_echo "Installing xcode command line tools, this could take some time.."
+  xcode-select --install
+fi
+
 # If on a Mac, install Homebrew package manager
 if [ ! -f /usr/local/bin/brew -a "$UNAME" == "Darwin" ]; then
   fancy_echo "Homebrew not found.. installing Homebrew"
@@ -38,7 +46,7 @@ fi
 # only if not found
 if [ ! $SHELL == "/bin/zsh" ]; then
   fancy_echo "downloading zsh"
-  brew install zsh zsh-completions
+  brew install zsh zsh-completions zsh-autosuggestions
 
   fancy_echo "setting zsh as default shell"
   chsh -s $(which zsh)
@@ -47,7 +55,7 @@ else
 fi
 
 brew tap thoughtbot/formulae
-BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "openssl" "postgresql" "puma/puma/puma-dev" "python@2" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" "fzf" "keith/formulae/reminders-cli" "antigen" "cheat" "ripgrep" )
+BREW_INSTALL_LIST=( "coreutils" "elixir" "fontconfig" "git" "gpg2" "gpg-agent" "imagemagick" "mongodb" "neovim" "neovim-dot-app" "openssl" "postgresql" "puma/puma/puma-dev" "python@2" "python3" "qt" "qt5" "reattach-to-user-namespace" "ranger" "ssh-copy-id" "the_silver_searcher" "tmux" "yarn" "rcm" "z" "fzf" "keith/formulae/reminders-cli" "antigen" "cheat" "ripgrep" "crystal-lang" )
 
 # list of installs from brew
 for cask in ${BREW_INSTALL_LIST[@]}
@@ -107,7 +115,7 @@ if brew list | grep "rcm" > /dev/null; then
 fi
 
 # Install Gems
-GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "neovim" "guard" "language_server")
+GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "neovim" "guard" "language_server" )
 
 for gem in ${GEM_INSTALL_LIST[@]}
 do

@@ -137,7 +137,7 @@ plugins=(git rails ruby tmux vi-mode colored-man-pages jira osx tmux tmuxinator 
 
 source ~/.k/k.sh
 source ~/.dotfiles/oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
-source ~/.dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh autosuggestions color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=3
