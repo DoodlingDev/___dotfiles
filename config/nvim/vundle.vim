@@ -176,6 +176,7 @@ filetype on
 call arpeggio#load()
 let g:arpeggio_timeoutlen = 100
 Arpeggio inoremap jk <esc>
+Arpeggio inoremap fj <C-o>:LeaderGuideD g:snip_guide<cr>
 " Arpeggio inoremap hl <C-o>:call<space>leaderGuide#start('0',<space>g:snipguide,<space>"Snippets Guide")<cr>
 " }}}
 
@@ -193,7 +194,7 @@ let g:LanguageClient_serverCommands = {
       \ 'javascript.jsx': ['javascript-typescript-langserver'],
       \ 'ruby': ['language_server-ruby'],
       \ }
-let g:LanguageClient_diagnosticsList = ''
+" let g:LanguageClient_diagnosticsList = ''
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1

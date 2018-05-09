@@ -1,4 +1,5 @@
-nnoremap <space> :LeaderGuideD g:nmap
+nnoremap <space> :LeaderGuideD g:nmap<cr>
+
 let g:leaderGuide_run_map_on_popup=0
 let g:nmap = {'name': 'Mission Control',
       \'h': ['call CmdMenu_feedkeys_input("help for: ", "h ")', 'help ...'],
@@ -82,8 +83,10 @@ let g:nmap.i = {
       \'name': 'Insert',
       \'=': ['call feedkeys("G=gg")', 'Indent buffer'],
       \'%': ['call feedkeys("=%")', 'Indent between current'],
+      \'d': ['call feedkeys("cc\<esc>")', 'Clear Line'],
       \'t': ['call feedkeys(":r!date")', "Today's date"],
       \'l': ['call feedkeys("i<C-X><C-L>")', 'Complete Linewise'],
+      \'u': ['Denite ultisnips', 'Ultisnips list'],
       \'x': ['call feedkeys("xp")', 'Swap two characters'],
       \}
 
@@ -314,7 +317,6 @@ let g:nmap.m = {
 let g:nmap.s = {
       \'name': 'Search',
       \'a': ['DeniteProjectDir -buffer-name=grep -default-action=quickfix grep:::!', 'Search in project'],
-      \'b': ['TagbarToggle', 'Toggle Tagbar Window'],
       \'c': ['call Feedkeys_input("find/replace", {"before_keys":":%s/","after_keys":"/gc"})', 'Int. Search/Replace'],
       \'g': ['Denite grep', 'Grep from .'],
       \'h': ['call feedkeys("q/")', 'Edit Search History'],
@@ -349,8 +351,6 @@ let g:nmap.w.t = {
       \'f': ['call CmdMenu_feedkeys_input("Filename: ", "tabe")', 'New tab with file ...'],
       \}
 
-nnoremap <space> :LeaderGuideD g:nmap<cr>
-inoremap <C-i> <esc>:LeaderGuideD g:snip_guide<cr>
 
 let g:snip_guide = {}
 
