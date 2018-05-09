@@ -90,6 +90,21 @@ let g:nmap.i = {
       \'x': ['call feedkeys("xp")', 'Swap two characters'],
       \}
 
+let g:nmap.i.b = {
+      \'name': 'Box Drawing',
+      \'e': ['call feedkeys("a┬\<esc>")', 'Top T ┬'],
+      \'c': ['call feedkeys("a┴\<esc>")', 'Bottom T ┴'],
+      \'r': ['call feedkeys("a┐\<esc>")', 'Upper Right ┐'],
+      \'s': ['call feedkeys("a├\<esc>")', 'Left T ├'],
+      \'f': ['call feedkeys("a┤\<esc>")', 'Right T ┤'],
+      \'x': ['call feedkeys("a└\<esc>")', 'Lower Left └'],
+      \'w': ['call feedkeys("a┌\<esc>")', 'Upper Left ┌'],
+      \'d': ['call feedkeys("a┼\<esc>")', 'Center Cross ┼'],
+      \'v': ['call feedkeys("a┘\<esc>")', 'Lower Right ┘'],
+      \'t': ['call feedkeys("a─\<esc>")', 'Horizontal Bar ─'],
+      \'g': ['call feedkeys("a│\<esc>")', 'Vertical Bar │'],
+      \}
+
 let g:nmap.i.s = {
       \'name': 'Surround',
       \}
