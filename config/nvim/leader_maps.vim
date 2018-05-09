@@ -92,6 +92,7 @@ let g:nmap.i = {
 
 let g:nmap.i.b = {
       \'name': 'Box Drawing',
+      \'b': ['call Make_into_box()', 'Box current line'],
       \'e': ['call feedkeys("a┬\<esc>")', 'Top T ┬'],
       \'c': ['call feedkeys("a┴\<esc>")', 'Bottom T ┴'],
       \'r': ['call feedkeys("a┐\<esc>")', 'Upper Right ┐'],
