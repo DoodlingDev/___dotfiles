@@ -23,6 +23,7 @@ Plugin 'shougo/denite.nvim'
 Plugin 'kana/vim-arpeggio'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ervandew/supertab'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
 " }}}
 " Language Support {{{
 Plugin 'shougo/echodoc.vim' " function signatures in command line
