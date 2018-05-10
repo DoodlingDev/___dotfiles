@@ -13,7 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 " PLUGINS {{{
 " Productivity {{{
 Bundle 'christoomey/vim-tmux-navigator'
-Plugin 'xolox/vim-notes'
 Plugin 'vimwiki/vimwiki'
 Plugin 'xolox/vim-misc'
 Plugin 'hecal3/vim-leader-guide'
@@ -211,8 +210,8 @@ let g:golden_ratio_exclude_nonmodifiable = 1
 " }}}
 
 " NVfzf {{{
-" let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntax': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md'}]
-" nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
+let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntax': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md', 'diary_rel_path': ""}]
+nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
 " }}}
 
 let g:cm_sources_override = {
