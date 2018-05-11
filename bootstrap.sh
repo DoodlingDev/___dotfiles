@@ -115,7 +115,7 @@ if brew list | grep "rcm" > /dev/null; then
 fi
 
 # Install Gems
-GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "neovim" "guard" "language_server" )
+GEM_INSTALL_LIST=( "bundler" "jekyll" "rubocop" "tmuxinator" "sass" "rails" "neovim" "guard" "language_server" "reek" "rails_best_practices" )
 
 for gem in ${GEM_INSTALL_LIST[@]}
 do
