@@ -17,6 +17,8 @@ nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 exec "source ~/.dotfiles/config/nvim/vundle.vim"
 exec "source ~/.dotfiles/config/nvim/leader_maps.vim"
 exec "source ~/.dotfiles/config/nvim/visual_box.vim"
+exec "source ~/.dotfiles/config/nvim/new_log.vim"
+
 
 " }}}
 " COLORS {{{
