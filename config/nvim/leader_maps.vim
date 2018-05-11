@@ -316,12 +316,10 @@ let g:nmap.i.d["_"] = {
       \'m': ['call Feedkeys_input("motion: ", "\"_d", "")', 'Motion command'],
       \}
 
-
-
 let g:nmap.m = {
       \'name': 'Movement',
       \'`': ['call feedkeys("``")', 'Back from last jump'],
-      \'e': ['call EasyMotion#JK(0,2)', 'Easymotion jk all'],
+      \'a': ['call EasyMotion#JK(0,2)', 'Easymotion jk all'],
       \'j': ['call EasyMotion#JK(0,0)', 'Easymotion down'],
       \'k': ['call EasyMotion#JK(0,1)', 'Easymotion up'],
       \'q': ['call feedkeys("ma")', 'quick mark'],
@@ -367,7 +365,6 @@ let g:nmap.w.t = {
       \'f': ['call CmdMenu_feedkeys_input("Filename: ", "tabe")', 'New tab with file ...'],
       \}
 
-
 let g:snip_guide = {}
 
 " {{{ javascript snippets
@@ -375,7 +372,7 @@ autocmd FileType javascript,javascript.jsx let g:snip_guide = g:js_snipguide
 
 let g:js_snipguide = {
       \'name': 'Javascript Snippets',
-      \'a': ['call ExecuteSnippet("=>")', 'Arrow function'],
+      \'>': ['call ExecuteSnippet("=>")', 'Arrow function'],
       \'c': ['call ExecuteSnippet("case")', 'Case Statement'],
       \'e': ['call ExecuteSnippet("add")', 'Add Event Listener'],
       \'f': ['call ExecuteSnippet("func")', 'Function'],
