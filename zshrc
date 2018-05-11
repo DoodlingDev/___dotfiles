@@ -106,7 +106,7 @@ alias vimconfig="nvim ~/.dotfiles/config/nvim/init.vim"
 alias v="nvim ."
 alias nv="nvim"
 
-alias nl="nvim -c L"
+alias el="nvim -c L"
 
 alias l="k -a"
 alias c="cd"
