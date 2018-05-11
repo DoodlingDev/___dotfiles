@@ -77,6 +77,7 @@ set clipboard=unnamed
 :set so=10                  " set cursor offset
 " }}}
 " }}}
+"
 " AG/SEARCHER {{{
 if executable("ag")
   " Use ag over grep

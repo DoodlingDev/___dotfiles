@@ -211,7 +211,9 @@ let g:golden_ratio_exclude_nonmodifiable = 1
 
 " NVfzf {{{
 let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntax': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md', 'diary_rel_path': ""}]
-nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
+" nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
+nnoremap <leader>we :Denite<space>file_rec<space>-path=~/Dropbox/notes<cr>
+nnoremap <leader>wg :Denite<space>grep<space>-path=~/Dropbox/notes<cr>
 " }}}
 
 let g:cm_sources_override = {
