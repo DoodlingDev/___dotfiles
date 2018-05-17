@@ -69,6 +69,13 @@ do
   fi
 done
 
+# install universal ctags
+if brew list | grep "universal-ctags"; then
+  fancy_echo "Universal ctags already installed"
+else
+  brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+fi
+
 # install mpapis public key used to verify rvm install package
 if ! gpg --list-keys | grep "409B6B1796C275462A1703113804BB82D39DC0E3" > /dev/null; then
   gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB

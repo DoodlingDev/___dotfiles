@@ -19,19 +19,8 @@ setopt auto_cd
 
 # THEME {{{
 ZSH_THEME="bullet-train"
-
 # }}}
 
-# PLUGINS {{{
-#
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-#
-# JIRA
-# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/jira
-#
 # Antigen for plugin management
 # https://github.com/zsh-users/antigen
 #
@@ -50,26 +39,17 @@ antigen bundle alias-tips
 antigen bundle zsh-autosuggestions
 antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 # antigen theme bhilburn/powerlevel9k powerlevel9k
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
-
 
 source ~/.k/k.sh
 source ~/.dotfiles/oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh autosuggestions color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=3
-
-# }}}
-
-# {{{ ZSH
-
-# source $ZSH/oh-my-zsh.sh
-
 # }}}
 
 # {{{ COMPLETION
-
 if [[ "$CASE_SENSITIVE" = true ]]; then
   zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 else
@@ -82,24 +62,19 @@ fi
 unset CASE_SENSITIVE HYPHEN_INSENSITIVE
 
 zstyle ':completion:*' list-colors ''
-
 # }}}
 
 # EXPORTS {{{
-
 export EDITOR="nvim"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export COMPASS_HOME=/Users/aji/dev/_ul/compass
 export PATH=$PATH:/Users/aji/dev/_ul/compass/bin
-
 # }}}
 
 # ALIASES {{{
 
 # CONFIG ETC {{{
-
 # alias reminders plugin
-
 alias zshconfig="nvim ~/.dotfiles/zshrc"
 alias vimconfig="nvim ~/.dotfiles/config/nvim/init.vim"
 
@@ -127,20 +102,16 @@ alias dcr="docker-compose run --rm"
 alias dcx="docker-compose stop && docker-compose rm --force"
 
 alias rr="~/.ranger/ranger.py ."
-
 # }}}
 
 # TMUX {{{
-
 alias td="tmux detach"
 alias tas="tmux attach-session -t"
 
 alias tns="tmux new-session"
-
 # }}}
 
 # GIT {{{
-#
 alias gs="git status"
 alias ga="git add"
 alias cob="git checkout -b"
@@ -152,11 +123,9 @@ alias glom="git pull origin master"
 alias gfo="git fetch origin"
 alias m!="git checkout master"
 alias gsquash="git fetch; git reset --mixed origin/master; git merger --squash HEAD@{1}"
-
 # }}}
 
 # PROJECTS {{{
-
 alias notes="nvim ~/Dropbox"
 alias _="cd ~/dev/_ul"
 alias dev="cd ~/dev"
@@ -182,7 +151,6 @@ alias cyolo="ruby setup_script.rb"
  # }}}
 
 # MISC {{{
-
 alias s="rails s"
 
 bindkey '^i' expand-or-complete-prefix
@@ -193,18 +161,17 @@ alias docker-cleanup="docker rmi $(docker images | grep "<none>" | awk {'print $
 alias jarvis="ssh aji@jarvis.webhop.me"
 
 alias mg="marker get" # terminal command palette
-
 # }}}
 
 # }}}
 
 # Applications {{{
 . ~/.dotfiles/z.sh
-
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 # }}}
+export PATH="$PATH:$HOME/Dropbox/notes"
+export PATH="$PATH:~/.dotfiles/bin/"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-export PATH="$PATH:$HOME/Dropbox/notes"
