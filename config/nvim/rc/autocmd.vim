@@ -1,18 +1,15 @@
-augroup insertLeave
-  autocmd!
-  autocmd InsertEnter * hi CursorLine guibg=#000000
-  autocmd InsertEnter * hi CursorColumn guibg=#000000
-  autocmd InsertLeave * hi CursorLine guibg=DarkSlateGray
-  autocmd InsertLeave * hi CursorColumn guibg=DarkSlateGray
-  autocmd BufWritePre * :%s/\s\+$//e    " remove trailing whitespace
+autocmd InsertEnter * hi CursorLine guibg=#000000
+autocmd InsertEnter * hi CursorColumn guibg=#000000
+autocmd InsertLeave * hi CursorLine guibg=DarkSlateGray
+autocmd InsertLeave * hi CursorColumn guibg=DarkSlateGray
+autocmd BufWritePre * :%s/\s\+$//e    " remove trailing whitespace
 
-  autocmd WinLeave * setlocal nocursorline
-  autocmd WinLeave * setlocal nocursorcolumn
-  autocmd WinEnter * setlocal cursorline
-  autocmd WinEnter * setlocal cursorcolumn
+autocmd WinLeave * setlocal nocursorline
+autocmd WinLeave * setlocal nocursorcolumn
+autocmd WinEnter * setlocal cursorline
+autocmd WinEnter * setlocal cursorcolumn
 
-  autocmd FileType css,scss setlocal foldmethod=marker foldmarker={,}
-augroup END
+autocmd FileType css,scss setlocal foldmethod=marker foldmarker={,}
 
 " Filetype {{{
 filetype on

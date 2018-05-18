@@ -40,6 +40,7 @@ set smartcase
 set previewheight=8         " Completion preview height
 set clipboard=unnamed
 set scrolloff=10                  " set cursor offset
+set backupcopy=yes
 
 " COLORS {{{
 set termguicolors

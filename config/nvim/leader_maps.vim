@@ -368,7 +368,10 @@ let g:nmap.w.t = {
 let g:snip_guide = {}
 
 " {{{ javascript snippets
-autocmd FileType javascript,javascript.jsx let g:snip_guide = g:js_snipguide
+augroup javascript_snippet_switch
+  autocmd!
+  autocmd FileType javascript,javascript.jsx let g:snip_guide = g:js_snipguide
+augroup END
 
 let g:js_snipguide = {
       \'name': 'Javascript Snippets',

@@ -20,33 +20,43 @@ Plugin 'rhysd/devdocs.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'shougo/denite.nvim'
 Plugin 'kana/vim-arpeggio'
+Plugin 'benizi/vim-automkdir'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ervandew/supertab'
+Plugin 'majutsushi/tagbar'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 " }}}
 " Language Support {{{
-Plugin 'shougo/echodoc.vim' " function signatures in command line
+  " clojure
+Plugin 'tpope/vim-fireplace'
+  " crystal
 Plugin 'rhysd/vim-crystal'
+  " elixir
 Plugin 'slashmili/alchemist.vim'
+  " graphql
 Plugin 'jparise/vim-graphql'
-Plugin 'tpope/vim-rails'
+  " javascript
 Plugin 'elzr/vim-json'
 Plugin 'moll/vim-node'
-Plugin 'tpope/vim-markdown'
-Plugin 'slim-template/vim-slim'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'othree/yajs.vim'
-Plugin 'mxw/vim-jsx'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'mxw/vim-jsx'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'shougo/echodoc.vim' " function signatures in command line
+  " markdown
+Plugin 'tpope/vim-markdown'
+  " ruby/rails
+Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
+  " slim
+Plugin 'slim-template/vim-slim'
 " }}}
 " Code Analysis {{{
 Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins', 'tag': 'binary-*-x86_64-apple-darwin'}
 Plugin 'w0rp/ale'
 Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'flowtype/vim-flow'
-" Plugin 'ternjs/tern_for_vim'
 " }}}
 " Text Manipulation {{{
 Plugin 'chrisbra/NrrwRgn'
@@ -74,6 +84,7 @@ Plugin 'janko-m/vim-test'
 " }}}
 " Visual {{{
 Plugin 'hzchirs/vim-material'
+" Plugin 'morhetz/gruvbox'
 Plugin 'roman/golden-ratio'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -104,7 +115,7 @@ set runtimepath+=/usr/local/opt/fzf
 call arpeggio#load()
 let g:arpeggio_timeoutlen = 100
 Arpeggio inoremap jk <esc>
-Arpeggio inoremap fj <C-o>:LeaderGuideD g:snip_guide<cr>
+" Arpeggio inoremap fj <C-o>:LeaderGuideD g:snip_guide<cr>
 " Arpeggio inoremap hl <C-o>:call<space>leaderGuide#start('0',<space>g:snipguide,<space>"Snippets Guide")<cr>
 " }}}
 
@@ -129,10 +140,7 @@ let g:LanguageClient_autoStart = 1
 set runtimepath+=~/.dotfiles/config/nvim/bundle/LanguageClient-neovim
 
 " Use LanguageServer for omnifunc completion
-augroup languageServer
-  autocmd!
-  autocmd FileType javascript,javascript.jsx setlocal omnifunc=LanguageClient#completaugroup languageServer
-augroup END
+" autocmd FileType javascript,javascript.jsx setlocal omnifunc=LanguageClient#completaugroup languageServer
 " }}}
 
 " denite {{{
