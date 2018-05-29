@@ -9,12 +9,46 @@ if dein#load_state('/Users/aji/.dotfiles/config/nvim/dein')
   " You can specify revision/branch/tag.
   call dein#add('Shougo/deol.nvim', { 'rev': 'a1b5108fd' })
 
+  " PRODUCTIVITY {{{
+  " tmux navigation
+  call dein#add('christoomey/vim-tmux-navigator')
+
+  " automatically make dirs for new files
+  call dein#add('benizi/vim-automkdir')
+
+  " vim-meister's git
+  call dein#add('tpope/vim-fugitive')
+
+  " vim wiki
+  call dein#add('vimwiki/vimwiki')
+
+  " denite
+  call dein#add('Shougo/denite.nvim', {
+        \'hook_add': "set runtimepath+=$HOME/.dotfiles/config/nvim/bundle/denite.nvim\n
+        \             call denite#custom#var('grep', 'command', ['rg'])\n
+        \             call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep', '--no-heading'])\n
+        \             call denite#custom#var('grep', 'recursive_opts', [])\n
+        \             call denite#custom#var('grep', 'pattern_opt', ['--regexp'])\n
+        \             call denite#custom#var('grep', 'separator', ['--'])\n
+        \             call denite#custom#var('grep', 'final_opts', [])\n
+        \             call denite#custom#var('file_rec', 'command', [ 'ag', '--follow', '--nocolor', '--nogroup', '-g', ''])"
+        \})
+
+  " asynchronous execution library
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+
+  " devdocs
+  call dein#add('rhysd/devdocs.vim', {
+        \'on_command': ["DevDocs", "DevDocsAll"]
+        \})
+
   " arpeggio key chording
-  " call dein#add('kana/vim-arpeggio', {
-  "       \'hook_add': "call arpeggio#load()\n
-  "       \             let g:arpeggio_timeoutlen=100\n
-  "       \             Arpeggio inoremap jk <esc>"
-  "       \})
+  call dein#add('kana/vim-arpeggio', {
+        \'hook_add': "call arpeggio#load()\n
+        \             let g:arpeggio_timeoutlen=100\n
+        \             Arpeggio inoremap jk <esc>
+        \             Arpeggio inoremap fj <C-o>:LeaderGuideD g:snip_guide<cr>"
+        \})
 
   call dein#end()
   call dein#save_state()

@@ -13,17 +13,16 @@ Plugin 'VundleVim/Vundle.vim'
 " }}}
 " PLUGINS {{{
 " Productivity {{{
-Bundle 'christoomey/vim-tmux-navigator'
-Plugin 'vimwiki/vimwiki'
+" Bundle 'christoomey/vim-tmux-navigator'
+" Plugin 'vimwiki/vimwiki'
 Plugin 'hecal3/vim-leader-guide'
-Plugin 'rhysd/devdocs.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'shougo/denite.nvim'
-Plugin 'kana/vim-arpeggio'
-Plugin 'benizi/vim-automkdir'
-Plugin 'tpope/vim-fugitive'
+" Plugin 'rhysd/devdocs.vim'
+" Plugin 'shougo/vimproc.vim'
+" Plugin 'shougo/denite.nvim'
+" Plugin 'kana/vim-arpeggio'
+" Plugin 'benizi/vim-automkdir'
+" Plugin 'tpope/vim-fugitive'
 Plugin 'ervandew/supertab'
-Plugin 'majutsushi/tagbar'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 " }}}
 " Language Support {{{
@@ -65,13 +64,15 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'neoclide/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-endwise'
-Bundle 'tomtom/tcomment_vim'
+" Bundle 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 " }}}
 " File System {{{
 Plugin 'jeetsukumaran/vim-filebeagle'
 Plugin 'universal-ctags/ctags'
+Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-eunuch'
 " }}}
 " Search {{{
@@ -83,6 +84,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'janko-m/vim-test'
 " }}}
 " Visual {{{
+" morhetz/gruvbox
+Plugin 'morhetz/gruvbox'
 Plugin 'hzchirs/vim-material'
 " Plugin 'morhetz/gruvbox'
 Plugin 'roman/golden-ratio'
@@ -112,12 +115,15 @@ let g:jsdoc_return=0 " conflicting with eslint, which wants 'return' over 'retur
 set runtimepath+=/usr/local/opt/fzf
 
 " arpeggio {{{
-call arpeggio#load()
-let g:arpeggio_timeoutlen = 100
-Arpeggio inoremap jk <esc>
+" call arpeggio#load()
+" let g:arpeggio_timeoutlen = 100
+" Arpeggio inoremap jk <esc>
 " Arpeggio inoremap fj <C-o>:LeaderGuideD g:snip_guide<cr>
 " Arpeggio inoremap hl <C-o>:call<space>leaderGuide#start('0',<space>g:snipguide,<space>"Snippets Guide")<cr>
 " }}}
+
+nnoremap <silent> <space> :LeaderGuideD g:nmap<cr>
+nnoremap <space>fgs :GStatus
 
 " ultisnips {{{
 " better key bindings for UltiSnipsExpandTrigger
@@ -143,19 +149,6 @@ set runtimepath+=~/.dotfiles/config/nvim/bundle/LanguageClient-neovim
 " autocmd FileType javascript,javascript.jsx setlocal omnifunc=LanguageClient#completaugroup languageServer
 " }}}
 
-" denite {{{
-set runtimepath+=$HOME/.dotfiles/config/nvim/bundle/denite.nvim
-
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-    \ ['-i', '--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#var('file_rec', 'command',
-      \[ 'ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-" }}}
 
 " ale {{{
 let g:ale_javascript_eslint_suppress_eslintignore = 1
@@ -230,17 +223,14 @@ let g:golden_ratio_exclude_nonmodifiable = 1
 " NVfzf {{{
 let g:vimwiki_list = [{'path': '~/Dropbox/notes/', 'path_html': '~/Dropbox/notes/_public_html/', 'nested_syntax': {'js': 'javascript.jsx', 'ruby': 'ruby'}, 'syntax': 'markdown', 'ext': '.md', 'diary_rel_path': ''}]
 " nnoremap <leader>we :FZF<space>~/Dropbox/notes<cr>
-nnoremap <leader>we :Denite<space>file_rec<space>-path=~/Dropbox/notes<cr>
-nnoremap <leader>wg :Denite<space>grep<space>-path=~/Dropbox/notes<cr>
+" nnoremap <leader>we :Denite<space>file_rec<space>-path=~/Dropbox/notes<cr>
+" nnoremap <leader>wg :Denite<space>grep<space>-path=~/Dropbox/notes<cr>
 " }}}
 
 let g:cm_sources_override = {
       \'cm-ultisnips': {'enable': 0}
       \}
 
-call denite#custom#source('notes', 'matchers', ['matcher/fuzzy'])
-call denite#custom#var('notes', 'command', 'ls ~/Dropbox/notes')
-let g:notes_directories = ['~/Dropbox/notes']
 " }}}
 
 filetype on

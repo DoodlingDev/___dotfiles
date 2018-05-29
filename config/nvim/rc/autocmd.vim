@@ -1,7 +1,7 @@
 autocmd InsertEnter * hi CursorLine guibg=#000000
 autocmd InsertEnter * hi CursorColumn guibg=#000000
-autocmd InsertLeave * hi CursorLine guibg=DarkSlateGray
-autocmd InsertLeave * hi CursorColumn guibg=DarkSlateGray
+autocmd InsertLeave * hi CursorLine guibg=#57514B
+autocmd InsertLeave * hi CursorColumn guibg=#57514B
 autocmd BufWritePre * :%s/\s\+$//e    " remove trailing whitespace
 
 autocmd WinLeave * setlocal nocursorline

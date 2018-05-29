@@ -45,7 +45,7 @@ set backupcopy=yes
 " COLORS {{{
 set termguicolors
 syntax enable
-colorscheme vim-material
+colorscheme gruvbox
 highlight Normal guibg=dark
 highlight NonText guibg=dark
 " makes completion menu visible

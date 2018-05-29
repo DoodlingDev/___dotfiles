@@ -14,7 +14,7 @@ nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 " }}}
 
 exec 'source ~/.dotfiles/config/nvim/vundle.vim'
-" exec 'source ~/.dotfiles/config/nvim/dein.vim'
+exec 'source ~/.dotfiles/config/nvim/dein.vim'
 
 exec 'source ~/.dotfiles/config/nvim/rc/autocmd.vim'
 exec 'source ~/.dotfiles/config/nvim/rc/globals.vim'
@@ -36,3 +36,4 @@ endif
 " }}}
 
 
+highlight Comment gui=italic
