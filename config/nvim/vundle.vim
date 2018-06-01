@@ -71,6 +71,7 @@ Plugin 'godlygeek/tabular'
 " }}}
 " File System {{{
 Plugin 'jeetsukumaran/vim-filebeagle'
+" Plugin 'vim-scripts/LustyExplorer'
 Plugin 'universal-ctags/ctags'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-eunuch'

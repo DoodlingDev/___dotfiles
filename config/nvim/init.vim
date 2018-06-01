@@ -37,3 +37,7 @@ endif
 
 
 highlight Comment gui=italic
+
+
+" explore
+" https://github.com/svermeulen/vim-easyclip

@@ -254,7 +254,7 @@ let g:nmap.i.s = {
       \'name': 'Surround',
       \}
 " }}}
-"   └────> inside {{{
+"   └────> INSIDE {{{
 let g:nmap.i.s.i = {
       \'name': 'Inside',
       \}
@@ -562,8 +562,8 @@ let g:js_snipguide = {
       \'f': ['call ExecuteSnippet("func")', 'Function'],
       \'i': ['call ExecuteSnippet("ifelse")', 'If Else'],
       \'k': ['call ExecuteSnippet("class")', 'Class'],
-      \'m': ['call ExecuteSnippet("import")', 'Import'],
       \'p': ['call ExecuteSnippet("proms")', 'Promise'],
+      \'w': ['call ExecuteSnippet("switch")', 'Switch Statement'],
       \}
 
 let g:js_snipguide.l = {
@@ -598,8 +598,8 @@ let g:js_snipguide.w = {
       \}
 
 let g:js_snipguide.r = {
-    \'name': "React",
-    \"v": ['call ExecuteSnippet("proptype-env")', 'Proptype w/ env'],
+    \'name': 'React',
+    \"v": ['call ExecuteSnippet("proptypes-env")', 'Proptype w/ env'],
     \"i": ['call ExecuteSnippet("import-react")', 'Import react'],
     \"p": ['call ExecuteSnippet("import-proptypes")', 'Import Proptypes'],
     \"f": ['call ExecuteSnippet("presenter")', 'Stateless Functional'],
@@ -608,10 +608,10 @@ let g:js_snipguide.r = {
 
 let g:js_snipguide.r.c = {
     \'name': "Components",
-    \"c": ['call ExecuteSnippet("containerRedux")', 'Redux Connected Class'],
+    \"c": ['call ExecuteSnippet("containerredux")', 'Redux Connected Class'],
     \"d": ['call ExecuteSnippet("rcdm")', 'componentDidMount'],
     \"f": ['call ExecuteSnippet("presenter")', 'Stateless Functional'],
-    \"i": ['call ExecuteSnippet("imReactCom")', 'Import React and Component'],
+    \"i": ['call ExecuteSnippet("classtype")', 'Class Component'],
     \"e": ['call ExecuteSnippet("jsx-el")', 'jsx Element'],
     \"p": ['call ExecuteSnippet("={}")', 'Prop={  }']
     \}
@@ -752,21 +752,21 @@ func! s:getkey() " {{{
 endfunc " }}}
 
 function! CmdMenu_feedkeys_input(prompt, command) " {{{
-  let finput = input(a:prompt)
-  call feedkeys(':' . a:command . ' ' . finput . "\<cr>")
+  let l:finput = input(a:prompt)
+  call feedkeys(':' . a:command . ' ' . l:finput . "\<cr>")
 endfunction " }}}
 
 function! Feedkeys_single_char(prompt, before_keys, after_keys) " {{{
   echo a:prompt
-  let fchar = nr2char(getchar())
-  call feedkeys(before_keys . fchar . after_keys, 'n')
+  let l:fchar = nr2char(getchar())
+  call feedkeys(a:before_keys . l:fchar . a:after_keys, 'n')
 endfunction " }}}
 
 function! Feedkeys_needs_confirm(prompt, command) " {{{
   echo a:prompt
-  let fchar = nr2char(getchar())
-  if fchar == "y"
-    call feedkeys(command, 'n')
+  let l:fchar = nr2char(getchar())
+  if l:fchar ==? 'y'
+    call feedkeys(a:command, 'n')
   else
     silent !echo 'Action aborted'
     execute 'redraw!'
@@ -774,20 +774,20 @@ function! Feedkeys_needs_confirm(prompt, command) " {{{
 endfunction " }}}
 
 function! Feedkeys_input(prompt, before_keys, after_keys) " {{{
-  let finput = input(a:prompt)
-  call feedkeys(before_keys . finput . after_keys, 'n')
+  let l:finput = input(a:prompt)
+  call feedkeys(a:before_keys . l:finput . a:after_keys, 'n')
 endfunction " }}}
 
 function! Feedkeys_input_with_timeout(prompt, before_keys, after_keys) " {{{
-  let finput = GetKeyWithTimeout(a:prompt)
-  call feedkeys(before_keys . finput . after_keys, 'n')
+  let l:finput = GetKeyWithTimeout(a:prompt)
+  call feedkeys(a:before_keys . l:finput . a:after_keys, 'n')
 endfunction " }}}
 
 function! Set_syntax_colors() " {{{
   if exists('b:current_syntax')
       finish
   endif
-  let b:current_syntax = "leaderguide"
+  let b:current_syntax = 'leaderguide'
 
   syn region LeaderGuideKeys start="\["hs=e+1 end="\]\s"he=s-1
               \ contained
@@ -802,5 +802,5 @@ function! Set_syntax_colors() " {{{
 endfunction " }}}
 
 function! ExecuteSnippet(snip) " {{{
-  execute "normal! i" . a:snip . "\<C-R>=UltiSnips#ExpandSnippet()\<CR>\<esc>la"
+  execute 'normal! i' . a:snip . '\<C-R>=UltiSnips#ExpandSnippet()\<CR>\<esc>la'
 endfunction " }}}

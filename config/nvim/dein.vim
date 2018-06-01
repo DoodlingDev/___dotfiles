@@ -46,8 +46,8 @@ if dein#load_state('/Users/aji/.dotfiles/config/nvim/dein')
   call dein#add('kana/vim-arpeggio', {
         \'hook_add': "call arpeggio#load()\n
         \             let g:arpeggio_timeoutlen=100\n
-        \             Arpeggio inoremap jk <esc>
-        \             Arpeggio inoremap fj <C-o>:LeaderGuideD g:snip_guide<cr>"
+        \             Arpeggioinoremap jk <esc>\n
+        \             Arpeggioinoremap fj <C-o>:LeaderGuideD g:snip_guide<cr>"
         \})
 
   call dein#end()

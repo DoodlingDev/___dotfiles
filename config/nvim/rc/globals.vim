@@ -6,7 +6,7 @@ set showcmd                 " show command in status line
 set autoread
 set autowrite
 set incsearch
-set foldlevelstart=2
+set foldlevelstart=25
 set foldmethod=marker
 set cursorline
 set nohlsearch
