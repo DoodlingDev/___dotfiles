@@ -160,7 +160,7 @@ if [ -d ${HOME}/ranger/ ]; then
   git clone git://git.savannah.nongnu.org/ranger.git ~/ranger
 fi
 
-OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "vlc" "alfred" "iterm2", "spectacle", "spotify", "sip", "graphiql", "docker", "dropbox" )
+OSX_APPS_LIST=( "firefox" "google-chrome" "slack" "vlc" "alfred" "iterm2", "spectacle", "spotify", "graphiql", "docker", "dropbox" )
 
 for app in ${OSX_APPS_LIST[@]}
 do
