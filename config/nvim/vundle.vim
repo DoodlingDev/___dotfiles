@@ -154,6 +154,7 @@ set runtimepath+=~/.dotfiles/config/nvim/bundle/LanguageClient-neovim
 
 " ale {{{
 let g:ale_javascript_eslint_suppress_eslintignore = 1
+let g:ale_sign_column_always=1
 " let g:ale_completion_enabled=1
 let g:ale_linters = {'javascript': ['prettier', 'eslint', 'flow'],
       \ 'javascript.jsx': ['prettier', 'eslint', 'flow'],
