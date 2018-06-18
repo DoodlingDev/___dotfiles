@@ -63,6 +63,12 @@ fi
 unset CASE_SENSITIVE HYPHEN_INSENSITIVE
 
 zstyle ':completion:*' list-colors ''
+
+# exercism.io completion
+if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
+  . ~/.config/exercism/exercism_completion.zsh
+fi
+
 # }}}
 
 # EXPORTS {{{

@@ -32,6 +32,7 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'rhysd/vim-crystal'
   " elixir
 Plugin 'slashmili/alchemist.vim'
+Plugin 'elixir-editors/vim-elixir'
   " graphql
 Plugin 'jparise/vim-graphql'
   " javascript
