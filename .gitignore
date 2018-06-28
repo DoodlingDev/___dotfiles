@@ -1,2 +1,4 @@
 config/nvim/bundle/
 config/nvim/dein/
+
+.personal_setup.sh

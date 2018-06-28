@@ -802,5 +802,5 @@ function! Set_syntax_colors() " {{{
 endfunction " }}}
 
 function! ExecuteSnippet(snip) " {{{
-  execute 'normal! i' . a:snip . '\<C-R>=UltiSnips#ExpandSnippet()\<CR>\<esc>la'
+  execute 'normal! i' . a:snip . "\<C-R>=UltiSnips#ExpandSnippet()\<CR>"
 endfunction " }}}

@@ -1,10 +1,10 @@
-set runtimepath+=/Users/aji/.dotfiles/config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/Users/aji/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('/Users/aji/.dotfiles/config/nvim/dein')
-  call dein#begin('/Users/aji/.dotfiles/config/nvim/dein')
+if dein#load_state('/Users/aji/.config/nvim/dein')
+  call dein#begin('/Users/aji/.config/nvim/dein')
 
   " Let dein manage dein
-  call dein#add('/Users/aji/.dotfiles/config/nvim/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('/Users/aji/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
 
   " You can specify revision/branch/tag.
   call dein#add('Shougo/deol.nvim', { 'rev': 'a1b5108fd' })
@@ -49,6 +49,11 @@ if dein#load_state('/Users/aji/.dotfiles/config/nvim/dein')
         \             Arpeggioinoremap jk <esc>\n
         \             Arpeggioinoremap fj <C-o>:LeaderGuideD g:snip_guide<cr>"
         \})
+
+  call dein#add('autozimu/LanguageClient-neovim', {
+      \ 'rev': 'next',
+      \ 'build': 'bash install.sh',
+      \ })
 
   call dein#end()
   call dein#save_state()

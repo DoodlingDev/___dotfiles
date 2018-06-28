@@ -2,6 +2,7 @@
 # https://github.com/ztomer/fantasque_awesome_powerline
 #
 export TERM="xterm-256color"
+. ~/.bashrc
 
 # PATH {{{
 
@@ -27,13 +28,20 @@ ZSH_THEME="bullet-train"
 source /usr/local/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
-# antigen bundle rails
+antigen bundle rails
 antigen bundle ruby
 antigen bundle tmux
 antigen bundle vi-mode
 antigen bundle colored-man-pages
-antigen bundle jira
 antigen bundle tmuxinator
+antigen bundle fabiokiatkowski/exercism.plugin.zsh
+antigen bundle gusaiani/elixir-oh-my-zsh
+antigen bundle sroze/docker-compose-zsh-plugin
+antigen bundle michaelxmcbride/zsh-dircycle
+antigen bundle veelenga/crystal-zsh
+antigen bundle MisterRios/stashy
+# antigen bundle paraqles/zsh-plugin-rails
+antigen bundle joow/macos
 antigen bundle yarn
 antigen bundle alias-tips
 antigen bundle zsh-autosuggestions
@@ -43,7 +51,20 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 source ~/.k/k.sh
-source ~/.dotfiles/oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
+source ~/.oh-my-zsh/plugins/alias-tips/alias-tips.plugin.zsh
+
+BULLETTRAIN_PROMPT_ORDER=(
+  time
+  status
+  dir
+  ruby
+  nvm
+  elixir
+  git
+  cmd_exec_time
+)
+SEGMENT_SEPARATOR='\uE0B4'
+BULLETTRAIN_PROMPT_CHAR='⑆'
 
 # zsh autosuggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -81,9 +102,12 @@ export PATH=$PATH:/Users/aji/dev/_ul/compass/bin
 # ALIASES {{{
 
 # CONFIG ETC {{{
+# flush DNS
+alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
 # alias reminders plugin
-alias zshconfig="nvim ~/.dotfiles/zshrc"
-alias vimconfig="nvim ~/.dotfiles/config/nvim/init.vim"
+alias zshconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.config/nvim/init.vim"
 
 alias v="nvim ."
 alias nv="nvim"
@@ -151,7 +175,7 @@ alias da:ac="docker container attach compass_alarm_company_service_1"
 export COMPASS_HOME=/Users/aji/dev/_ul/compass
 export PATH=$PATH:/Users/aji/dev/_ul/compass/bin
 
-alias cyolo="ruby setup_script.rb"
+alias cyolo="ruby ~/dev/_ul/compass/setup_script.rb --all"
 
 #}}}
 
@@ -173,11 +197,11 @@ alias mg="marker get" # terminal command palette
 # }}}
 
 # Applications {{{
-. ~/.dotfiles/z.sh
+. ~/.z.sh
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 # }}}
 export PATH="$PATH:$HOME/Dropbox/notes"
-export PATH="$PATH:~/.dotfiles/bin/"
+export PATH="$PATH:$DOTFILES_DIR/bin/"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

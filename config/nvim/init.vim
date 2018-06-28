@@ -8,19 +8,19 @@ let g:mapleader=',' " map leader to comma
 
 " VIMRC {{{
 " open config in new tab
-nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.dotfiles/config/nvim/vundle.vim<cr><c-w>h
+nnoremap <leader>rc :tabe<space>$MYVIMRC<cr>:vsplit<cr><c-l>:e<space>~/.config/nvim/vundle.vim<cr><c-w>h
 " source vimrc
 nnoremap <leader>sv :source<space>$MYVIMRC<cr>
 " }}}
 
-exec 'source ~/.dotfiles/config/nvim/vundle.vim'
-exec 'source ~/.dotfiles/config/nvim/dein.vim'
+exec 'source ~/.config/nvim/vundle.vim'
+exec 'source ~/.config/nvim/dein.vim'
 
-exec 'source ~/.dotfiles/config/nvim/rc/autocmd.vim'
-exec 'source ~/.dotfiles/config/nvim/rc/globals.vim'
+exec 'source ~/.config/nvim/rc/autocmd.vim'
+exec 'source ~/.config/nvim/rc/globals.vim'
 
-exec 'source ~/.dotfiles/config/nvim/rc/keybinding.vim'
-exec 'source ~/.dotfiles/config/nvim/rc/scripts.vim'
+exec 'source ~/.config/nvim/rc/keybinding.vim'
+exec 'source ~/.config/nvim/rc/scripts.vim'
 
 " }}}
 "

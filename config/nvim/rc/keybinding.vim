@@ -39,6 +39,15 @@ vnoremap > >gv
 vnoremap < <gv
 vnoremap <space> I<space><esc>gv
 
+" Easily move to start/end of line
+nnoremap H 0
+nnoremap L $
+vnoremap H 0
+vnoremap L $
+
+" Copies what was just pasted
+xnoremap p pgvy
+
 " Common ruby-like regex for search using 'very magic mode'
 nnoremap / /\v
 nnoremap ? ?\v

@@ -1,11 +1,11 @@
 scriptencoding utf-8
 filetype off
-let g:PLUGIN_PATH='~/.dotfiles/config/nvim/bundle' " Path variable for plugins directory
+let g:PLUGIN_PATH='~/.config/nvim/bundle' " Path variable for plugins directory
 
 " VUNDLE {{{
 " set the runtime path to include Vundle and initialize
-set runtimepath+=~/.dotfiles/config/nvim/bundle/Vundle.vim
-call vundle#rc('~/.dotfiles/config/nvim/bundle')
+set runtimepath+=~/.config/nvim/bundle/Vundle.vim
+call vundle#rc('~/.config/nvim/bundle')
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -145,7 +145,7 @@ let g:LanguageClient_serverCommands = {
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
-set runtimepath+=~/.dotfiles/config/nvim/bundle/LanguageClient-neovim
+set runtimepath+=~/.config/nvim/bundle/LanguageClient-neovim
 
 " Use LanguageServer for omnifunc completion
 " autocmd FileType javascript,javascript.jsx setlocal omnifunc=LanguageClient#completaugroup languageServer
